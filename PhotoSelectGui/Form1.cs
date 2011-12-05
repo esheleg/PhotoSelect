@@ -11,10 +11,7 @@ using System.IO;
 namespace PhotoSelectGui
 {
     public partial class MainPS : Form
-    {
-        string bla; //TODO - delete ME
-
-
+    {        
         double x;
         double y;
         public MainPS()
