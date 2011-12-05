@@ -1,0 +1,13 @@
+C:\Users\fatal\Desktop\babrakstudio\PhotoSelectGui\PhotoSelectGui\bin\Debug\PhotoSelectGui.exe
+C:\Users\fatal\Desktop\babrakstudio\PhotoSelectGui\PhotoSelectGui\bin\Debug\PhotoSelectGui.pdb
+C:\Users\fatal\Desktop\babrakstudio\PhotoSelectGui\PhotoSelectGui\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\fatal\Desktop\babrakstudio\PhotoSelectGui\PhotoSelectGui\obj\x86\Debug\PhotoSelectGui.Properties.Resources.resources
+C:\Users\fatal\Desktop\babrakstudio\PhotoSelectGui\PhotoSelectGui\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\fatal\Desktop\babrakstudio\PhotoSelectGui\PhotoSelectGui\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\fatal\Desktop\babrakstudio\PhotoSelectGui\PhotoSelectGui\obj\x86\Debug\PhotoSelectGui.exe
+C:\Users\fatal\Desktop\babrakstudio\PhotoSelectGui\PhotoSelectGui\obj\x86\Debug\PhotoSelectGui.pdb
+C:\Users\fatal\Desktop\babrakstudio\PhotoSelectGui\PhotoSelectGui\obj\x86\Debug\PhotoSelectGui.MainPS.resources
+C:\Users\fatal\Desktop\PhotoSelectGui\PhotoSelectGui\obj\x86\Debug\PhotoSelectGui.exe
+C:\Users\fatal\Desktop\PhotoSelectGui\PhotoSelectGui\obj\x86\Debug\PhotoSelectGui.pdb
+C:\Users\Maya\Documents\Visual Studio 2010\Projects\PhotoSelect\PhotoSelectGui\PhotoSelectGui\obj\x86\Debug\PhotoSelectGui.exe
+C:\Users\Maya\Documents\Visual Studio 2010\Projects\PhotoSelect\PhotoSelectGui\PhotoSelectGui\obj\x86\Debug\PhotoSelectGui.pdb
