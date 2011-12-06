@@ -12,6 +12,7 @@ namespace PhotoSelectGui
 {
     public partial class MainPS : Form
     {        
+
         double x;
         double y;
         public MainPS()
