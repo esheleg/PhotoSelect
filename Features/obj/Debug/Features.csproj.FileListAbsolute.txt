@@ -1,5 +1,0 @@
-C:\Users\Maya\Documents\Visual Studio 2010\Projects\PhotoSelect\PhotoSelectGui\Features\bin\Debug\Features.dll
-C:\Users\Maya\Documents\Visual Studio 2010\Projects\PhotoSelect\PhotoSelectGui\Features\bin\Debug\Features.pdb
-C:\Users\Maya\Documents\Visual Studio 2010\Projects\PhotoSelect\PhotoSelectGui\Features\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Maya\Documents\Visual Studio 2010\Projects\PhotoSelect\PhotoSelectGui\Features\obj\Debug\Features.dll
-C:\Users\Maya\Documents\Visual Studio 2010\Projects\PhotoSelect\PhotoSelectGui\Features\obj\Debug\Features.pdb

@@ -7,5 +7,14 @@ namespace Features
 {
     public class FeaturesLayer
     {
+        
+        private List<string> pathList;
+
+        public FeaturesLayer()
+        {
+
+        }
+
+
     }
 }

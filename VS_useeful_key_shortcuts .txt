@@ -1,0 +1,6 @@
+x -> y - keep pressing on x and continue to press on y.
+
+- Fix Selected lines Indentation
+Ctrl -> k -> f
+- Comment/Uncomment selected lines
+Ctrl -> e -> c/Ctrl -> e -> u
