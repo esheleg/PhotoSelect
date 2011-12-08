@@ -13,6 +13,7 @@ namespace PhotoSelectGui
     public partial class MainPS : Form
     {        
 
+
         // saves groupBox1 exit sliding movement position in each tick
         double x;
         double y;
