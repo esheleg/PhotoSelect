@@ -2,10 +2,25 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gui", "PhotoSelectGui\Gui.csproj", "{23CDAE06-314C-4B76-8723-35DD77224834}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6937E4DF-BC4A-43E8-8093-B2EC940F51E1} = {6937E4DF-BC4A-43E8-8093-B2EC940F51E1}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Features", "Features\Features.csproj", "{6937E4DF-BC4A-43E8-8093-B2EC940F51E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeaturesTests", "FeaturesTests\FeaturesTests.csproj", "{EFA04D16-C480-41A7-A3CC-24E947773839}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C1CE6C04-5598-4346-94CB-78B92AFD6426}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		PhotoSelect.vsmdi = PhotoSelect.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = PhotoSelect.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -35,6 +50,16 @@ Global
 		{6937E4DF-BC4A-43E8-8093-B2EC940F51E1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{6937E4DF-BC4A-43E8-8093-B2EC940F51E1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{6937E4DF-BC4A-43E8-8093-B2EC940F51E1}.Release|x86.ActiveCfg = Release|Any CPU
+		{EFA04D16-C480-41A7-A3CC-24E947773839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA04D16-C480-41A7-A3CC-24E947773839}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA04D16-C480-41A7-A3CC-24E947773839}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EFA04D16-C480-41A7-A3CC-24E947773839}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EFA04D16-C480-41A7-A3CC-24E947773839}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EFA04D16-C480-41A7-A3CC-24E947773839}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA04D16-C480-41A7-A3CC-24E947773839}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFA04D16-C480-41A7-A3CC-24E947773839}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EFA04D16-C480-41A7-A3CC-24E947773839}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{EFA04D16-C480-41A7-A3CC-24E947773839}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
