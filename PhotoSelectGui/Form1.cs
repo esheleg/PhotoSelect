@@ -7,12 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
-
 namespace PhotoSelectGui
 {
     public partial class MainPS : Form
-    {        
-
+    {
+        Features.Task t;
 
         // saves groupBox1 exit sliding movement position in each tick
         double x;
