@@ -5,8 +5,12 @@ using System.Text;
 namespace Features
 {
     public enum Feature { BIT_EXACT = 0, BAD_CONTRAST, SIMILARITY, PARTIAL_BLOCKAGE, NUM_FEATURES };
+
+    /// <summary>
+    /// // this struct will recieve the task information from the gui
+    /// </summary>
     public struct Task
-    {
+    {        
         public List<string> ImagePathes
         {
             get { return ImagePathes; }
@@ -17,6 +21,17 @@ namespace Features
             get { return Features; }
             set { Features = value; }
         }        
+    }
+    /// <summary>
+    /// // this is the struct that will be returned after the BitExact Feature process is ended
+    /// </summary>
+    public struct BitExactRes
+    {
+        List<List<string>> Matches
+        {
+            get { return Matches; }
+            set { Matches = value; }
+        }
     }
     
     public class FeaturesLayer

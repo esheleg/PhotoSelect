@@ -23,7 +23,7 @@ namespace PhotoSelectGui
 
         private void toolStripContainer1_TopToolStripPanel_Click(object sender, EventArgs e)
         {
-
+            int x; // TODO delete me- just a commit check
         }
 
         private void MainPS_Load(object sender, EventArgs e)
