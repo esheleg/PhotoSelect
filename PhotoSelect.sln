@@ -17,6 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "packeges", "packeges", "{8D52214F-37CE-4F7A-B60D-EB41A1DBD64B}"
+	ProjectSection(SolutionItems) = preProject
+		packeges\AForge.dll = packeges\AForge.dll
+		packeges\AForge.Imaging.dll = packeges\AForge.Imaging.dll
+		packeges\AForge.Math.dll = packeges\AForge.Math.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = PhotoSelect.vsmdi
@@ -63,5 +70,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8D52214F-37CE-4F7A-B60D-EB41A1DBD64B} = {C1CE6C04-5598-4346-94CB-78B92AFD6426}
 	EndGlobalSection
 EndGlobal
