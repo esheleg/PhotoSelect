@@ -27,7 +27,7 @@ namespace Features
     /// </summary>
     public struct BitExactRes
     {
-        List<List<string>> Matches
+        public List<List<string>> Matches
         {
             get { return Matches; }
             set { Matches = value; }
@@ -36,8 +36,7 @@ namespace Features
     
     public class FeaturesLayer
     {
-        private Task task;
-        //private List<string> pathList;
+        private Task task;        
 
         public FeaturesLayer(Task task)
         {
@@ -47,6 +46,11 @@ namespace Features
         public void setTask(Task task)
         {
             this.task = task;
+        }
+
+        private void runBitExact()
+        {
+            // here we will call the bitExactFeature with the task images
         }
 
 
