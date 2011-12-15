@@ -102,5 +102,21 @@ namespace FeaturesTests
             Console.WriteLine("{0} {1}", imOrig.getIm().Height, imOrig.getIm().Width);
 
         }
+
+        [TestMethod]
+        public void TestgetImb()
+        {
+            ImageInfo im = new ImageInfo(PATH_160_120_RGB);
+            byte[] imb = im.getImb();
+
+            for (int i = 0; i < im.getIm().Width; i++ )
+            {
+                for (int j = 0; j < im.getIm().Height; j++)
+                {
+                    Console.Write("{0} ", imb[i * im.getIm().Height + j]);
+                }
+                Console.WriteLine();
+            }
+        }
     }
 }
