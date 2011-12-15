@@ -60,9 +60,30 @@ namespace PhotoSelectGui.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap gui_logo {
+        internal static System.Drawing.Bitmap dsones_similar {
             get {
-                object obj = ResourceManager.GetObject("gui-logo", resourceCulture);
+                object obj = ResourceManager.GetObject("dsones-similar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap eye_light_11 {
+            get {
+                object obj = ResourceManager.GetObject("eye_light_11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap smile33 {
+            get {
+                object obj = ResourceManager.GetObject("smile33", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap switzerland_mountain_lake {
+            get {
+                object obj = ResourceManager.GetObject("switzerland-mountain-lake", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

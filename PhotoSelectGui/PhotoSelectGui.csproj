@@ -81,13 +81,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\gui-logo.jpg" />
+    <None Include="Resources\smile33.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Features\Features.csproj">
-      <Project>{6937E4DF-BC4A-43E8-8093-B2EC940F51E1}</Project>
-      <Name>Features</Name>
-    </ProjectReference>
+    <None Include="Resources\dsones-similar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eye_light_11.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switzerland-mountain-lake.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

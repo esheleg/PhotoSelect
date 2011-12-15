@@ -1,11 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gui", "PhotoSelectGui\Gui.csproj", "{23CDAE06-314C-4B76-8723-35DD77224834}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6937E4DF-BC4A-43E8-8093-B2EC940F51E1} = {6937E4DF-BC4A-43E8-8093-B2EC940F51E1}
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Features", "Features\Features.csproj", "{6937E4DF-BC4A-43E8-8093-B2EC940F51E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeaturesTests", "FeaturesTests\FeaturesTests.csproj", "{EFA04D16-C480-41A7-A3CC-24E947773839}"
@@ -16,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		PhotoSelect.vsmdi = PhotoSelect.vsmdi
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoSelectGui", "PhotoSelectGui\PhotoSelectGui.csproj", "{23CDAE06-314C-4B76-8723-35DD77224834}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -30,16 +27,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{23CDAE06-314C-4B76-8723-35DD77224834}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{23CDAE06-314C-4B76-8723-35DD77224834}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{23CDAE06-314C-4B76-8723-35DD77224834}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{23CDAE06-314C-4B76-8723-35DD77224834}.Debug|x86.ActiveCfg = Debug|x86
-		{23CDAE06-314C-4B76-8723-35DD77224834}.Debug|x86.Build.0 = Debug|x86
-		{23CDAE06-314C-4B76-8723-35DD77224834}.Release|Any CPU.ActiveCfg = Release|x86
-		{23CDAE06-314C-4B76-8723-35DD77224834}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{23CDAE06-314C-4B76-8723-35DD77224834}.Release|Mixed Platforms.Build.0 = Release|x86
-		{23CDAE06-314C-4B76-8723-35DD77224834}.Release|x86.ActiveCfg = Release|x86
-		{23CDAE06-314C-4B76-8723-35DD77224834}.Release|x86.Build.0 = Release|x86
 		{6937E4DF-BC4A-43E8-8093-B2EC940F51E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6937E4DF-BC4A-43E8-8093-B2EC940F51E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6937E4DF-BC4A-43E8-8093-B2EC940F51E1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -60,6 +47,16 @@ Global
 		{EFA04D16-C480-41A7-A3CC-24E947773839}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{EFA04D16-C480-41A7-A3CC-24E947773839}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{EFA04D16-C480-41A7-A3CC-24E947773839}.Release|x86.ActiveCfg = Release|Any CPU
+		{23CDAE06-314C-4B76-8723-35DD77224834}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{23CDAE06-314C-4B76-8723-35DD77224834}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{23CDAE06-314C-4B76-8723-35DD77224834}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{23CDAE06-314C-4B76-8723-35DD77224834}.Debug|x86.ActiveCfg = Debug|x86
+		{23CDAE06-314C-4B76-8723-35DD77224834}.Debug|x86.Build.0 = Debug|x86
+		{23CDAE06-314C-4B76-8723-35DD77224834}.Release|Any CPU.ActiveCfg = Release|x86
+		{23CDAE06-314C-4B76-8723-35DD77224834}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{23CDAE06-314C-4B76-8723-35DD77224834}.Release|Mixed Platforms.Build.0 = Release|x86
+		{23CDAE06-314C-4B76-8723-35DD77224834}.Release|x86.ActiveCfg = Release|x86
+		{23CDAE06-314C-4B76-8723-35DD77224834}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
