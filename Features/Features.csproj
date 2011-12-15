@@ -39,15 +39,15 @@
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.0.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packeges\AForge.dll</HintPath>
+      <HintPath>packeges\AForge.dll</HintPath>
     </Reference>
     <Reference Include="AForge.Imaging, Version=2.2.2.0, Culture=neutral, PublicKeyToken=ba8ddea9676ca48b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packeges\AForge.Imaging.dll</HintPath>
+      <HintPath>packeges\AForge.Imaging.dll</HintPath>
     </Reference>
     <Reference Include="AForge.Math, Version=2.2.2.0, Culture=neutral, PublicKeyToken=abba2e25397ee8c9, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packeges\AForge.Math.dll</HintPath>
+      <HintPath>packeges\AForge.Math.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -62,6 +62,11 @@
     <Compile Include="ImageInfo.cs" />
     <Compile Include="FeaturesLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packeges\AForge.dll" />
+    <Content Include="packeges\AForge.Imaging.dll" />
+    <Content Include="packeges\AForge.Math.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
