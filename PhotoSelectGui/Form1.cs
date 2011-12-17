@@ -12,7 +12,10 @@ using Features;
 namespace PhotoSelectGui
 {
     public partial class MainPS : Form
-    {        
+    {
+        // the image that apears in step one (the chosen photo from list)
+        private Image image;
+
         // array to save all the photos pthes to send to the brain
         string[] filePaths;
         const double FRAME_SPEED = 50;
@@ -45,6 +48,8 @@ namespace PhotoSelectGui
         {
             InitializeComponent();
             frameShowInit();
+            
+            image = null;
 
             PathFrame.Visible = true;
             FilterPath.Visible = false;
@@ -158,7 +163,6 @@ namespace PhotoSelectGui
             if (FilterPath.Location.X == FRAME_X)
             {
                 frameShow[(int)frames.stepTwoFr_to_stepOneFr] = true;
-                PathFrame.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
                 PathFrame.Visible = true;
                 frameMovementTimer.Enabled = true;
             }
@@ -181,7 +185,6 @@ namespace PhotoSelectGui
             if (progressFr.Location.Y == FRAME_Y)
             {
                 frameShow[(int)frames.progressBarFr_to_stepTwoFr] = true;
-                FilterPath.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
                 FilterPath.Visible = true;
                 frameMovementTimer.Enabled = true;
                 progressBarTimer.Stop();
@@ -196,7 +199,9 @@ namespace PhotoSelectGui
         {
             try
             {
-                Image image = null;
+                if (image != null)
+                    image.Dispose();
+                image = null;
                 // Check if textbox has a value
                 if (photosPaths.SelectedItem.ToString() != String.Empty)
                     image = Image.FromFile(photosPaths.SelectedItem.ToString());
