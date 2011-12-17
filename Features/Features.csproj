@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitExact.cs" />
     <Compile Include="ImageInfo.cs" />
     <Compile Include="FeaturesLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

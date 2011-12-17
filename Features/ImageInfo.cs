@@ -20,15 +20,18 @@ namespace Features
 {      
     public class ImageInfo
     {
-//----------------------------------consts-------------------------------------        
+
+        # region consts      
+
         // thie image processed area will allways be <= PROC_IMAGE_AREA        
         public static readonly int MAX_IMAGE_AREA = 320 * 240;
         public static readonly int MAX_GRAY_VALUE = 255;
         // the used ratio for each color channel in converting rgb to gray (R,G,B)
         public static readonly Grayscale GRAY_FILTER = new Grayscale(0.2989, 0.5870, 0.1140);
-//------------------------------end-consts-------------------------------------
 
-//------------------------------static func------------------------------------
+        # endregion consts
+
+        # region static functions
 
         /// <summary>
         /// runs a two dimentional convolution on im,
@@ -78,12 +81,38 @@ namespace Features
         public static void writeImage(ImageInfo imInf, string path)
         {writeImage(path, imInf.getIm());}
 
-//------------------------------end static-------------------------------------    
-//--------------------------------public---------------------------------------    
+        # endregion static functions
+
+        # region Class Properties
+
+        private float[] _imf;
+        private Histogram _hist; // AForge.Math.Histogram
+        private Bitmap _imGray; // System.Drawing.Bitmap
+        private string _path; //holds the full path to the image        
+        private byte[] _imb;
+        private int _width;
+        private int _height;
+
+
+
+        # endregion Class Properties
+
+        #region Read Only Properties
+
+        public int Width {get { return _width; }}
+
+        public int Height { get { return _height; } }
+
+        #endregion Read Only Properties
+
+
+        # region public functions
         public ImageInfo(string path)
         {
             _hist = null;
             _imf = null;
+            _imb = null;
+            _height = _width = 0;
             this._path = path;
             try
             {
@@ -91,6 +120,9 @@ namespace Features
                 
                 oirgIm2grayCropped(image); // creates _imGray
                 image.Dispose();
+
+                _width = _imGray.Width;
+                _height= _imGray.Height;
             }
             catch (Exception e) { throw e; }
         }
@@ -107,6 +139,10 @@ namespace Features
         {
             return _imf != null ? _imf : createImf();
         }
+        public byte[] getImb()
+        {
+            return _imb != null ? _imb : createImb();
+        }
         /// <summary>
         /// Runs a 2dim conv with kernel, saves res in getIm() and sets null to all 
         /// other properties.
@@ -116,8 +152,11 @@ namespace Features
             Convolution filter = new Convolution(kernel);
             filter.ApplyInPlace(_imGray);            
         }
-//------------------------------end public---------------------------------------
-// ------------------------------ private----------------------------------------
+
+        # endregion public functions
+
+        # region private functions
+
         /// <summary>
         /// this construr gets the _imGray of an ImageInfo in order to get another object
         /// of that image without any more data, can be used when running filters on images
@@ -129,6 +168,8 @@ namespace Features
             _hist = null;
             _imf = null;
             _imGray = (Bitmap)imGray.Clone();
+            _width = _imGray.Width;
+            _height = _imGray.Height;
 
         }
         /// <summary>
@@ -200,15 +241,35 @@ namespace Features
             }
             return _imf;
         }
-// ----------------------------------end-private---------------------------------
-//-----------------------------------DEBUG FUNC----------------------------------
-       
+        /// <summary>
+        /// **** THIS FUNCTION CAN BE CALLED ONLY ONES IN THE OBJECT LIFE TIME***
+        /// creates an AForge.Math.Histogram object from _imGray into _hist
+        /// </summary>
+        private byte[] createImb()
+        {
+            if (_imb != null) return _imb;
 
-//-------------------------------------------------------------------------------
+            // get image data (for the raw data pointer)
+            BitmapData imGrayData =
+                _imGray.LockBits(new Rectangle(0, 0, _imGray.Width, _imGray.Height),
+                                System.Drawing.Imaging.ImageLockMode.ReadOnly,
+                                _imGray.PixelFormat);
+            _imb = new byte[_imGray.Width * _imGray.Height];
+            // copy image gray val's into normalized float (0.....1)
+            unsafe
+            {
+                for (int i = 0; i < imGrayData.Height; i++)
+                {
+                    byte* row = (byte*)imGrayData.Scan0 + (i * imGrayData.Stride);
+                    for (int j = 0; j < imGrayData.Width; j++)
+                    {
+                        _imb[i * imGrayData.Width + j] = row[j];
+                    }
 
-        private float[] _imf; 
-        private Histogram _hist; // AForge.Math.Histogram
-        private Bitmap _imGray; // System.Drawing.Bitmap
-        private string _path; //holds the full path to the image        
+                }
+            }
+            return _imb;
+        }
+        # endregion public functions        
     }
 }
