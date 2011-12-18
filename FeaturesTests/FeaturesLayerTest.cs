@@ -26,7 +26,7 @@ namespace FeaturesTests
             while (core.LoadingImagesStatus < 100)
             {
                 Debug.WriteLine("{0}", core.LoadingImagesStatus);
-                
+
                 Thread.Sleep(100);
             }
             Debug.WriteLine("{0}", core.LoadingImagesStatus);

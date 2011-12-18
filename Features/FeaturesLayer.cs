@@ -61,25 +61,42 @@ namespace Features
     public class FeaturesLayer
     {
         
-        private ImageInfo[] _images;
+        private ImageInfo[] _images;        
 
-        # region (GUI <-> BRAIN) shared data
-
-        private int _loadingImagesStatus; // read only
+        private int _loadingImagesStatus; // read only        
+        private int _runStatus; // readonly
         private Task _task;
-
-        #endregion
 
         public FeaturesLayer(ref Task task)
         {
-            _task = task;
+            _task = task; // TODO - could cause memory problems
             _loadingImagesStatus = 0;
+            _runStatus = 0;
             _images = new ImageInfo[task.ImagePathes.Count];
         }        
 
-        # region (GUI --> BRAIN) Methods
+        # region (GUI <--> BRAIN) Methods
+
+        
         /// <summary>
-        /// returns the completion percetage of the loadImages() method
+        /// range: 0-100, represents the completion % of all running features  
+        /// </summary>
+        public int RunStatus
+        {
+            get { return _runStatus; }
+        }
+        /// <summary>
+        /// THis will start the feautres run
+        /// </summary>
+        public void run()
+        {
+            if (_task.Features[(int)Feature.BIT_EXACT])
+            {
+                // call here for BitExact runner
+            }            
+        }
+        /// <summary>
+        /// range: 0-100, returns the completion % of the loadImages() method
         /// </summary>
         /// 
         public int LoadingImagesStatus
@@ -88,9 +105,10 @@ namespace Features
         }
         /// <summary>
         /// sets the array of ImageInfo and creates the objects
+        /// thorws exception if ocures on one of the images
         /// </summary>
         public void loadImages()
-        {
+        {// TODO - check if you can classify the possible exceptions (for continuing even if one image fails)
             for (int i = 0; i < _images.Length; i++)
             {
                 try
