@@ -144,14 +144,17 @@ namespace Features
         //equal images with similar propotion
         private bool EqualImages(int first, int second)
         {
+
+            byte[] firstA = images[first].getImb();
+            byte[] secondA = images[second].getImb();
             int size = images[first].getIm().Height * images[first].getIm().Width;
-            int yes = 0; //count the same bites in first & second
+            int sum = 0; 
+            
             for (int i = 0; i < size; i++)
-                if (Math.Abs(images[first].getImb()[i] - images[second].getImb()[i]) <= AROUND)
-                    yes++;
+                sum += Math.Abs(firstA[i] - secondA[i]);
 
             //if the success more then (95%) [100 - 100 * ARROUND] the images is eaqual
-            if (yes / size >= 1 -  AROUND) 
+            if (sum / size <= AROUND*100)
             {
                 AddToResult(first, second);
                 return true;
