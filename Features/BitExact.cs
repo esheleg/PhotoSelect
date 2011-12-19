@@ -17,11 +17,13 @@ namespace Features
         private Propotion[] propotions;
         private int indexList;
 
+        private List<List<string>> matches;        
 
         protected BitExactRes results;
 
         public BitExact()
         {
+            matches = new List<List<string>>();
             images = null;
             numImages = 0;
         }
@@ -38,7 +40,7 @@ namespace Features
         private void initResults()
         {
             // first empty result
-            results.Matches = new List<List<string>>();
+            matches = new List<List<string>>();
             indexList = 0;
         }
 
@@ -63,6 +65,8 @@ namespace Features
                 if (isAddedToList)
                     indexList++;
             }
+            // set results
+            results = new BitExactRes(matches);
         }
 
 
@@ -113,11 +117,11 @@ namespace Features
             if (!checkedImages[i])
             {
                 checkedImages[i] = true;
-                results.Matches[indexList] = new List<string>();
-                results.Matches[indexList].Add(images[i].getPath());
+                matches[indexList] = new List<string>();
+                matches[indexList].Add(images[i].getPath());
             }
 
-            results.Matches[indexList].Add(images[j].getPath());
+            matches[indexList].Add(images[j].getPath());
 
             checkedImages[j] = true;
         }

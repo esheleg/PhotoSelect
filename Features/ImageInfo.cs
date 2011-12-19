@@ -83,12 +83,36 @@ namespace Features
 
         # endregion static functions
 
+        # region Class Properties
+
+        private float[] _imf;
+        private Histogram _hist; // AForge.Math.Histogram
+        private Bitmap _imGray; // System.Drawing.Bitmap
+        private string _path; //holds the full path to the image        
+        private byte[] _imb;
+        private int _width;
+        private int _height;
+
+
+
+        # endregion Class Properties
+
+        #region Read Only Properties
+
+        public int Width {get { return _width; }}
+
+        public int Height { get { return _height; } }
+
+        #endregion Read Only Properties
+
+
         # region public functions
         public ImageInfo(string path)
         {
             _hist = null;
             _imf = null;
             _imb = null;
+            _height = _width = 0;
             this._path = path;
             try
             {
@@ -96,6 +120,9 @@ namespace Features
                 
                 oirgIm2grayCropped(image); // creates _imGray
                 image.Dispose();
+
+                _width = _imGray.Width;
+                _height= _imGray.Height;
             }
             catch (Exception e) { throw e; }
         }
@@ -141,6 +168,8 @@ namespace Features
             _hist = null;
             _imf = null;
             _imGray = (Bitmap)imGray.Clone();
+            _width = _imGray.Width;
+            _height = _imGray.Height;
 
         }
         /// <summary>
@@ -212,7 +241,10 @@ namespace Features
             }
             return _imf;
         }
-
+        /// <summary>
+        /// **** THIS FUNCTION CAN BE CALLED ONLY ONES IN THE OBJECT LIFE TIME***
+        /// creates an AForge.Math.Histogram object from _imGray into _hist
+        /// </summary>
         private byte[] createImb()
         {
             if (_imb != null) return _imb;
@@ -238,15 +270,6 @@ namespace Features
             }
             return _imb;
         }
-        # endregion public functions
-
-        # region private vars
-
-        private float[] _imf; 
-        private Histogram _hist; // AForge.Math.Histogram
-        private Bitmap _imGray; // System.Drawing.Bitmap
-        private string _path; //holds the full path to the image        
-        private byte[] _imb;
-        # endregion private vars
+        # endregion public functions        
     }
 }

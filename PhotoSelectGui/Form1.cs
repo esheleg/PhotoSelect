@@ -12,14 +12,25 @@ using Features;
 namespace PhotoSelectGui
 {
     public partial class MainPS : Form
-    {        
+    {
+        // the image that apears in step one (the chosen photo from list)
+        private Image image;
+
         // array to save all the photos pthes to send to the brain
         string[] filePaths;
         const double FRAME_SPEED = 50;
         
         // the origin of the current frame
-        double frameX = 50;
-        double frameY = 200;
+        const double FRAME_X = 50;
+        const double FRAME_Y = 200;
+        
+        // for the frames that comes from the left side
+        const double LEFT_FRAME_X = -700;
+        const double LEFT_FRAME_Y = 200;
+
+       // for the frames that comes from the bottom
+        const double BOTTOM_FRAME_X = 50;
+        const double BOTTOM_FRAME_Y = 600;
       
         //enum and array of booleans to choose the next step frame
         enum frames { stepOneFr_to_stepTwoFr, stepTwoFr_to_stepOneFr, stepTwoFr_to_progressBarFr, 
@@ -37,6 +48,13 @@ namespace PhotoSelectGui
         {
             InitializeComponent();
             frameShowInit();
+            
+            image = null;
+
+            PathFrame.Visible = true;
+            FilterPath.Visible = false;
+            progressFr.Visible = false;
+            bitExactFr.Visible = false;
         }
 
         private void MainPS_Load(object sender, EventArgs e)
@@ -55,7 +73,7 @@ namespace PhotoSelectGui
                 PathFrame.Location = new Point(PathFrame.Location.X + (int)FRAME_SPEED, PathFrame.Location.Y);
                 FilterPath.Location = new Point(FilterPath.Location.X + (int)FRAME_SPEED, FilterPath.Location.Y);
 
-                if (FilterPath.Location.X == frameX)
+                if (FilterPath.Location.X == FRAME_X)
                 {
                     PathFrame.Visible = false;
                     frameMovementTimer.Enabled = false;
@@ -69,7 +87,7 @@ namespace PhotoSelectGui
                 PathFrame.Location = new Point(PathFrame.Location.X - (int)FRAME_SPEED, PathFrame.Location.Y);
                 FilterPath.Location = new Point(FilterPath.Location.X - (int)FRAME_SPEED, FilterPath.Location.Y);
 
-                if (PathFrame.Location.X == frameX)
+                if (PathFrame.Location.X == FRAME_X)
                 {
                     FilterPath.Visible = false;
                     frameMovementTimer.Enabled = false;
@@ -83,7 +101,7 @@ namespace PhotoSelectGui
                 FilterPath.Location = new Point(FilterPath.Location.X + (int)FRAME_SPEED, FilterPath.Location.Y);
                 progressFr.Location = new Point(progressFr.Location.X, progressFr.Location.Y - (int)FRAME_SPEED);
 
-                if (progressFr.Location.Y == frameY)
+                if (progressFr.Location.Y == FRAME_Y)
                 {
                     FilterPath.Visible = false;
                     frameMovementTimer.Enabled = false;
@@ -97,7 +115,7 @@ namespace PhotoSelectGui
                 progressFr.Location = new Point(progressFr.Location.X, progressFr.Location.Y + (int)FRAME_SPEED);
                 FilterPath.Location = new Point(FilterPath.Location.X - (int)FRAME_SPEED, FilterPath.Location.Y);
 
-                if (FilterPath.Location.X == frameX)
+                if (FilterPath.Location.X == FRAME_X)
                 {
                     progressFr.Visible = false;
                     frameMovementTimer.Enabled = false;
@@ -111,7 +129,7 @@ namespace PhotoSelectGui
                 progressFr.Location = new Point(progressFr.Location.X, progressFr.Location.Y + (int)FRAME_SPEED);
                 bitExactFr.Location = new Point(bitExactFr.Location.X + (int)FRAME_SPEED, bitExactFr.Location.Y);
 
-                if (bitExactFr.Location.X == frameX)
+                if (bitExactFr.Location.X == FRAME_X)
                 {
                     progressFr.Visible = false;
                     frameMovementTimer.Enabled = false;
@@ -125,9 +143,10 @@ namespace PhotoSelectGui
         private void doneStepOneLbl_Click(object sender, EventArgs e)
         {
 
-            if (PathFrame.Location.X == frameX) // if PathFrame is the current frame
+            if (PathFrame.Location.X == FRAME_X) // if PathFrame is the current frame
             {
                 frameShow[(int)frames.stepOneFr_to_stepTwoFr] = true; // choose the frame animation
+                FilterPath.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
                 FilterPath.Visible = true; 
 
                 stepOneLbl.BackColor = System.Drawing.Color.White;
@@ -141,7 +160,7 @@ namespace PhotoSelectGui
 
         private void stepOneLbl_Click(object sender, EventArgs e)
         {
-            if (FilterPath.Location.X == frameX)
+            if (FilterPath.Location.X == FRAME_X)
             {
                 frameShow[(int)frames.stepTwoFr_to_stepOneFr] = true;
                 PathFrame.Visible = true;
@@ -151,9 +170,10 @@ namespace PhotoSelectGui
 
         private void doneStepTwoLbl_Click(object sender, EventArgs e)
         {
-            if (FilterPath.Location.X == frameX)
+            if (FilterPath.Location.X == FRAME_X)
             {
                 frameShow[(int)frames.stepTwoFr_to_progressBarFr] = true;
+                progressFr.Location = new Point((int)BOTTOM_FRAME_X, (int)BOTTOM_FRAME_Y);
                 progressFr.Visible = true;
                 frameMovementTimer.Enabled = true;
                 progressBarTimer.Start();
@@ -162,7 +182,7 @@ namespace PhotoSelectGui
 
         private void cancelProgressLbl_Click(object sender, EventArgs e)
         {
-            if (progressFr.Location.Y == frameY)
+            if (progressFr.Location.Y == FRAME_Y)
             {
                 frameShow[(int)frames.progressBarFr_to_stepTwoFr] = true;
                 FilterPath.Visible = true;
@@ -179,7 +199,9 @@ namespace PhotoSelectGui
         {
             try
             {
-                Image image = null;
+                if (image != null)
+                    image.Dispose();
+                image = null;
                 // Check if textbox has a value
                 if (photosPaths.SelectedItem.ToString() != String.Empty)
                     image = Image.FromFile(photosPaths.SelectedItem.ToString());
@@ -203,6 +225,7 @@ namespace PhotoSelectGui
             {
                 textpath.Text = folderBrowserDialog.SelectedPath;
                 photosPaths.Items.Clear();
+                pictureBox.Image = null;
                 filePaths = Directory.GetFiles((string)textpath.Text, "*.jpg", SearchOption.AllDirectories);
                 foreach (string filepath in filePaths) //  fills the list of files "filePaths" to send to brain 
                     photosPaths.Items.Add(filepath);
@@ -213,17 +236,18 @@ namespace PhotoSelectGui
         //fills the progress bar, after sending information to the brain, need to recive the percentage of the work that done every timer's tick 
         private void progressBarTimer_Tick(object sender, EventArgs e)
         {
-            progressBar.Increment(1);
+            progressBar.Increment(3);
             if (progressBar.Value == progressBar.Maximum)
             {
                 progressBarTimer.Stop();
-                MessageBox.Show("אדיר אתה ילד תחת");
+               
                 progressBarTimer.Stop();
 
                 // changing form. for now its to the bitmap exact - need to change in future
-                if (progressFr.Location.Y == frameY)
+                if (progressFr.Location.Y == FRAME_Y)
                 {
                     frameShow[(int)frames.progressBarFr_to_bitExactFr] = true;
+                    bitExactFr.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
                     bitExactFr.Visible = true;
                     frameMovementTimer.Enabled = true;
                     progressBar.Value = 0;

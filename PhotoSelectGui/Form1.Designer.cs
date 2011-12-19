@@ -30,10 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPS));
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.stepThreeRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.stepTwoRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.stepOneRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.PathFrame = new System.Windows.Forms.GroupBox();
             this.numPicsLbl = new System.Windows.Forms.Label();
             this.numLbl = new System.Windows.Forms.Label();
@@ -81,6 +77,10 @@
             this.shapeContainer5 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.stepThreeLbl = new System.Windows.Forms.Label();
+            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.stepThreeRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.stepTwoRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.stepOneRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.PathFrame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -93,73 +93,6 @@
             this.bitExactFr.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
-            // 
-            // shapeContainer1
-            // 
-            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.stepThreeRect,
-            this.stepTwoRect,
-            this.stepOneRect});
-            this.shapeContainer1.Size = new System.Drawing.Size(799, 598);
-            this.shapeContainer1.TabIndex = 0;
-            this.shapeContainer1.TabStop = false;
-            // 
-            // stepThreeRect
-            // 
-            this.stepThreeRect.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.stepThreeRect.BackColor = System.Drawing.Color.Maroon;
-            this.stepThreeRect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.stepThreeRect.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.stepThreeRect.BorderColor = System.Drawing.SystemColors.Desktop;
-            this.stepThreeRect.CornerRadius = 8;
-            this.stepThreeRect.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.stepThreeRect.FillColor = System.Drawing.Color.White;
-            this.stepThreeRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.stepThreeRect.Location = new System.Drawing.Point(370, 121);
-            this.stepThreeRect.Name = "stepThreeRect";
-            this.stepThreeRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.stepThreeRect.Size = new System.Drawing.Size(150, 50);
-            // 
-            // stepTwoRect
-            // 
-            this.stepTwoRect.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.stepTwoRect.BackColor = System.Drawing.Color.Maroon;
-            this.stepTwoRect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.stepTwoRect.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.stepTwoRect.BorderColor = System.Drawing.SystemColors.Desktop;
-            this.stepTwoRect.CornerRadius = 8;
-            this.stepTwoRect.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.stepTwoRect.FillColor = System.Drawing.Color.White;
-            this.stepTwoRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.stepTwoRect.Location = new System.Drawing.Point(209, 121);
-            this.stepTwoRect.Name = "stepTwoRect";
-            this.stepTwoRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.stepTwoRect.Size = new System.Drawing.Size(150, 50);
-            // 
-            // stepOneRect
-            // 
-            this.stepOneRect.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.stepOneRect.BackColor = System.Drawing.Color.Maroon;
-            this.stepOneRect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.stepOneRect.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.stepOneRect.BorderColor = System.Drawing.SystemColors.Desktop;
-            this.stepOneRect.CornerRadius = 8;
-            this.stepOneRect.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.stepOneRect.FillColor = System.Drawing.Color.White;
-            this.stepOneRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.stepOneRect.Location = new System.Drawing.Point(49, 121);
-            this.stepOneRect.Name = "stepOneRect";
-            this.stepOneRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.stepOneRect.Size = new System.Drawing.Size(150, 50);
             // 
             // PathFrame
             // 
@@ -313,7 +246,7 @@
             this.stepOneLbl.BackColor = System.Drawing.Color.White;
             this.stepOneLbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepOneLbl.Font = new System.Drawing.Font("Mistral", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stepOneLbl.Location = new System.Drawing.Point(56, 123);
+            this.stepOneLbl.Location = new System.Drawing.Point(61, 123);
             this.stepOneLbl.Name = "stepOneLbl";
             this.stepOneLbl.Size = new System.Drawing.Size(120, 44);
             this.stepOneLbl.TabIndex = 2;
@@ -326,7 +259,7 @@
             this.stepTwoLbl.BackColor = System.Drawing.Color.White;
             this.stepTwoLbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepTwoLbl.Font = new System.Drawing.Font("Mistral", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stepTwoLbl.Location = new System.Drawing.Point(215, 123);
+            this.stepTwoLbl.Location = new System.Drawing.Point(219, 127);
             this.stepTwoLbl.Name = "stepTwoLbl";
             this.stepTwoLbl.Size = new System.Drawing.Size(115, 44);
             this.stepTwoLbl.TabIndex = 3;
@@ -714,19 +647,80 @@
             this.stepThreeLbl.BackColor = System.Drawing.Color.White;
             this.stepThreeLbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepThreeLbl.Font = new System.Drawing.Font("Mistral", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stepThreeLbl.Location = new System.Drawing.Point(374, 123);
+            this.stepThreeLbl.Location = new System.Drawing.Point(379, 124);
             this.stepThreeLbl.Name = "stepThreeLbl";
             this.stepThreeLbl.Size = new System.Drawing.Size(127, 44);
             this.stepThreeLbl.TabIndex = 15;
             this.stepThreeLbl.Text = "Step Three";
+            // 
+            // shapeContainer1
+            // 
+            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer1.Name = "shapeContainer1";
+            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.stepThreeRect,
+            this.stepTwoRect,
+            this.stepOneRect});
+            this.shapeContainer1.Size = new System.Drawing.Size(747, 594);
+            this.shapeContainer1.TabIndex = 0;
+            this.shapeContainer1.TabStop = false;
+            // 
+            // stepThreeRect
+            // 
+            this.stepThreeRect.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.stepThreeRect.BackColor = System.Drawing.Color.Maroon;
+            this.stepThreeRect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.stepThreeRect.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.stepThreeRect.BorderColor = System.Drawing.SystemColors.Desktop;
+            this.stepThreeRect.CornerRadius = 8;
+            this.stepThreeRect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.stepThreeRect.FillColor = System.Drawing.Color.White;
+            this.stepThreeRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
+            this.stepThreeRect.Location = new System.Drawing.Point(207, 121);
+            this.stepThreeRect.Name = "stepThreeRect";
+            this.stepThreeRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.stepThreeRect.Size = new System.Drawing.Size(150, 50);
+            // 
+            // stepTwoRect
+            // 
+            this.stepTwoRect.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.stepTwoRect.BackColor = System.Drawing.Color.Maroon;
+            this.stepTwoRect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.stepTwoRect.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.stepTwoRect.BorderColor = System.Drawing.SystemColors.Desktop;
+            this.stepTwoRect.CornerRadius = 8;
+            this.stepTwoRect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.stepTwoRect.FillColor = System.Drawing.Color.White;
+            this.stepTwoRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
+            this.stepTwoRect.Location = new System.Drawing.Point(368, 121);
+            this.stepTwoRect.Name = "stepTwoRect";
+            this.stepTwoRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.stepTwoRect.Size = new System.Drawing.Size(150, 50);
+            // 
+            // stepOneRect
+            // 
+            this.stepOneRect.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.stepOneRect.BackColor = System.Drawing.Color.Maroon;
+            this.stepOneRect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.stepOneRect.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.stepOneRect.BorderColor = System.Drawing.SystemColors.Desktop;
+            this.stepOneRect.CornerRadius = 8;
+            this.stepOneRect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.stepOneRect.FillColor = System.Drawing.Color.White;
+            this.stepOneRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
+            this.stepOneRect.Location = new System.Drawing.Point(49, 119);
+            this.stepOneRect.Name = "stepOneRect";
+            this.stepOneRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.stepOneRect.Size = new System.Drawing.Size(150, 50);
             // 
             // MainPS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(799, 598);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(747, 594);
             this.Controls.Add(this.stepThreeLbl);
             this.Controls.Add(this.bitExactFr);
             this.Controls.Add(this.progressFr);
@@ -736,7 +730,6 @@
             this.Controls.Add(this.PathFrame);
             this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainPS";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -765,8 +758,6 @@
 
         #endregion
 
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape stepOneRect;
         private System.Windows.Forms.GroupBox PathFrame;
         private System.Windows.Forms.Label doneStepOneLbl;
         private System.Windows.Forms.Timer frameMovementTimer;
@@ -774,7 +765,6 @@
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer2;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape doneStepOneRect;
         private System.Windows.Forms.Label stepOneLbl;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape stepTwoRect;
         private System.Windows.Forms.Label stepTwoLbl;
         private System.Windows.Forms.Label doneStepTwoLbl;
         private System.Windows.Forms.Label label5;
@@ -808,7 +798,6 @@
         private System.Windows.Forms.Label cancelProgressLbl;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer4;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape stepThreeRect;
         private System.Windows.Forms.GroupBox bitExactFr;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.ListBox listBox1;
@@ -816,6 +805,10 @@
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer5;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape3;
         private System.Windows.Forms.Label stepThreeLbl;
+        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
+        protected Microsoft.VisualBasic.PowerPacks.RectangleShape stepThreeRect;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape stepTwoRect;
+        protected Microsoft.VisualBasic.PowerPacks.RectangleShape stepOneRect;
 
 
 
