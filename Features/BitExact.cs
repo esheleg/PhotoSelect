@@ -55,12 +55,12 @@ namespace Features
             {
                 if (checkedImages[i])
                     continue;
-                bool addedToList = false;
+                bool isAddedToList = false;
                 for (int j = i + 1; j < numImages - 1; j++)
                     if (propotions[i] == propotions[j])
-                        addedToList = addedToList || EqualImages(i, j);
+                        isAddedToList = isAddedToList || EqualImages(i, j);
          
-                if (addedToList)
+                if (isAddedToList)
                     indexList++;
             }
         }
@@ -92,7 +92,6 @@ namespace Features
             return false;
         }
         
-
         private bool EqualImages(int first, int second)
         {
             int size = images[first].getIm().Height + images[first].getIm().Width;
