@@ -16,7 +16,7 @@ namespace FeaturesTests
         [TestMethod]
         public void TestLoadingImages()
         {
-            string path = @"C:\Users\Yossi\Pictures\בית''ר\מחנה סוכות 16-18.9\";
+            string path = @"C:\Users\Daniel\Desktop\iPhone Photos\";
             string[] pathes = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
             bool[] feat = new bool[4];
             Task task = new Task(pathes.ToList(), feat);
@@ -37,7 +37,7 @@ namespace FeaturesTests
         [TestMethod]
         public void TestRunBitExact()
         {
-            string path = @"C:\Users\Yossi\Pictures\בית''ר\מחנה סוכות 16-18.9\";
+            string path = @"C:\Users\Daniel\Desktop\iPhone Photos\";
             string[] pathes = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
             bool[] feat = new bool[4];
             feat[(int)Feature.BIT_EXACT] = true;

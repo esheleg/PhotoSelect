@@ -84,29 +84,12 @@ namespace Features
             _bitExact = null;
             _loadingImagesStatus = 0;
             _runStatus = 0;
+            _task = task;
             _images = new ImageInfo[task.ImagePathes.Count];
         }        
 
         # region (GUI <--> BRAIN) Methods
-
-        
-        /// <summary>
-        /// range: 0-100, represents the completion % of all running features  
-        /// </summary>
-        public int RunStatus
-        {
-            get { return _runStatus; }
-        }
-        /// <summary>
-        /// THis will start the feautres run
-        /// </summary>
-        public void run()
-        {
-            if (_task.Features[(int)Feature.BIT_EXACT])
-            {
-                // call here for BitExact runner
-            }            
-        }
+                    
         /// <summary>
         /// range: 0-100, returns the completion % of the loadImages() method
         /// </summary>
@@ -124,11 +107,11 @@ namespace Features
             for (int i = 0; i < _images.Length; i++)
             {
                 try
-                {
+                {                                     
                     _images[i] = new ImageInfo(_task.ImagePathes[i]);
                 }
                 catch (Exception e)
-                {
+                {                    
                     throw e;
                 }
                 _loadingImagesStatus = (int)(((float)(i + 1) / _images.Length) * 100);
@@ -150,7 +133,8 @@ namespace Features
         public void run()
         {
             if (_task.Features[(int)Feature.BIT_EXACT])
-            {            
+            {
+                Debug.WriteLine("BitExact");
                 _bitExact = new BitExact(_images);
                 _bitExactThread = new Thread(_bitExact.run);
                 _bitExactThread.Start();
