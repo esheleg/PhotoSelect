@@ -558,7 +558,9 @@ namespace PhotoSelectGui
 
         private void buttonForward_Click(object sender, EventArgs e)
         {
-            bitcurr++;
+            if (core.Res.BitExact.Matches.Count > bitcurr)
+                bitcurr++;
+            
             if (core.Res.BitExact.Matches.Count >= bitcurr)
             {
                 MatchesList.Items.Clear();
@@ -574,7 +576,9 @@ namespace PhotoSelectGui
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            bitcurr--;
+            if (0< bitcurr)
+                bitcurr--;
+
             if (core.Res.BitExact.Matches.Count >= bitcurr && bitcurr>=1)
             {
                 MatchesList.Items.Clear();
