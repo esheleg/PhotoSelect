@@ -437,9 +437,9 @@ namespace PhotoSelectGui
                     if (core.Res.BitExact.Matches.Count != 0)
                     {
                         
-                        for (int i = 0; i < core.Res.BitExact.Matches[bitcurr].Count; i++)
+                        for (int i = 0; i < core.Res.BitExact.Matches[bitcurr-1].Count; i++)
                         {
-                            MatchesList.Items.Add(core.Res.BitExact.Matches[bitcurr][i]);
+                            MatchesList.Items.Add(core.Res.BitExact.Matches[bitcurr-1][i]);
                         }
                         labelcurr.Text = core.Res.BitExact.Matches.Count.ToString();
                         labelnow.Text = "1";

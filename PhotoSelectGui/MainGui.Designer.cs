@@ -78,6 +78,9 @@
             this.stepTwoRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.stepOneRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.bitExactFr = new System.Windows.Forms.GroupBox();
+            this.labelcurr = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.labelnow = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.labelname = new System.Windows.Forms.Label();
             this.labelRes = new System.Windows.Forms.Label();
@@ -95,9 +98,6 @@
             this.PictureResult = new System.Windows.Forms.PictureBox();
             this.bitExactProgressTimer = new System.Windows.Forms.Timer(this.components);
             this.process1 = new System.Diagnostics.Process();
-            this.labelnow = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.labelcurr = new System.Windows.Forms.Label();
             this.PathFrame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.FilterPath.SuspendLayout();
@@ -124,7 +124,7 @@
             this.PathFrame.Controls.Add(this.doneStepOneLbl);
             this.PathFrame.Controls.Add(this.shapeContainer2);
             this.PathFrame.ForeColor = System.Drawing.Color.Cornsilk;
-            this.PathFrame.Location = new System.Drawing.Point(28, 572);
+            this.PathFrame.Location = new System.Drawing.Point(327, 582);
             this.PathFrame.Name = "PathFrame";
             this.PathFrame.Size = new System.Drawing.Size(688, 380);
             this.PathFrame.TabIndex = 1;
@@ -274,7 +274,7 @@
             this.FilterPath.Controls.Add(this.doneStepTwoLbl);
             this.FilterPath.Controls.Add(this.shapeContainer3);
             this.FilterPath.ForeColor = System.Drawing.Color.Cornsilk;
-            this.FilterPath.Location = new System.Drawing.Point(36, 588);
+            this.FilterPath.Location = new System.Drawing.Point(25, 582);
             this.FilterPath.Name = "FilterPath";
             this.FilterPath.Size = new System.Drawing.Size(703, 380);
             this.FilterPath.TabIndex = 4;
@@ -284,6 +284,7 @@
             // similarPicChckBox
             // 
             this.similarPicChckBox.AutoSize = true;
+            this.similarPicChckBox.Enabled = false;
             this.similarPicChckBox.ForeColor = System.Drawing.Color.AntiqueWhite;
             this.similarPicChckBox.Location = new System.Drawing.Point(531, 235);
             this.similarPicChckBox.Name = "similarPicChckBox";
@@ -295,6 +296,7 @@
             // badContrastChckBox
             // 
             this.badContrastChckBox.AutoSize = true;
+            this.badContrastChckBox.Enabled = false;
             this.badContrastChckBox.Location = new System.Drawing.Point(386, 236);
             this.badContrastChckBox.Name = "badContrastChckBox";
             this.badContrastChckBox.Size = new System.Drawing.Size(15, 14);
@@ -305,6 +307,7 @@
             // partitialChckBox
             // 
             this.partitialChckBox.AutoSize = true;
+            this.partitialChckBox.Enabled = false;
             this.partitialChckBox.Location = new System.Drawing.Point(248, 236);
             this.partitialChckBox.Name = "partitialChckBox";
             this.partitialChckBox.Size = new System.Drawing.Size(80, 17);
@@ -718,6 +721,42 @@
             this.bitExactFr.TabIndex = 16;
             this.bitExactFr.TabStop = false;
             // 
+            // labelcurr
+            // 
+            this.labelcurr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelcurr.BackColor = System.Drawing.Color.Transparent;
+            this.labelcurr.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelcurr.ForeColor = System.Drawing.Color.White;
+            this.labelcurr.Location = new System.Drawing.Point(261, 174);
+            this.labelcurr.Name = "labelcurr";
+            this.labelcurr.Size = new System.Drawing.Size(68, 30);
+            this.labelcurr.TabIndex = 30;
+            this.labelcurr.Text = "Curr";
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(335, 174);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(66, 30);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "מתוך";
+            // 
+            // labelnow
+            // 
+            this.labelnow.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelnow.BackColor = System.Drawing.Color.Transparent;
+            this.labelnow.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelnow.ForeColor = System.Drawing.Color.White;
+            this.labelnow.Location = new System.Drawing.Point(408, 174);
+            this.labelnow.Name = "labelnow";
+            this.labelnow.Size = new System.Drawing.Size(63, 30);
+            this.labelnow.TabIndex = 28;
+            this.labelnow.Text = "Now";
+            // 
             // label11
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -905,42 +944,6 @@
             this.process1.StartInfo.UserName = "";
             this.process1.SynchronizingObject = this;
             // 
-            // labelnow
-            // 
-            this.labelnow.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelnow.BackColor = System.Drawing.Color.Transparent;
-            this.labelnow.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelnow.ForeColor = System.Drawing.Color.White;
-            this.labelnow.Location = new System.Drawing.Point(408, 174);
-            this.labelnow.Name = "labelnow";
-            this.labelnow.Size = new System.Drawing.Size(63, 30);
-            this.labelnow.TabIndex = 28;
-            this.labelnow.Text = "Now";
-            // 
-            // label13
-            // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(335, 174);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(66, 30);
-            this.label13.TabIndex = 29;
-            this.label13.Text = "מתוך";
-            // 
-            // labelcurr
-            // 
-            this.labelcurr.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelcurr.BackColor = System.Drawing.Color.Transparent;
-            this.labelcurr.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelcurr.ForeColor = System.Drawing.Color.White;
-            this.labelcurr.Location = new System.Drawing.Point(261, 174);
-            this.labelcurr.Name = "labelcurr";
-            this.labelcurr.Size = new System.Drawing.Size(68, 30);
-            this.labelcurr.TabIndex = 30;
-            this.labelcurr.Text = "Curr";
-            // 
             // MainPS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -948,13 +951,13 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(781, 606);
+            this.Controls.Add(this.FilterPath);
+            this.Controls.Add(this.PathFrame);
             this.Controls.Add(this.bitExactFr);
             this.Controls.Add(this.progressFr);
-            this.Controls.Add(this.FilterPath);
             this.Controls.Add(this.stepThreeLbl);
             this.Controls.Add(this.stepTwoLbl);
             this.Controls.Add(this.stepOneLbl);
-            this.Controls.Add(this.PathFrame);
             this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
