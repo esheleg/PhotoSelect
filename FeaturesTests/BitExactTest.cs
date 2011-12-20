@@ -26,9 +26,10 @@ namespace FeaturesTests
             for (int i = 0; i < numImages; i++)
                 images[i] = new ImageInfo(pathes[i]);
            
-        //    int w=24, j=22;
+           // int w=24, j=22;
             BitExact be = new BitExact(images);
-          //  Debug.WriteLine("{0} \n {1}", images[w].getPath(), images[j].getPath());
+            //be.equalImages(w, j);
+            //Debug.WriteLine("{0} \n {1}", images[w].getPath(), images[j].getPath());
             be.run();
             Debug.WriteLine("{0}", "OK!!!");
                 
