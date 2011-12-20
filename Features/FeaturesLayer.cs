@@ -79,7 +79,7 @@ namespace Features
         /// <summary>
         /// the time that the statusUpdater will check the RunStatus of the features
         /// </summary>
-        static readonly int TIME_TO_CHECK_RUN_STATUS = 1000; // [ms]
+        public static readonly int TIME_TO_CHECK_RUN_STATUS = 80; // [ms]
         
         private ImageInfo[] _images;
 

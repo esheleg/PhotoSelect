@@ -82,23 +82,22 @@
             this.labelname = new System.Windows.Forms.Label();
             this.labelRes = new System.Windows.Forms.Label();
             this.labelLoc = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonDeleteSelected = new System.Windows.Forms.Button();
-            this.createdemo = new System.Windows.Forms.Button();
             this.buttonAbortSelect = new System.Windows.Forms.Button();
             this.buttonSelectAll = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonForward = new System.Windows.Forms.Button();
             this.MatchesList = new System.Windows.Forms.CheckedListBox();
             this.PictureResult = new System.Windows.Forms.PictureBox();
-            this.shapeContainer5 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.bitExactProgressTimer = new System.Windows.Forms.Timer(this.components);
             this.process1 = new System.Diagnostics.Process();
+            this.labelnow = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.labelcurr = new System.Windows.Forms.Label();
             this.PathFrame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.FilterPath.SuspendLayout();
@@ -491,7 +490,7 @@
             this.progressFr.Controls.Add(this.DBprogressBar);
             this.progressFr.Controls.Add(this.shapeContainer4);
             this.progressFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.progressFr.Location = new System.Drawing.Point(31, 170);
+            this.progressFr.Location = new System.Drawing.Point(25, 196);
             this.progressFr.Name = "progressFr";
             this.progressFr.Size = new System.Drawing.Size(688, 380);
             this.progressFr.TabIndex = 14;
@@ -516,6 +515,7 @@
             this.BitExactProgressBar.Name = "BitExactProgressBar";
             this.BitExactProgressBar.Size = new System.Drawing.Size(500, 42);
             this.BitExactProgressBar.TabIndex = 9;
+            this.BitExactProgressBar.Click += new System.EventHandler(this.BitExactProgressBar_Click);
             // 
             // label2
             // 
@@ -690,28 +690,29 @@
             // 
             // bitExactFr
             // 
-            this.bitExactFr.BackColor = System.Drawing.Color.GhostWhite;
+            this.bitExactFr.BackColor = System.Drawing.Color.SeaShell;
+            this.bitExactFr.BackgroundImage = global::PhotoSelectGui.Properties.Resources.eye_light_11;
             this.bitExactFr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bitExactFr.Controls.Add(this.labelcurr);
+            this.bitExactFr.Controls.Add(this.label13);
+            this.bitExactFr.Controls.Add(this.labelnow);
             this.bitExactFr.Controls.Add(this.label11);
             this.bitExactFr.Controls.Add(this.labelname);
             this.bitExactFr.Controls.Add(this.labelRes);
             this.bitExactFr.Controls.Add(this.labelLoc);
-            this.bitExactFr.Controls.Add(this.button1);
             this.bitExactFr.Controls.Add(this.label6);
             this.bitExactFr.Controls.Add(this.label4);
             this.bitExactFr.Controls.Add(this.label3);
             this.bitExactFr.Controls.Add(this.label1);
             this.bitExactFr.Controls.Add(this.buttonDeleteSelected);
-            this.bitExactFr.Controls.Add(this.createdemo);
             this.bitExactFr.Controls.Add(this.buttonAbortSelect);
             this.bitExactFr.Controls.Add(this.buttonSelectAll);
             this.bitExactFr.Controls.Add(this.buttonBack);
             this.bitExactFr.Controls.Add(this.buttonForward);
             this.bitExactFr.Controls.Add(this.MatchesList);
             this.bitExactFr.Controls.Add(this.PictureResult);
-            this.bitExactFr.Controls.Add(this.shapeContainer5);
             this.bitExactFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.bitExactFr.Location = new System.Drawing.Point(81, 564);
+            this.bitExactFr.Location = new System.Drawing.Point(49, 187);
             this.bitExactFr.Name = "bitExactFr";
             this.bitExactFr.Size = new System.Drawing.Size(688, 395);
             this.bitExactFr.TabIndex = 16;
@@ -720,67 +721,61 @@
             // label11
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(217, 171);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(473, 174);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(175, 30);
+            this.label11.Size = new System.Drawing.Size(209, 30);
             this.label11.TabIndex = 27;
-            this.label11.Text = "Bit-eXact Results";
+            this.label11.Text = "התוצאות שהתקבלו: מציג";
             // 
             // labelname
             // 
-            this.labelname.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelname.BackColor = System.Drawing.Color.Transparent;
             this.labelname.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelname.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelname.Location = new System.Drawing.Point(231, 58);
+            this.labelname.ForeColor = System.Drawing.Color.White;
+            this.labelname.Location = new System.Drawing.Point(231, 65);
             this.labelname.Name = "labelname";
             this.labelname.Size = new System.Drawing.Size(312, 18);
             this.labelname.TabIndex = 26;
             this.labelname.Text = "פרטים";
+            this.labelname.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // labelRes
             // 
-            this.labelRes.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelRes.BackColor = System.Drawing.Color.Transparent;
             this.labelRes.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelRes.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelRes.Location = new System.Drawing.Point(231, 123);
+            this.labelRes.ForeColor = System.Drawing.Color.White;
+            this.labelRes.Location = new System.Drawing.Point(231, 117);
             this.labelRes.Name = "labelRes";
             this.labelRes.Size = new System.Drawing.Size(312, 18);
             this.labelRes.TabIndex = 26;
             this.labelRes.Text = "פרטים";
+            this.labelRes.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // labelLoc
             // 
-            this.labelLoc.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelLoc.BackColor = System.Drawing.Color.Transparent;
             this.labelLoc.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelLoc.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelLoc.ForeColor = System.Drawing.Color.White;
             this.labelLoc.Location = new System.Drawing.Point(231, 92);
             this.labelLoc.Name = "labelLoc";
             this.labelLoc.Size = new System.Drawing.Size(312, 18);
             this.labelLoc.TabIndex = 25;
             this.labelLoc.Text = "פרטים";
-            // 
-            // button1
-            // 
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(525, 349);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 31);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "deleteList";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.labelLoc.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.SystemColors.Highlight;
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(566, 123);
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label6.ForeColor = System.Drawing.Color.Orange;
+            this.label6.Location = new System.Drawing.Point(576, 122);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 13);
+            this.label6.Size = new System.Drawing.Size(62, 19);
             this.label6.TabIndex = 23;
             this.label6.Text = "רזולוציה";
             // 
@@ -788,11 +783,12 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.SystemColors.Highlight;
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(566, 92);
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label4.ForeColor = System.Drawing.Color.Orange;
+            this.label4.Location = new System.Drawing.Point(592, 92);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 13);
+            this.label4.Size = new System.Drawing.Size(46, 19);
             this.label4.TabIndex = 22;
             this.label4.Text = "מיקום";
             // 
@@ -800,21 +796,24 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.Highlight;
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(566, 63);
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label3.ForeColor = System.Drawing.Color.Orange;
+            this.label3.Location = new System.Drawing.Point(549, 64);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 13);
+            this.label3.Size = new System.Drawing.Size(86, 19);
             this.label3.TabIndex = 21;
             this.label3.Text = "שם התמונה";
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label1.Location = new System.Drawing.Point(506, 19);
+            this.label1.ForeColor = System.Drawing.Color.Orange;
+            this.label1.Location = new System.Drawing.Point(558, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 30);
+            this.label1.Size = new System.Drawing.Size(114, 30);
             this.label1.TabIndex = 20;
             this.label1.Text = "פרטי התמונה";
             // 
@@ -829,17 +828,6 @@
             this.buttonDeleteSelected.Text = "מחיקה";
             this.buttonDeleteSelected.UseVisualStyleBackColor = true;
             this.buttonDeleteSelected.Click += new System.EventHandler(this.buttonDeleteSelected_Click_1);
-            // 
-            // createdemo
-            // 
-            this.createdemo.ForeColor = System.Drawing.Color.Black;
-            this.createdemo.Location = new System.Drawing.Point(595, 349);
-            this.createdemo.Name = "createdemo";
-            this.createdemo.Size = new System.Drawing.Size(64, 31);
-            this.createdemo.TabIndex = 18;
-            this.createdemo.Text = "צור דמו";
-            this.createdemo.UseVisualStyleBackColor = true;
-            this.createdemo.Click += new System.EventHandler(this.createdemo_Click_1);
             // 
             // buttonAbortSelect
             // 
@@ -866,22 +854,24 @@
             // buttonBack
             // 
             this.buttonBack.ForeColor = System.Drawing.Color.Black;
-            this.buttonBack.Location = new System.Drawing.Point(147, 174);
+            this.buttonBack.Location = new System.Drawing.Point(25, 169);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(64, 30);
             this.buttonBack.TabIndex = 14;
             this.buttonBack.Text = "אחורה";
             this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // buttonForward
             // 
             this.buttonForward.ForeColor = System.Drawing.Color.Black;
-            this.buttonForward.Location = new System.Drawing.Point(25, 174);
+            this.buttonForward.Location = new System.Drawing.Point(147, 169);
             this.buttonForward.Name = "buttonForward";
             this.buttonForward.Size = new System.Drawing.Size(64, 30);
             this.buttonForward.TabIndex = 13;
             this.buttonForward.Text = "הבא";
             this.buttonForward.UseVisualStyleBackColor = true;
+            this.buttonForward.Click += new System.EventHandler(this.buttonForward_Click);
             // 
             // MatchesList
             // 
@@ -901,26 +891,6 @@
             this.PictureResult.TabIndex = 11;
             this.PictureResult.TabStop = false;
             // 
-            // shapeContainer5
-            // 
-            this.shapeContainer5.Location = new System.Drawing.Point(3, 16);
-            this.shapeContainer5.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer5.Name = "shapeContainer5";
-            this.shapeContainer5.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.rectangleShape2});
-            this.shapeContainer5.Size = new System.Drawing.Size(682, 376);
-            this.shapeContainer5.TabIndex = 7;
-            this.shapeContainer5.TabStop = false;
-            // 
-            // rectangleShape2
-            // 
-            this.rectangleShape2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rectangleShape2.BackColor = System.Drawing.SystemColors.Highlight;
-            this.rectangleShape2.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape2.Location = new System.Drawing.Point(216, 3);
-            this.rectangleShape2.Name = "rectangleShape2";
-            this.rectangleShape2.Size = new System.Drawing.Size(439, 181);
-            // 
             // bitExactProgressTimer
             // 
             this.bitExactProgressTimer.Tick += new System.EventHandler(this.bitExactProgressTimer_Tick);
@@ -934,6 +904,42 @@
             this.process1.StartInfo.StandardOutputEncoding = null;
             this.process1.StartInfo.UserName = "";
             this.process1.SynchronizingObject = this;
+            // 
+            // labelnow
+            // 
+            this.labelnow.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelnow.BackColor = System.Drawing.Color.Transparent;
+            this.labelnow.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelnow.ForeColor = System.Drawing.Color.White;
+            this.labelnow.Location = new System.Drawing.Point(408, 174);
+            this.labelnow.Name = "labelnow";
+            this.labelnow.Size = new System.Drawing.Size(63, 30);
+            this.labelnow.TabIndex = 28;
+            this.labelnow.Text = "Now";
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(335, 174);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(66, 30);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "מתוך";
+            // 
+            // labelcurr
+            // 
+            this.labelcurr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelcurr.BackColor = System.Drawing.Color.Transparent;
+            this.labelcurr.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelcurr.ForeColor = System.Drawing.Color.White;
+            this.labelcurr.Location = new System.Drawing.Point(261, 174);
+            this.labelcurr.Name = "labelcurr";
+            this.labelcurr.Size = new System.Drawing.Size(68, 30);
+            this.labelcurr.TabIndex = 30;
+            this.labelcurr.Text = "Curr";
             // 
             // MainPS
             // 
@@ -1029,25 +1035,24 @@
         private System.Windows.Forms.Label labelname;
         private System.Windows.Forms.Label labelRes;
         private System.Windows.Forms.Label labelLoc;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonDeleteSelected;
-        private System.Windows.Forms.Button createdemo;
         private System.Windows.Forms.Button buttonAbortSelect;
         private System.Windows.Forms.Button buttonSelectAll;
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Button buttonForward;
         private System.Windows.Forms.CheckedListBox MatchesList;
         private System.Windows.Forms.PictureBox PictureResult;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer5;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
         private System.Windows.Forms.Label BitExactProgressLbl;
         private System.Windows.Forms.ProgressBar BitExactProgressBar;
         private System.Windows.Forms.Timer bitExactProgressTimer;
         private System.Diagnostics.Process process1;
+        private System.Windows.Forms.Label labelcurr;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label labelnow;
 
 
 

@@ -14,6 +14,8 @@ namespace PhotoSelectGui
 {
     public partial class MainPS : Form
     {
+
+
         //basic function to change color for each index we visit, while reset the other colors.
         public void changecolor(int indextab)
         {
@@ -91,7 +93,7 @@ namespace PhotoSelectGui
         // for the frames that comes from the bottom
         const double BOTTOM_FRAME_X = 50;
         const double BOTTOM_FRAME_Y = 600;
-
+        public int bitcurr = 1;
         //enum and array of booleans to choose the next step frame
         enum frames
         {
@@ -120,6 +122,8 @@ namespace PhotoSelectGui
             featuresArrInit();
 
             image = null;
+
+            bitExactProgressTimer.Interval = FeaturesLayer.TIME_TO_CHECK_RUN_STATUS;            
 
             PathFrame.Visible = true;
             FilterPath.Visible = false;
@@ -427,6 +431,22 @@ namespace PhotoSelectGui
                     bitExactFr.Visible = true;
                     frameMovementTimer.Enabled = true;
                     DBprogressBar.Value = 0;
+                    //-------------- starting to load results after loading as done -------//
+                    //int bitXCurrent = 0; //current head to show on bitexact
+                    MatchesList.Items.Clear();
+                    if (core.Res.BitExact.Matches.Count != 0)
+                    {
+                        
+                        for (int i = 0; i < core.Res.BitExact.Matches[bitcurr].Count; i++)
+                        {
+                            MatchesList.Items.Add(core.Res.BitExact.Matches[bitcurr][i]);
+                        }
+                        labelcurr.Text = core.Res.BitExact.Matches.Count.ToString();
+                        labelnow.Text = "1";
+                    }
+                    else
+                        MessageBox.Show("לא נמצאו תמונות דומות");
+                    //-------------------end of load results -----------------------------//
                 }
             }
         }
@@ -471,23 +491,6 @@ namespace PhotoSelectGui
         }
 
 
-        //creating a demo to check functions for frame 4
-                   // foreach (string filepath in filePaths) //  fills the list of files "filePaths" to send to brain 
-               // MatchesList.Items.Add(filepath);
-        private void createdemo_Click_1(object sender, EventArgs e)
-        {
-            int bitXCurrent=0; //current head to show on bitexact
-            MatchesList.Items.Clear();
-            if(core.Res.BitExact.Matches.Count!=0){
-                MessageBox.Show("נמצאו תוצאות");
-                for (int i = 0; i < core.Res.BitExact.Matches[bitXCurrent].Count; i++)
-                {
-                    MatchesList.Items.Add(core.Res.BitExact.Matches[bitXCurrent][i]);
-                }
-
-            }else
-                MessageBox.Show("לא נמצאו תמונות דומות");
-        }
         //deleting the selected items from checkboxlist
         //in the fouture will not delete- will save in "todelete" list
         private void buttonDeleteSelected_Click_1(object sender, EventArgs e)
@@ -535,7 +538,7 @@ namespace PhotoSelectGui
                 // Check if image exists
                 if (image != null)
                 {
-                    PictureResult.Image = image.GetThumbnailImage(168, 148, null, new IntPtr());
+                    PictureResult.Image = image.GetThumbnailImage(186, 148, null, new IntPtr());
                     labelLoc.Text = MatchesList.SelectedItem.ToString();
                 }
             }
@@ -546,10 +549,42 @@ namespace PhotoSelectGui
             PictureResult.Refresh();
 
         }
-        //demo button to delete all list
-        private void button1_Click_1(object sender, EventArgs e)
+
+
+        private void BitExactProgressBar_Click(object sender, EventArgs e)
         {
-            MatchesList.Items.Clear();
+
+        }
+
+        private void buttonForward_Click(object sender, EventArgs e)
+        {
+            bitcurr++;
+            if (core.Res.BitExact.Matches.Count >= bitcurr)
+            {
+                MatchesList.Items.Clear();
+                for (int i = 0; i < core.Res.BitExact.Matches[bitcurr-1].Count; i++)
+                {
+                    MatchesList.Items.Add(core.Res.BitExact.Matches[bitcurr-1][i]);
+                }
+                labelnow.Text = bitcurr.ToString();
+            }
+
+
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            bitcurr--;
+            if (core.Res.BitExact.Matches.Count >= bitcurr && bitcurr>=1)
+            {
+                MatchesList.Items.Clear();
+                for (int i = 0; i < core.Res.BitExact.Matches[bitcurr-1].Count; i++)
+                {
+                    MatchesList.Items.Add(core.Res.BitExact.Matches[bitcurr-1][i]);
+                }
+                labelnow.Text = bitcurr.ToString();
+            }
+
         }
 
        
