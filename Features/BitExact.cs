@@ -5,10 +5,11 @@ using System.Text;
 using System.Drawing;
 using System.Diagnostics;
 using Bitmap = System.Drawing.Bitmap;
+using System.Diagnostics;
 
 namespace Features
 {
-    class BitExact
+    public class BitExact
     {
         # region class properties
 
@@ -16,13 +17,13 @@ namespace Features
         //Propotion defines photo's size type 
         //checkedImages: true if we find a match otherwise false
         private const double AROUND = 0.05;
-        private enum Propotion { p3_4 = 0, p4_3, p9_16, p16_9, pOther };
+        private enum Propotion { p3_4=0 , p4_3, p9_16, p16_9, pOther };
 
         private ImageInfo[] images;
         private bool[] checkedImages;
         private int numImages;
         private Propotion[] propotions;
-        private int indexList;        
+              
 
         private List<List<string>> matches;        
 
@@ -53,6 +54,7 @@ namespace Features
             initResults();
             checkedImages = new bool[numImages];
             propotions = new Propotion[numImages];
+            
         }
 
         //this is the struct function that will be returned after the BitExact Feature process is ended
@@ -65,24 +67,23 @@ namespace Features
         public void run()
         {            
             setPropotion(); // set propotion to images
-            for (int i = 0; i < numImages; i++)
+            for (int i = 0; i < numImages-2; i++)
             {
-                if (checkedImages[i]) { //if we founded match then don't check the image 
+                if (checkedImages[i] || (propotions[i] == Propotion.pOther)) //if we founded match then don't check the image 
+                {
                     runStatus = (int)Math.Round(((i + 1) / (float)numImages) * 100);
                     continue;
                 }
+                Debug.WriteLine("{0}", numImages);
+                   for (int j = i + 1; j <= numImages-1 ; j++)
+                    if (propotions[i] == propotions[j] && (!checkedImages[j])) //check only images with similar propotions
+                        equalImages(i, j); //equal is true if there is a match
 
-                bool isAddedToList = false; //check if there is match with another image
+
                 
-                for (int j = i + 1; j < numImages - 1; j++)
-                    if (propotions[i] == propotions[j]) //check only images with similar propotions
-                    {
-                        isAddedToList = isAddedToList || equalImages(i, j); //equal is true if there is a match
-                    }
-         
-                if (isAddedToList) //if we found match to images[i] count indexList
-                    indexList++;
-                runStatus = (int)Math.Round(((i + 1) / (float)numImages) * 100);                
+                    
+                runStatus = (int)Math.Round(((i + 1) / (float)numImages) * 100);
+                Debug.WriteLine("{0}", "After");
             }
             // set results
             results = new BitExactRes(matches);
@@ -90,13 +91,16 @@ namespace Features
 
         # endregion public functions
 
+
+
+
         # region private functions
 
         //empty matches
         private void initResults()
         {
             matches = new List<List<string>>();
-            indexList = 0;
+            
         }
 
         // set the propotion for each image
@@ -104,34 +108,36 @@ namespace Features
         {
             for (int i = 0; i < numImages; i++)
             {
-                Bitmap im = images[i].getIm();
-
-                if (checkPropotion(im, 3 / 4))
-                    propotions[i] = Propotion.p3_4;
-                else if (checkPropotion(im, 4 / 3))
-                    propotions[i] = Propotion.p4_3;
-                else if (checkPropotion(im, 9 / 16))
+                double p = images[i].Height / images[i].Width;
+                if (checkPropotion(p, 9 / 16))
                     propotions[i] = Propotion.p9_16;
-                else if (checkPropotion(im, 16 / 9))
+                else if (checkPropotion(p, 16 / 9))
                     propotions[i] = Propotion.p16_9;
-                else
+                else if (checkPropotion(p, 3 / 4))
+                    propotions[i] = Propotion.p3_4;
+                else if (checkPropotion(p, 4/3))
+                    propotions[i] = Propotion.p4_3;
+                else  
                     propotions[i] = Propotion.pOther;
+
+
+
             }
         }
 
        
         // check size of images, AROUND the exact point
         //return true if it similar to wantedProp
-        private bool checkPropotion(Bitmap im, double wantedProp)
+        private bool checkPropotion(double prop, double wantedProp)
         {
-            if ((im.Height / im.Width <= wantedProp + AROUND) && (im.Height / im.Width >= wantedProp - AROUND))
+            if ((prop <= wantedProp + AROUND) && (prop >= wantedProp - AROUND))
                 return true;
             return false;
         }
 
        
         //equal images with similar propotion
-        private bool equalImages(int first, int second)
+        public void equalImages(int first, int second)
         {
             ImageInfo temp1 = images[first], temp2 = images[second];
 
@@ -148,14 +154,24 @@ namespace Features
             images[first] = temp1;
             images[second] = temp2;
 
+            bool temp = false;
             //if the success more then (95%) [100 - 100 * ARROUND] the images is eaqual
-            if (sum / size <= AROUND)
+            if (sum  <= 100*AROUND*size )
             {
+                Debug.WriteLine("{0}", "is equal!!!");
+                Debug.WriteLine("{0} \n {1}", images[first].getPath(), images[second].getPath());
+                Debug.WriteLine("{0}", "****************");
                 AddToResult(first, second);
-                return true;
+                temp = true;
             }
 
-            return false;
+            if (!temp)
+            {
+                Debug.WriteLine("{0}", "unequal !!");
+                Debug.WriteLine("{0} \n {1}", images[first].getPath(), images[second].getPath());
+                Debug.WriteLine("{0}", "****************");
+            }
+            
 
 
         }
@@ -190,11 +206,11 @@ namespace Features
             if (!checkedImages[i])
             {
                 checkedImages[i] = true;
-                matches[indexList] = new List<string>();
-                matches[indexList].Add(images[i].getPath());
+                matches.Add( new List<string>());
+                matches.Last().Add(images[i].getPath());
             }
 
-            matches[indexList].Add(images[j].getPath());
+            matches.Last().Add(images[j].getPath());
 
             checkedImages[j] = true;
         }
