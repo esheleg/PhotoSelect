@@ -18,7 +18,7 @@ namespace FeaturesTests
         public const string PATH_pic765X1360_copy = @"C:\Users\Yossi\Dropbox\Project\BitExact Pictures\pic765X1360copy.jpg";
         
 
-        //[TestMethod]
+       // [TestMethod]
         
 
 

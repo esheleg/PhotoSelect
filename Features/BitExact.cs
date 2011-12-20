@@ -77,8 +77,7 @@ namespace Features
                 for (int j = i + 1; j < numImages - 1; j++)
                     if (propotions[i] == propotions[j]) //check only images with similar propotions
                     {
-                        //propotionImages(i, j);
-                        isAddedToList = isAddedToList || EqualImages(i, j); //equal is true if there is a match
+                        isAddedToList = isAddedToList || equalImages(i, j); //equal is true if there is a match
                     }
          
                 if (isAddedToList) //if we found match to images[i] count indexList
@@ -120,18 +119,7 @@ namespace Features
             }
         }
 
-        /*
-        private void propotionImages(int i, int j)
-        {
-            
-            System.Drawing.Image image1 = System.Drawing.Image.FromFile(images[i].getPath());
-            images[i].croppedSize(new Size(240, 320));
-            images[i].oirgIm2grayCropped(image1);
-
-            System.Drawing.Image image2 = System.Drawing.Image.FromFile(images[i].getPath());
-            images[i].oirgIm2grayCropped(image2);
-        }
-        */
+       
         // check size of images, AROUND the exact point
         //return true if it similar to wantedProp
         private bool checkPropotion(Bitmap im, double wantedProp)
@@ -140,18 +128,15 @@ namespace Features
                 return true;
             return false;
         }
-        
+
+       
         //equal images with similar propotion
-        private bool EqualImages(int first, int second)
+        private bool equalImages(int first, int second)
         {
-            int size = images[first].Height * images[first].Width;
-            int size2 = images[second].Height * images[second].Width;
+            ImageInfo temp1 = images[first], temp2 = images[second];
 
-            if (size / size2 != 0)
-            {
-                
-            }
-
+            int size = similarSizes(first, second);
+            
             byte[] firstA = images[first].getImb();
             byte[] secondA = images[second].getImb();
             
@@ -160,15 +145,45 @@ namespace Features
             for (int i = 0; i < size; i++)
                 sum += Math.Abs(firstA[i] - secondA[i]);
 
+            images[first] = temp1;
+            images[second] = temp2;
+
             //if the success more then (95%) [100 - 100 * ARROUND] the images is eaqual
-            if (sum / size <= AROUND*100)
+            if (sum / size <= AROUND)
             {
                 AddToResult(first, second);
                 return true;
             }
+
             return false;
+
+
         }
 
+        private int similarSizes(int first, int second)
+        {
+            int size = images[first].Height * images[first].Width;
+            int size2 = images[second].Height * images[second].Width;
+
+            
+            if (size / size2 != 1)
+            {
+                if (size2 < size)
+                {
+                    images[first] =
+                        new ImageInfo(images[first], new Size(images[second].Height, images[second].Width));
+                    return size2;
+                }
+                else
+                {
+                    images[second] =
+                         new ImageInfo(images[second], new Size(images[first].Height, images[first].Width));
+                    return size;
+                }
+            }
+            return size;
+        }
+   
         private void AddToResult(int i, int j)
         {
             //if we founded a match before add j to images i, otherwise add a new list of matches
@@ -183,8 +198,7 @@ namespace Features
 
             checkedImages[j] = true;
         }
-
-
+        
         # endregion private functions
     }
 }
