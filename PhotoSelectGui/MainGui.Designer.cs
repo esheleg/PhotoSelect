@@ -65,12 +65,6 @@
             this.DTprogressBar = new System.Windows.Forms.ProgressBar();
             this.shapeContainer4 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.bitExactFr = new System.Windows.Forms.GroupBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.shapeContainer5 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.frameMovementTimer = new System.Windows.Forms.Timer(this.components);
             this.stepOneLbl = new System.Windows.Forms.Label();
             this.stepTwoLbl = new System.Windows.Forms.Label();
@@ -81,6 +75,26 @@
             this.stepThreeRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.stepTwoRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.stepOneRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.bitExactFr = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.labelname = new System.Windows.Forms.Label();
+            this.labelRes = new System.Windows.Forms.Label();
+            this.labelLoc = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonDeleteSelected = new System.Windows.Forms.Button();
+            this.createdemo = new System.Windows.Forms.Button();
+            this.buttonAbortSelect = new System.Windows.Forms.Button();
+            this.buttonSelectAll = new System.Windows.Forms.Button();
+            this.buttonBack = new System.Windows.Forms.Button();
+            this.buttonForward = new System.Windows.Forms.Button();
+            this.MatchesList = new System.Windows.Forms.CheckedListBox();
+            this.PictureResult = new System.Windows.Forms.PictureBox();
+            this.shapeContainer5 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.PathFrame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.FilterPath.SuspendLayout();
@@ -91,7 +105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.progressFr.SuspendLayout();
             this.bitExactFr.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureResult)).BeginInit();
             this.SuspendLayout();
             // 
             // PathFrame
@@ -539,78 +553,6 @@
             this.rectangleShape1.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.rectangleShape1.Size = new System.Drawing.Size(136, 55);
             // 
-            // bitExactFr
-            // 
-            this.bitExactFr.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bitExactFr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bitExactFr.Controls.Add(this.pictureBox6);
-            this.bitExactFr.Controls.Add(this.listBox1);
-            this.bitExactFr.Controls.Add(this.label6);
-            this.bitExactFr.Controls.Add(this.shapeContainer5);
-            this.bitExactFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.bitExactFr.Location = new System.Drawing.Point(762, 173);
-            this.bitExactFr.Name = "bitExactFr";
-            this.bitExactFr.Size = new System.Drawing.Size(688, 380);
-            this.bitExactFr.TabIndex = 14;
-            this.bitExactFr.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Location = new System.Drawing.Point(143, 16);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(384, 252);
-            this.pictureBox6.TabIndex = 11;
-            this.pictureBox6.TabStop = false;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(143, 274);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(384, 95);
-            this.listBox1.TabIndex = 9;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.SystemColors.Highlight;
-            this.label6.Font = new System.Drawing.Font("Miriam", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label6.Location = new System.Drawing.Point(576, 326);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 37);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Done";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // shapeContainer5
-            // 
-            this.shapeContainer5.Location = new System.Drawing.Point(3, 16);
-            this.shapeContainer5.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer5.Name = "shapeContainer5";
-            this.shapeContainer5.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.rectangleShape3});
-            this.shapeContainer5.Size = new System.Drawing.Size(682, 361);
-            this.shapeContainer5.TabIndex = 7;
-            this.shapeContainer5.TabStop = false;
-            // 
-            // rectangleShape3
-            // 
-            this.rectangleShape3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.rectangleShape3.BackColor = System.Drawing.Color.Maroon;
-            this.rectangleShape3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.rectangleShape3.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape3.BorderColor = System.Drawing.SystemColors.Desktop;
-            this.rectangleShape3.CornerRadius = 8;
-            this.rectangleShape3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rectangleShape3.FillColor = System.Drawing.SystemColors.Highlight;
-            this.rectangleShape3.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.rectangleShape3.Location = new System.Drawing.Point(559, 300);
-            this.rectangleShape3.Name = "doneStepOneRect";
-            this.rectangleShape3.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.rectangleShape3.Size = new System.Drawing.Size(119, 55);
-            // 
             // frameMovementTimer
             // 
             this.frameMovementTimer.Interval = 10;
@@ -635,7 +577,7 @@
             this.stepTwoLbl.BackColor = System.Drawing.Color.White;
             this.stepTwoLbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepTwoLbl.Font = new System.Drawing.Font("Mistral", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stepTwoLbl.Location = new System.Drawing.Point(219, 126);
+            this.stepTwoLbl.Location = new System.Drawing.Point(233, 123);
             this.stepTwoLbl.Name = "stepTwoLbl";
             this.stepTwoLbl.Size = new System.Drawing.Size(115, 44);
             this.stepTwoLbl.TabIndex = 3;
@@ -652,7 +594,7 @@
             this.stepThreeLbl.BackColor = System.Drawing.Color.White;
             this.stepThreeLbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepThreeLbl.Font = new System.Drawing.Font("Mistral", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stepThreeLbl.Location = new System.Drawing.Point(382, 124);
+            this.stepThreeLbl.Location = new System.Drawing.Point(393, 123);
             this.stepThreeLbl.Name = "stepThreeLbl";
             this.stepThreeLbl.Size = new System.Drawing.Size(127, 44);
             this.stepThreeLbl.TabIndex = 15;
@@ -683,7 +625,7 @@
             this.stepThreeRect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepThreeRect.FillColor = System.Drawing.Color.White;
             this.stepThreeRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.stepThreeRect.Location = new System.Drawing.Point(214, 120);
+            this.stepThreeRect.Location = new System.Drawing.Point(386, 119);
             this.stepThreeRect.Name = "stepThreeRect";
             this.stepThreeRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.stepThreeRect.Size = new System.Drawing.Size(150, 50);
@@ -699,7 +641,7 @@
             this.stepTwoRect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepTwoRect.FillColor = System.Drawing.Color.White;
             this.stepTwoRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.stepTwoRect.Location = new System.Drawing.Point(376, 121);
+            this.stepTwoRect.Location = new System.Drawing.Point(217, 118);
             this.stepTwoRect.Name = "stepTwoRect";
             this.stepTwoRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.stepTwoRect.Size = new System.Drawing.Size(150, 50);
@@ -719,6 +661,237 @@
             this.stepOneRect.Name = "stepOneRect";
             this.stepOneRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.stepOneRect.Size = new System.Drawing.Size(150, 50);
+            // 
+            // bitExactFr
+            // 
+            this.bitExactFr.BackColor = System.Drawing.Color.Transparent;
+            this.bitExactFr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bitExactFr.Controls.Add(this.label11);
+            this.bitExactFr.Controls.Add(this.labelname);
+            this.bitExactFr.Controls.Add(this.labelRes);
+            this.bitExactFr.Controls.Add(this.labelLoc);
+            this.bitExactFr.Controls.Add(this.button1);
+            this.bitExactFr.Controls.Add(this.label6);
+            this.bitExactFr.Controls.Add(this.label4);
+            this.bitExactFr.Controls.Add(this.label3);
+            this.bitExactFr.Controls.Add(this.label1);
+            this.bitExactFr.Controls.Add(this.buttonDeleteSelected);
+            this.bitExactFr.Controls.Add(this.createdemo);
+            this.bitExactFr.Controls.Add(this.buttonAbortSelect);
+            this.bitExactFr.Controls.Add(this.buttonSelectAll);
+            this.bitExactFr.Controls.Add(this.buttonBack);
+            this.bitExactFr.Controls.Add(this.buttonForward);
+            this.bitExactFr.Controls.Add(this.MatchesList);
+            this.bitExactFr.Controls.Add(this.PictureResult);
+            this.bitExactFr.Controls.Add(this.shapeContainer5);
+            this.bitExactFr.ForeColor = System.Drawing.Color.Cornsilk;
+            this.bitExactFr.Location = new System.Drawing.Point(69, 187);
+            this.bitExactFr.Name = "bitExactFr";
+            this.bitExactFr.Size = new System.Drawing.Size(688, 395);
+            this.bitExactFr.TabIndex = 16;
+            this.bitExactFr.TabStop = false;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label11.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(217, 171);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(175, 30);
+            this.label11.TabIndex = 27;
+            this.label11.Text = "Bit-eXact Results";
+            // 
+            // labelname
+            // 
+            this.labelname.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelname.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelname.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelname.Location = new System.Drawing.Point(231, 58);
+            this.labelname.Name = "labelname";
+            this.labelname.Size = new System.Drawing.Size(312, 18);
+            this.labelname.TabIndex = 26;
+            this.labelname.Text = "פרטים";
+            // 
+            // labelRes
+            // 
+            this.labelRes.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelRes.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelRes.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelRes.Location = new System.Drawing.Point(231, 123);
+            this.labelRes.Name = "labelRes";
+            this.labelRes.Size = new System.Drawing.Size(312, 18);
+            this.labelRes.TabIndex = 26;
+            this.labelRes.Text = "פרטים";
+            // 
+            // labelLoc
+            // 
+            this.labelLoc.BackColor = System.Drawing.SystemColors.Highlight;
+            this.labelLoc.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelLoc.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelLoc.Location = new System.Drawing.Point(231, 92);
+            this.labelLoc.Name = "labelLoc";
+            this.labelLoc.Size = new System.Drawing.Size(312, 18);
+            this.labelLoc.TabIndex = 25;
+            this.labelLoc.Text = "פרטים";
+            // 
+            // button1
+            // 
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(525, 349);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(64, 31);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "deleteList";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.SystemColors.Highlight;
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(566, 123);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 13);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "רזולוציה";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.SystemColors.Highlight;
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(566, 92);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 13);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "מיקום";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.Highlight;
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(566, 63);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 13);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "שם התמונה";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label1.Location = new System.Drawing.Point(506, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(154, 30);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "פרטי התמונה";
+            // 
+            // buttonDeleteSelected
+            // 
+            this.buttonDeleteSelected.ForeColor = System.Drawing.Color.Black;
+            this.buttonDeleteSelected.Location = new System.Drawing.Point(25, 349);
+            this.buttonDeleteSelected.Name = "buttonDeleteSelected";
+            this.buttonDeleteSelected.Size = new System.Drawing.Size(74, 31);
+            this.buttonDeleteSelected.TabIndex = 19;
+            this.buttonDeleteSelected.Text = "מחיקה";
+            this.buttonDeleteSelected.UseVisualStyleBackColor = true;
+            this.buttonDeleteSelected.Click += new System.EventHandler(this.buttonDeleteSelected_Click_1);
+            // 
+            // createdemo
+            // 
+            this.createdemo.ForeColor = System.Drawing.Color.Black;
+            this.createdemo.Location = new System.Drawing.Point(595, 349);
+            this.createdemo.Name = "createdemo";
+            this.createdemo.Size = new System.Drawing.Size(64, 31);
+            this.createdemo.TabIndex = 18;
+            this.createdemo.Text = "צור דמו";
+            this.createdemo.UseVisualStyleBackColor = true;
+            this.createdemo.Click += new System.EventHandler(this.createdemo_Click_1);
+            // 
+            // buttonAbortSelect
+            // 
+            this.buttonAbortSelect.ForeColor = System.Drawing.Color.Black;
+            this.buttonAbortSelect.Location = new System.Drawing.Point(103, 349);
+            this.buttonAbortSelect.Name = "buttonAbortSelect";
+            this.buttonAbortSelect.Size = new System.Drawing.Size(74, 31);
+            this.buttonAbortSelect.TabIndex = 16;
+            this.buttonAbortSelect.Text = "בטל בחירה";
+            this.buttonAbortSelect.UseVisualStyleBackColor = true;
+            this.buttonAbortSelect.Click += new System.EventHandler(this.buttonAbortSelect_Click_1);
+            // 
+            // buttonSelectAll
+            // 
+            this.buttonSelectAll.ForeColor = System.Drawing.Color.Black;
+            this.buttonSelectAll.Location = new System.Drawing.Point(181, 349);
+            this.buttonSelectAll.Name = "buttonSelectAll";
+            this.buttonSelectAll.Size = new System.Drawing.Size(74, 31);
+            this.buttonSelectAll.TabIndex = 15;
+            this.buttonSelectAll.Text = "בחר הכל";
+            this.buttonSelectAll.UseVisualStyleBackColor = true;
+            this.buttonSelectAll.Click += new System.EventHandler(this.buttonSelectAll_Click_1);
+            // 
+            // buttonBack
+            // 
+            this.buttonBack.ForeColor = System.Drawing.Color.Black;
+            this.buttonBack.Location = new System.Drawing.Point(147, 174);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(64, 30);
+            this.buttonBack.TabIndex = 14;
+            this.buttonBack.Text = "אחורה";
+            this.buttonBack.UseVisualStyleBackColor = true;
+            // 
+            // buttonForward
+            // 
+            this.buttonForward.ForeColor = System.Drawing.Color.Black;
+            this.buttonForward.Location = new System.Drawing.Point(25, 174);
+            this.buttonForward.Name = "buttonForward";
+            this.buttonForward.Size = new System.Drawing.Size(64, 30);
+            this.buttonForward.TabIndex = 13;
+            this.buttonForward.Text = "הבא";
+            this.buttonForward.UseVisualStyleBackColor = true;
+            // 
+            // MatchesList
+            // 
+            this.MatchesList.FormattingEnabled = true;
+            this.MatchesList.Location = new System.Drawing.Point(24, 210);
+            this.MatchesList.Name = "MatchesList";
+            this.MatchesList.Size = new System.Drawing.Size(636, 139);
+            this.MatchesList.TabIndex = 12;
+            this.MatchesList.SelectedIndexChanged += new System.EventHandler(this.MatchesList_SelectedIndexChanged_1);
+            // 
+            // PictureResult
+            // 
+            this.PictureResult.Location = new System.Drawing.Point(25, 19);
+            this.PictureResult.Name = "PictureResult";
+            this.PictureResult.Size = new System.Drawing.Size(186, 148);
+            this.PictureResult.TabIndex = 11;
+            this.PictureResult.TabStop = false;
+            // 
+            // shapeContainer5
+            // 
+            this.shapeContainer5.Location = new System.Drawing.Point(3, 16);
+            this.shapeContainer5.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer5.Name = "shapeContainer5";
+            this.shapeContainer5.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.rectangleShape2});
+            this.shapeContainer5.Size = new System.Drawing.Size(682, 376);
+            this.shapeContainer5.TabIndex = 7;
+            this.shapeContainer5.TabStop = false;
+            // 
+            // rectangleShape2
+            // 
+            this.rectangleShape2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rectangleShape2.BackColor = System.Drawing.SystemColors.Highlight;
+            this.rectangleShape2.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.rectangleShape2.Location = new System.Drawing.Point(216, 3);
+            this.rectangleShape2.Name = "rectangleShape2";
+            this.rectangleShape2.Size = new System.Drawing.Size(439, 181);
             // 
             // MainPS
             // 
@@ -756,7 +929,7 @@
             this.progressFr.PerformLayout();
             this.bitExactFr.ResumeLayout(false);
             this.bitExactFr.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureResult)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -800,12 +973,6 @@
         private System.Windows.Forms.Label cancelProgressLbl;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer4;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
-        private System.Windows.Forms.GroupBox bitExactFr;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label label6;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer5;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape3;
         private System.Windows.Forms.Label stepThreeLbl;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         protected Microsoft.VisualBasic.PowerPacks.RectangleShape stepThreeRect;
@@ -815,6 +982,26 @@
         private System.Windows.Forms.CheckBox partitialChckBox;
         private System.Windows.Forms.CheckBox identicalPicsChckBox;
         private System.Windows.Forms.CheckBox similarPicChckBox;
+        private System.Windows.Forms.GroupBox bitExactFr;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label labelname;
+        private System.Windows.Forms.Label labelRes;
+        private System.Windows.Forms.Label labelLoc;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonDeleteSelected;
+        private System.Windows.Forms.Button createdemo;
+        private System.Windows.Forms.Button buttonAbortSelect;
+        private System.Windows.Forms.Button buttonSelectAll;
+        private System.Windows.Forms.Button buttonBack;
+        private System.Windows.Forms.Button buttonForward;
+        private System.Windows.Forms.CheckedListBox MatchesList;
+        private System.Windows.Forms.PictureBox PictureResult;
+        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer5;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
 
 
 
