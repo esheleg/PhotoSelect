@@ -144,10 +144,17 @@ namespace Features
         //equal images with similar propotion
         private bool EqualImages(int first, int second)
         {
+            int size = images[first].Height * images[first].Width;
+            int size2 = images[second].Height * images[second].Width;
+
+            if (size / size2 != 0)
+            {
+                
+            }
 
             byte[] firstA = images[first].getImb();
             byte[] secondA = images[second].getImb();
-            int size = images[first].getIm().Height * images[first].getIm().Width;
+            
             int sum = 0; 
             
             for (int i = 0; i < size; i++)
