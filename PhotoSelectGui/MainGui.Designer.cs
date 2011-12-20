@@ -60,9 +60,11 @@
             this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.doneStepTwoRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.progressFr = new System.Windows.Forms.GroupBox();
+            this.BitExactProgressLbl = new System.Windows.Forms.Label();
+            this.BitExactProgressBar = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
             this.cancelProgressLbl = new System.Windows.Forms.Label();
-            this.DTprogressBar = new System.Windows.Forms.ProgressBar();
+            this.DBprogressBar = new System.Windows.Forms.ProgressBar();
             this.shapeContainer4 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.frameMovementTimer = new System.Windows.Forms.Timer(this.components);
@@ -95,6 +97,8 @@
             this.PictureResult = new System.Windows.Forms.PictureBox();
             this.shapeContainer5 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.bitExactProgressTimer = new System.Windows.Forms.Timer(this.components);
+            this.process1 = new System.Diagnostics.Process();
             this.PathFrame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.FilterPath.SuspendLayout();
@@ -480,16 +484,38 @@
             // 
             this.progressFr.BackColor = System.Drawing.SystemColors.HighlightText;
             this.progressFr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.progressFr.Controls.Add(this.BitExactProgressLbl);
+            this.progressFr.Controls.Add(this.BitExactProgressBar);
             this.progressFr.Controls.Add(this.label2);
             this.progressFr.Controls.Add(this.cancelProgressLbl);
-            this.progressFr.Controls.Add(this.DTprogressBar);
+            this.progressFr.Controls.Add(this.DBprogressBar);
             this.progressFr.Controls.Add(this.shapeContainer4);
             this.progressFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.progressFr.Location = new System.Drawing.Point(36, 447);
+            this.progressFr.Location = new System.Drawing.Point(31, 170);
             this.progressFr.Name = "progressFr";
             this.progressFr.Size = new System.Drawing.Size(688, 380);
             this.progressFr.TabIndex = 14;
             this.progressFr.TabStop = false;
+            // 
+            // BitExactProgressLbl
+            // 
+            this.BitExactProgressLbl.AutoSize = true;
+            this.BitExactProgressLbl.BackColor = System.Drawing.Color.White;
+            this.BitExactProgressLbl.Font = new System.Drawing.Font("Miriam", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.BitExactProgressLbl.ForeColor = System.Drawing.Color.Black;
+            this.BitExactProgressLbl.Location = new System.Drawing.Point(86, 155);
+            this.BitExactProgressLbl.Name = "BitExactProgressLbl";
+            this.BitExactProgressLbl.Size = new System.Drawing.Size(460, 37);
+            this.BitExactProgressLbl.TabIndex = 10;
+            this.BitExactProgressLbl.Text = "Looking for identical photos...";
+            this.BitExactProgressLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // BitExactProgressBar
+            // 
+            this.BitExactProgressBar.Location = new System.Drawing.Point(93, 195);
+            this.BitExactProgressBar.Name = "BitExactProgressBar";
+            this.BitExactProgressBar.Size = new System.Drawing.Size(500, 42);
+            this.BitExactProgressBar.TabIndex = 9;
             // 
             // label2
             // 
@@ -517,12 +543,12 @@
             this.cancelProgressLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.cancelProgressLbl.Click += new System.EventHandler(this.cancelProgressLbl_Click);
             // 
-            // DTprogressBar
+            // DBprogressBar
             // 
-            this.DTprogressBar.Location = new System.Drawing.Point(93, 84);
-            this.DTprogressBar.Name = "DTprogressBar";
-            this.DTprogressBar.Size = new System.Drawing.Size(504, 85);
-            this.DTprogressBar.TabIndex = 0;
+            this.DBprogressBar.Location = new System.Drawing.Point(93, 84);
+            this.DBprogressBar.Name = "DBprogressBar";
+            this.DBprogressBar.Size = new System.Drawing.Size(500, 42);
+            this.DBprogressBar.TabIndex = 0;
             // 
             // shapeContainer4
             // 
@@ -685,7 +711,7 @@
             this.bitExactFr.Controls.Add(this.PictureResult);
             this.bitExactFr.Controls.Add(this.shapeContainer5);
             this.bitExactFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.bitExactFr.Location = new System.Drawing.Point(69, 187);
+            this.bitExactFr.Location = new System.Drawing.Point(81, 564);
             this.bitExactFr.Name = "bitExactFr";
             this.bitExactFr.Size = new System.Drawing.Size(688, 395);
             this.bitExactFr.TabIndex = 16;
@@ -893,6 +919,20 @@
             this.rectangleShape2.Name = "rectangleShape2";
             this.rectangleShape2.Size = new System.Drawing.Size(439, 181);
             // 
+            // bitExactProgressTimer
+            // 
+            this.bitExactProgressTimer.Tick += new System.EventHandler(this.bitExactProgressTimer_Tick);
+            // 
+            // process1
+            // 
+            this.process1.StartInfo.Domain = "";
+            this.process1.StartInfo.LoadUserProfile = false;
+            this.process1.StartInfo.Password = null;
+            this.process1.StartInfo.StandardErrorEncoding = null;
+            this.process1.StartInfo.StandardOutputEncoding = null;
+            this.process1.StartInfo.UserName = "";
+            this.process1.SynchronizingObject = this;
+            // 
             // MainPS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -967,7 +1007,7 @@
         private System.Windows.Forms.Label numPicsLbl;
         private System.Windows.Forms.Label numLbl;
         private System.Windows.Forms.GroupBox progressFr;
-        private System.Windows.Forms.ProgressBar DTprogressBar;
+        private System.Windows.Forms.ProgressBar DBprogressBar;
         private System.Windows.Forms.Timer progressBarTimer;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label cancelProgressLbl;
@@ -1002,6 +1042,10 @@
         private System.Windows.Forms.PictureBox PictureResult;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer5;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
+        private System.Windows.Forms.Label BitExactProgressLbl;
+        private System.Windows.Forms.ProgressBar BitExactProgressBar;
+        private System.Windows.Forms.Timer bitExactProgressTimer;
+        private System.Diagnostics.Process process1;
 
 
 

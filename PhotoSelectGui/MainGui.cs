@@ -172,6 +172,10 @@ namespace PhotoSelectGui
             // step two to the progress bar (when clicking Done label in step two) 
             if (frameShow[(int)frames.stepTwoFr_to_progressBarFr] == true)
             {
+                // make the bitExact progressBar no visible
+                BitExactProgressLbl.Visible = false;
+                BitExactProgressBar.Visible = false;
+                
                 FilterPath.Location = new Point(FilterPath.Location.X + (int)FRAME_SPEED, FilterPath.Location.Y);
                 progressFr.Location = new Point(progressFr.Location.X, progressFr.Location.Y - (int)FRAME_SPEED);
 
@@ -396,9 +400,22 @@ namespace PhotoSelectGui
         //fills the progress bar, after sending information to the brain, need to recive the percentage of the work that done every timer's tick 
         private void progressBarTimer_Tick(object sender, EventArgs e)
         {
-            //DTprogressBar.Increment(5);
-            DTprogressBar.Value = core.LoadingImagesStatus;
-            if (DTprogressBar.Value == DTprogressBar.Maximum)
+            DBprogressBar.Value = core.LoadingImagesStatus;
+            if (DBprogressBar.Value == DBprogressBar.Maximum)
+            {
+                progressBarTimer.Stop();
+                BitExactProgressLbl.Visible = true;
+                BitExactProgressBar.Visible = true;
+                Thread run = new Thread(core.run);
+                run.Start();
+                bitExactProgressTimer.Start();
+            }
+        }
+
+        private void bitExactProgressTimer_Tick(object sender, EventArgs e)
+        {
+            BitExactProgressBar.Value = core.RunStatus;
+            if (BitExactProgressBar.Value == BitExactProgressBar.Maximum)
             {
                 progressBarTimer.Stop();
 
@@ -409,9 +426,8 @@ namespace PhotoSelectGui
                     bitExactFr.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
                     bitExactFr.Visible = true;
                     frameMovementTimer.Enabled = true;
-                    DTprogressBar.Value = 0;
+                    DBprogressBar.Value = 0;
                 }
-
             }
         }
 
@@ -526,6 +542,8 @@ namespace PhotoSelectGui
         {
             MatchesList.Items.Clear();
         }
+
+       
 
 
 
