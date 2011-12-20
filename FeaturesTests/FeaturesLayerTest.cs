@@ -56,6 +56,30 @@ namespace FeaturesTests
             // here we will call runBitExat
             
         }
+        [TestMethod]
+        public void TestResultsStructure()
+        {
+            Results res = new Results();
+            List<List<string>> lst = new List<List<string>>(10);
+            for (int i = 0; i < 10; i++)
+            {
+                lst.Add(new List<string>(10));
+                for (int j = 0; j < 10; j++)
+                {
+                    lst.Last().Add("afdasdasd");
+                }
+            }
+            BitExactRes bRes = new BitExactRes(lst);
+            res.setBitExact(bRes);
+            foreach (List<string> ll in res.BitExact.Matches)
+            {
+                foreach (string str in ll)
+                    Debug.WriteLine(str + " ");
+            }
+            List<List<string>> l = res.BitExact.Matches;
+                    
+           
+        }
 
     }
 }

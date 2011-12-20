@@ -46,10 +46,10 @@ namespace Features
             _matches = new List<List<string>>(matches.Count);
             foreach (List<string> lst in matches)
             {
-                matches.Add(new List<string>(lst.Count));
+                _matches.Add(new List<string>(lst.Count));
                 foreach (string path in lst)
                 {
-                    matches.Last().Add(path);
+                    _matches.Last().Add(path);
                 }
             }
         }
@@ -57,6 +57,20 @@ namespace Features
         {            
             get { return _matches; }            
         }
+    }
+
+    public struct Results
+    {
+        private BitExactRes _bitExactRes;
+        public BitExactRes BitExact
+        {
+            get { return _bitExactRes; }
+        }
+        public void setBitExact(BitExactRes bitExactRes)
+        {
+            _bitExactRes = new BitExactRes(bitExactRes.Matches);
+        }
+
     }
     #endregion
     
@@ -67,31 +81,39 @@ namespace Features
         /// </summary>
         static readonly int TIME_TO_CHECK_RUN_STATUS = 1000; // [ms]
         
-        private ImageInfo[] _images;        
+        private ImageInfo[] _images;
 
         private BitExact _bitExact;
         private Thread _bitExactThread;
 
         private Thread _statusUpdaterThread;
 
-        private int _loadingImagesStatus; // read only        
+        # region (GUI <-> BRAIN) shared data
+
+        private int _loadingImagesStatus; // read only
         private int _runStatus; // read only
-        private Task _task;               
+        private Task _task;
+        private Results _res;    
+
+        #endregion
 
         public FeaturesLayer(ref Task task)
         {
             _bitExactThread = null;
             _bitExact = null;
-            _loadingImagesStatus = 0;
-            _runStatus = 0;
             _task = task;
+            _loadingImagesStatus = 0;
             _images = new ImageInfo[task.ImagePathes.Count];
         }        
 
-        # region (GUI <--> BRAIN) Methods
-                    
+        # region (GUI --> BRAIN) Methods
+
+        public Results Res
+        {
+            get { return _res; }
+        }
         /// <summary>
-        /// range: 0-100, returns the completion % of the loadImages() method
+        /// returns the completion percetage of the loadImages() method
         /// </summary>
         /// 
         public int LoadingImagesStatus
@@ -100,18 +122,17 @@ namespace Features
         }
         /// <summary>
         /// sets the array of ImageInfo and creates the objects
-        /// thorws exception if ocures on one of the images
         /// </summary>
         public void loadImages()
-        {// TODO - check if you can classify the possible exceptions (for continuing even if one image fails)
+        {
             for (int i = 0; i < _images.Length; i++)
             {
                 try
-                {                                     
+                {
                     _images[i] = new ImageInfo(_task.ImagePathes[i]);
                 }
                 catch (Exception e)
-                {                    
+                {
                     throw e;
                 }
                 _loadingImagesStatus = (int)(((float)(i + 1) / _images.Length) * 100);
@@ -133,8 +154,7 @@ namespace Features
         public void run()
         {
             if (_task.Features[(int)Feature.BIT_EXACT])
-            {
-                Debug.WriteLine("BitExact");
+            {            
                 _bitExact = new BitExact(_images);
                 _bitExactThread = new Thread(_bitExact.run);
                 _bitExactThread.Start();
