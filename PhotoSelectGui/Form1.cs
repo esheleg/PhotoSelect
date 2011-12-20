@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using Features;
+using System.Threading;
 
 namespace PhotoSelectGui
 {
@@ -18,6 +19,10 @@ namespace PhotoSelectGui
 
         // array to save all the photos pthes to send to the brain
         string[] filePaths;
+        bool[] featuresArr = new bool[4];
+        Task task;
+        FeaturesLayer core;
+
         const double FRAME_SPEED = 50;
         
         // the origin of the current frame
@@ -33,22 +38,29 @@ namespace PhotoSelectGui
         const double BOTTOM_FRAME_Y = 600;
       
         //enum and array of booleans to choose the next step frame
-        enum frames { stepOneFr_to_stepTwoFr, stepTwoFr_to_stepOneFr, stepTwoFr_to_progressBarFr, 
-            progressBarFr_to_stepTwoFr, progressBarFr_to_bitExactFr };
-        bool[] frameShow = new bool[5];
+        enum frames { stepOneFr_to_stepTwoFr, stepTwoFr_to_stepOneFr, stepTwoFr_to_progressBarFr,
+        progressBarFr_to_stepTwoFr, progressBarFr_to_bitExactFr, stepthreeFr_to_stepOneFr, stepthreeFr_to_stepTwoFr};
+        bool[] frameShow = new bool[7];
 
         private void frameShowInit()
         {
             for (int i = 0; i < frameShow.Length; i++)
                 frameShow[i] = false;
         }
-        
-        
+
+        private void featuresArrInit()
+        {
+            for (int i = 0; i < featuresArr.Length; i++)
+                featuresArr[i] = false;
+        }
+ 
         public MainPS()
         {
+            
             InitializeComponent();
             frameShowInit();
-            
+            featuresArrInit();
+           
             image = null;
 
             PathFrame.Visible = true;
@@ -59,8 +71,11 @@ namespace PhotoSelectGui
 
         private void MainPS_Load(object sender, EventArgs e)
         {
-            stepOneLbl.BackColor = System.Drawing.Color.AntiqueWhite;
-            stepOneRect.FillColor = System.Drawing.Color.AntiqueWhite;
+            //-------arrangeFrames--------
+            PathFrame.Location = new Point((int)FRAME_X, (int)FRAME_Y);
+            bitExactFr.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
+            FilterPath.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
+            progressFr.Location = new Point((int)BOTTOM_FRAME_X, (int)BOTTOM_FRAME_Y);
 
         }
 
@@ -136,6 +151,34 @@ namespace PhotoSelectGui
                     frameShow[(int)frames.progressBarFr_to_bitExactFr] = false;
                 }
             }
+            
+            // bitExact frame to pathFrame(stepOne) frame (when when clicking step One button)
+            if (frameShow[(int)frames.stepthreeFr_to_stepOneFr] == true)
+            {
+                PathFrame.Location = new Point(PathFrame.Location.X - (int)FRAME_SPEED, PathFrame.Location.Y);
+                bitExactFr.Location = new Point(bitExactFr.Location.X - (int)FRAME_SPEED, bitExactFr.Location.Y);
+
+                if (PathFrame.Location.X == FRAME_X)
+                {
+                    bitExactFr.Visible = false;
+                    frameMovementTimer.Enabled = false;
+                    frameShow[(int)frames.stepthreeFr_to_stepOneFr] = false;
+                }
+            }
+
+            // bitExact frame to step two frame (when clicking step Two button)
+            if (frameShow[(int)frames.stepthreeFr_to_stepTwoFr] == true)
+            {
+                FilterPath.Location = new Point(FilterPath.Location.X - (int)FRAME_SPEED, FilterPath.Location.Y);
+                bitExactFr.Location = new Point(bitExactFr.Location.X - (int)FRAME_SPEED, bitExactFr.Location.Y);
+
+                if (FilterPath.Location.X == FRAME_X)
+                {
+                    bitExactFr.Visible = false;
+                    frameMovementTimer.Enabled = false;
+                    frameShow[(int)frames.stepthreeFr_to_stepTwoFr] = false;
+                }
+            }
         }
 
         
@@ -143,19 +186,17 @@ namespace PhotoSelectGui
         private void doneStepOneLbl_Click(object sender, EventArgs e)
         {
 
-            if (PathFrame.Location.X == FRAME_X) // if PathFrame is the current frame
+            if (photosPaths.Items.Count > 0)
             {
-                frameShow[(int)frames.stepOneFr_to_stepTwoFr] = true; // choose the frame animation
-                FilterPath.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
-                FilterPath.Visible = true; 
-
-                stepOneLbl.BackColor = System.Drawing.Color.White;
-                stepOneRect.FillColor = System.Drawing.Color.White;
-                stepTwoLbl.BackColor = System.Drawing.Color.AntiqueWhite;
-                stepTwoRect.FillColor = System.Drawing.Color.AntiqueWhite;
-
-                frameMovementTimer.Enabled = true; // turn on the animation
+                if (PathFrame.Location.X == FRAME_X) // if PathFrame is the current frame
+                {
+                    frameShow[(int)frames.stepOneFr_to_stepTwoFr] = true; // choose the frame animation
+                    FilterPath.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
+                    FilterPath.Visible = true;
+                    frameMovementTimer.Enabled = true; // turn on the animation
+                }
             }
+            else MessageBox.Show("לא נבחרה תיקייה המכילה תמונות");
         }
 
         private void stepOneLbl_Click(object sender, EventArgs e)
@@ -166,30 +207,81 @@ namespace PhotoSelectGui
                 PathFrame.Visible = true;
                 frameMovementTimer.Enabled = true;
             }
+            if (bitExactFr.Location.X == FRAME_X)
+            {
+                frameShow[(int)frames.stepthreeFr_to_stepOneFr] = true;
+                FilterPath.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
+                PathFrame.Visible = true;
+                frameMovementTimer.Enabled = true;
+            }
         }
 
         private void doneStepTwoLbl_Click(object sender, EventArgs e)
         {
-            if (FilterPath.Location.X == FRAME_X)
+            bool checks = false;
+            for (int i = 0; i < featuresArr.Length; i++)
+                if (featuresArr[i] == true)
+                    checks = true;
+            if (checks == true)
             {
-                frameShow[(int)frames.stepTwoFr_to_progressBarFr] = true;
-                progressFr.Location = new Point((int)BOTTOM_FRAME_X, (int)BOTTOM_FRAME_Y);
-                progressFr.Visible = true;
-                frameMovementTimer.Enabled = true;
-                progressBarTimer.Start();
+                task = new Task(filePaths.ToList(), featuresArr);
+                core = new FeaturesLayer(ref task);
+                Thread t = new Thread(core.loadImages);
+                t.Start();
+
+                if (FilterPath.Location.X == FRAME_X)
+                {
+                    frameShow[(int)frames.stepTwoFr_to_progressBarFr] = true;
+                    progressFr.Location = new Point((int)BOTTOM_FRAME_X, (int)BOTTOM_FRAME_Y);
+                    progressFr.Visible = true;
+                    frameMovementTimer.Enabled = true;
+                    progressBarTimer.Start();
+                }
             }
+            else MessageBox.Show("חובה לבחור באפשרות אחת לפחות");
         }
 
         private void cancelProgressLbl_Click(object sender, EventArgs e)
         {
-            if (progressFr.Location.Y == FRAME_Y)
+           // ----------daniel need to do something about it----------
+
+            /*if (progressFr.Location.Y == FRAME_Y)
             {
                 frameShow[(int)frames.progressBarFr_to_stepTwoFr] = true;
                 FilterPath.Visible = true;
                 frameMovementTimer.Enabled = true;
                 progressBarTimer.Stop();
-                progressBar.Value = 0;
+                DTprogressBar.Value = 0;
+            }*/
+        }
+        
+        private void stepTwoLbl_Click(object sender, EventArgs e)
+        {
+            if (bitExactFr.Location.X == FRAME_X)
+            {
+                frameShow[(int)frames.stepthreeFr_to_stepTwoFr] = true;
+                FilterPath.Visible = true;
+                frameMovementTimer.Enabled = true;
             }
+
+            if (PathFrame.Location.X == FRAME_X) 
+            {
+                 // if PathFrame is the current frame
+                if (photosPaths.Items.Count > 0)
+                {
+                    frameShow[(int)frames.stepOneFr_to_stepTwoFr] = true; // choose the frame animation
+                    FilterPath.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
+                    FilterPath.Visible = true;
+                    frameMovementTimer.Enabled = true; // turn on the animation
+                }
+                else MessageBox.Show("לא נבחרה תיקייה המכילה תמונות");
+            }
+            
+        }
+
+        private void stepThreeLbl_Click(object sender, EventArgs e)
+        {
+
         }
         //----------------------end buttons-----------------------------------
 
@@ -227,8 +319,10 @@ namespace PhotoSelectGui
                 photosPaths.Items.Clear();
                 pictureBox.Image = null;
                 filePaths = Directory.GetFiles((string)textpath.Text, "*.jpg", SearchOption.AllDirectories);
-                foreach (string filepath in filePaths) //  fills the list of files "filePaths" to send to brain 
-                    photosPaths.Items.Add(filepath);
+                if (filePaths.Length > 0)
+                    foreach (string filepath in filePaths) //  fills the list of files "filePaths" to send to brain 
+                        photosPaths.Items.Add(filepath);
+                else MessageBox.Show("התיקייה אותה בחרת אינה מכילה תמונות");
                 numLbl.Text = filePaths.Length.ToString(); // number of photos in the folder
             }
         }
@@ -236,11 +330,10 @@ namespace PhotoSelectGui
         //fills the progress bar, after sending information to the brain, need to recive the percentage of the work that done every timer's tick 
         private void progressBarTimer_Tick(object sender, EventArgs e)
         {
-            progressBar.Increment(3);
-            if (progressBar.Value == progressBar.Maximum)
+            //DTprogressBar.Increment(5);
+            DTprogressBar.Value = core.LoadingImagesStatus;
+            if (DTprogressBar.Value == DTprogressBar.Maximum)
             {
-                progressBarTimer.Stop();
-               
                 progressBarTimer.Stop();
 
                 // changing form. for now its to the bitmap exact - need to change in future
@@ -250,14 +343,41 @@ namespace PhotoSelectGui
                     bitExactFr.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
                     bitExactFr.Visible = true;
                     frameMovementTimer.Enabled = true;
-                    progressBar.Value = 0;
+                    DTprogressBar.Value = 0;
                 }
 
             }
         }
+     
+        //---------------Check boxes for features select-----------------------
+        private void similarPicChckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if(similarPicChckBox.Checked == true)
+                 featuresArr[(int)Feature.SIMILARITY] = true;
+            else featuresArr[(int)Feature.SIMILARITY] = false;
+        }
 
-        
-        
+        private void badContrastChckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (badContrastChckBox.Checked == true)
+                featuresArr[(int)Feature.BAD_CONTRAST] = true;
+            else featuresArr[(int)Feature.BAD_CONTRAST] = false;
+        }
+
+        private void partitialChckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (partitialChckBox.Checked == true)
+                featuresArr[(int)Feature.PARTIAL_BLOCKAGE] = true;
+            else featuresArr[(int)Feature.PARTIAL_BLOCKAGE] = false;
+        }
+
+        private void identicalPicsChckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (identicalPicsChckBox.Checked == true)
+                featuresArr[(int)Feature.BIT_EXACT] = true;
+            else featuresArr[(int)Feature.BIT_EXACT] = false;
+        }
+        //-------------------------end check box--------------------------------
 
     }
 }

@@ -41,41 +41,41 @@
             this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.browseRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.doneStepOneRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.frameMovementTimer = new System.Windows.Forms.Timer(this.components);
-            this.stepOneLbl = new System.Windows.Forms.Label();
-            this.stepTwoLbl = new System.Windows.Forms.Label();
-            this.doneStepTwoLbl = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.FilterPath = new System.Windows.Forms.GroupBox();
+            this.similarPicChckBox = new System.Windows.Forms.CheckBox();
+            this.badContrastChckBox = new System.Windows.Forms.CheckBox();
+            this.partitialChckBox = new System.Windows.Forms.CheckBox();
+            this.identicalPicsChckBox = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.doneStepTwoLbl = new System.Windows.Forms.Label();
             this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.doneStepTwoRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.progressFr = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cancelProgressLbl = new System.Windows.Forms.Label();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.DTprogressBar = new System.Windows.Forms.ProgressBar();
             this.shapeContainer4 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.progressBarTimer = new System.Windows.Forms.Timer(this.components);
             this.bitExactFr = new System.Windows.Forms.GroupBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
             this.shapeContainer5 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.frameMovementTimer = new System.Windows.Forms.Timer(this.components);
+            this.stepOneLbl = new System.Windows.Forms.Label();
+            this.stepTwoLbl = new System.Windows.Forms.Label();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.progressBarTimer = new System.Windows.Forms.Timer(this.components);
             this.stepThreeLbl = new System.Windows.Forms.Label();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.stepThreeRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
@@ -83,12 +83,12 @@
             this.stepOneRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.PathFrame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.FilterPath.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.progressFr.SuspendLayout();
             this.bitExactFr.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -107,7 +107,7 @@
             this.PathFrame.Controls.Add(this.doneStepOneLbl);
             this.PathFrame.Controls.Add(this.shapeContainer2);
             this.PathFrame.ForeColor = System.Drawing.Color.Cornsilk;
-            this.PathFrame.Location = new System.Drawing.Point(50, 200);
+            this.PathFrame.Location = new System.Drawing.Point(28, 572);
             this.PathFrame.Name = "PathFrame";
             this.PathFrame.Size = new System.Drawing.Size(688, 380);
             this.PathFrame.TabIndex = 1;
@@ -171,6 +171,7 @@
             // 
             this.textpath.Location = new System.Drawing.Point(14, 94);
             this.textpath.Name = "textpath";
+            this.textpath.ReadOnly = true;
             this.textpath.Size = new System.Drawing.Size(565, 20);
             this.textpath.TabIndex = 6;
             // 
@@ -235,35 +236,189 @@
             this.doneStepOneRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.doneStepOneRect.Size = new System.Drawing.Size(119, 55);
             // 
-            // frameMovementTimer
+            // FilterPath
             // 
-            this.frameMovementTimer.Interval = 10;
-            this.frameMovementTimer.Tick += new System.EventHandler(this.frameMovementTimer_Tick);
+            this.FilterPath.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.FilterPath.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.FilterPath.Controls.Add(this.similarPicChckBox);
+            this.FilterPath.Controls.Add(this.badContrastChckBox);
+            this.FilterPath.Controls.Add(this.partitialChckBox);
+            this.FilterPath.Controls.Add(this.identicalPicsChckBox);
+            this.FilterPath.Controls.Add(this.pictureBox1);
+            this.FilterPath.Controls.Add(this.pictureBox5);
+            this.FilterPath.Controls.Add(this.label10);
+            this.FilterPath.Controls.Add(this.label9);
+            this.FilterPath.Controls.Add(this.label8);
+            this.FilterPath.Controls.Add(this.label7);
+            this.FilterPath.Controls.Add(this.pictureBox4);
+            this.FilterPath.Controls.Add(this.pictureBox3);
+            this.FilterPath.Controls.Add(this.pictureBox2);
+            this.FilterPath.Controls.Add(this.label5);
+            this.FilterPath.Controls.Add(this.doneStepTwoLbl);
+            this.FilterPath.Controls.Add(this.shapeContainer3);
+            this.FilterPath.ForeColor = System.Drawing.Color.Cornsilk;
+            this.FilterPath.Location = new System.Drawing.Point(36, 588);
+            this.FilterPath.Name = "FilterPath";
+            this.FilterPath.Size = new System.Drawing.Size(703, 380);
+            this.FilterPath.TabIndex = 4;
+            this.FilterPath.TabStop = false;
+            this.FilterPath.Visible = false;
             // 
-            // stepOneLbl
+            // similarPicChckBox
             // 
-            this.stepOneLbl.AutoSize = true;
-            this.stepOneLbl.BackColor = System.Drawing.Color.White;
-            this.stepOneLbl.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.stepOneLbl.Font = new System.Drawing.Font("Mistral", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stepOneLbl.Location = new System.Drawing.Point(61, 123);
-            this.stepOneLbl.Name = "stepOneLbl";
-            this.stepOneLbl.Size = new System.Drawing.Size(120, 44);
-            this.stepOneLbl.TabIndex = 2;
-            this.stepOneLbl.Text = "Step One";
-            this.stepOneLbl.Click += new System.EventHandler(this.stepOneLbl_Click);
+            this.similarPicChckBox.AutoSize = true;
+            this.similarPicChckBox.ForeColor = System.Drawing.Color.AntiqueWhite;
+            this.similarPicChckBox.Location = new System.Drawing.Point(531, 235);
+            this.similarPicChckBox.Name = "similarPicChckBox";
+            this.similarPicChckBox.Size = new System.Drawing.Size(15, 14);
+            this.similarPicChckBox.TabIndex = 30;
+            this.similarPicChckBox.UseVisualStyleBackColor = true;
+            this.similarPicChckBox.CheckedChanged += new System.EventHandler(this.similarPicChckBox_CheckedChanged);
             // 
-            // stepTwoLbl
+            // badContrastChckBox
             // 
-            this.stepTwoLbl.AutoSize = true;
-            this.stepTwoLbl.BackColor = System.Drawing.Color.White;
-            this.stepTwoLbl.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.stepTwoLbl.Font = new System.Drawing.Font("Mistral", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stepTwoLbl.Location = new System.Drawing.Point(219, 127);
-            this.stepTwoLbl.Name = "stepTwoLbl";
-            this.stepTwoLbl.Size = new System.Drawing.Size(115, 44);
-            this.stepTwoLbl.TabIndex = 3;
-            this.stepTwoLbl.Text = "Step Two";
+            this.badContrastChckBox.AutoSize = true;
+            this.badContrastChckBox.Location = new System.Drawing.Point(386, 236);
+            this.badContrastChckBox.Name = "badContrastChckBox";
+            this.badContrastChckBox.Size = new System.Drawing.Size(15, 14);
+            this.badContrastChckBox.TabIndex = 28;
+            this.badContrastChckBox.UseVisualStyleBackColor = true;
+            this.badContrastChckBox.CheckedChanged += new System.EventHandler(this.badContrastChckBox_CheckedChanged);
+            // 
+            // partitialChckBox
+            // 
+            this.partitialChckBox.AutoSize = true;
+            this.partitialChckBox.Location = new System.Drawing.Point(248, 236);
+            this.partitialChckBox.Name = "partitialChckBox";
+            this.partitialChckBox.Size = new System.Drawing.Size(80, 17);
+            this.partitialChckBox.TabIndex = 27;
+            this.partitialChckBox.Text = "checkBox2";
+            this.partitialChckBox.UseVisualStyleBackColor = true;
+            this.partitialChckBox.CheckedChanged += new System.EventHandler(this.partitialChckBox_CheckedChanged);
+            // 
+            // identicalPicsChckBox
+            // 
+            this.identicalPicsChckBox.AutoSize = true;
+            this.identicalPicsChckBox.Location = new System.Drawing.Point(97, 235);
+            this.identicalPicsChckBox.Name = "identicalPicsChckBox";
+            this.identicalPicsChckBox.Size = new System.Drawing.Size(80, 17);
+            this.identicalPicsChckBox.TabIndex = 26;
+            this.identicalPicsChckBox.Text = "checkBox1";
+            this.identicalPicsChckBox.UseVisualStyleBackColor = true;
+            this.identicalPicsChckBox.CheckedChanged += new System.EventHandler(this.identicalPicsChckBox_CheckedChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::PhotoSelectGui.Properties.Resources.smile33;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(76, 138);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(94, 83);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackgroundImage = global::PhotoSelectGui.Properties.Resources.smile33;
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox5.Location = new System.Drawing.Point(51, 105);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(119, 113);
+            this.pictureBox5.TabIndex = 25;
+            this.pictureBox5.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.White;
+            this.label10.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(207, 256);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(93, 16);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "חסימה חלקית";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.White;
+            this.label9.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(334, 256);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(121, 16);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "תמונות מטושטשות";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.White;
+            this.label8.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(517, 256);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 16);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "דומות";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.White;
+            this.label7.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(69, 256);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 16);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "תמונות זהות\r\n";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImage = global::PhotoSelectGui.Properties.Resources.dsones_similar;
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox4.Image = global::PhotoSelectGui.Properties.Resources.dsones_similar;
+            this.pictureBox4.Location = new System.Drawing.Point(480, 105);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(119, 113);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 16;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::PhotoSelectGui.Properties.Resources.eye_light_11;
+            this.pictureBox3.Location = new System.Drawing.Point(338, 105);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(119, 113);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 15;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Image = global::PhotoSelectGui.Properties.Resources.switzerland_mountain_lake;
+            this.pictureBox2.Location = new System.Drawing.Point(197, 105);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(119, 113);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.TabIndex = 14;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.label5.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(6, 3);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(232, 37);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "בחר תכנית עבודה";
             // 
             // doneStepTwoLbl
             // 
@@ -278,187 +433,6 @@
             this.doneStepTwoLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.doneStepTwoLbl.Click += new System.EventHandler(this.doneStepTwoLbl_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.label5.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(6, 3);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(232, 37);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "בחר תכנית עבודה";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::PhotoSelectGui.Properties.Resources.smile33;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 147);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(94, 83);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Image = global::PhotoSelectGui.Properties.Resources.switzerland_mountain_lake;
-            this.pictureBox2.Location = new System.Drawing.Point(139, 105);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(119, 113);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 14;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::PhotoSelectGui.Properties.Resources.eye_light_11;
-            this.pictureBox3.Location = new System.Drawing.Point(264, 105);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(119, 113);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 15;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackgroundImage = global::PhotoSelectGui.Properties.Resources.dsones_similar;
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox4.Image = global::PhotoSelectGui.Properties.Resources.dsones_similar;
-            this.pictureBox4.Location = new System.Drawing.Point(389, 105);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(119, 113);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 16;
-            this.pictureBox4.TabStop = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.White;
-            this.label7.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(26, 256);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 16);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "תמונות זהות\r\n";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(428, 256);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 16);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "דומות";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.White;
-            this.label9.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(271, 256);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(121, 16);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "תמונות מטושטשות";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.White;
-            this.label10.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(156, 256);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(93, 16);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "חסימה חלקית";
-            // 
-            // FilterPath
-            // 
-            this.FilterPath.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.FilterPath.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.FilterPath.Controls.Add(this.pictureBox1);
-            this.FilterPath.Controls.Add(this.pictureBox5);
-            this.FilterPath.Controls.Add(this.radioButton4);
-            this.FilterPath.Controls.Add(this.radioButton3);
-            this.FilterPath.Controls.Add(this.radioButton2);
-            this.FilterPath.Controls.Add(this.radioButton1);
-            this.FilterPath.Controls.Add(this.label10);
-            this.FilterPath.Controls.Add(this.label9);
-            this.FilterPath.Controls.Add(this.label8);
-            this.FilterPath.Controls.Add(this.label7);
-            this.FilterPath.Controls.Add(this.pictureBox4);
-            this.FilterPath.Controls.Add(this.pictureBox3);
-            this.FilterPath.Controls.Add(this.pictureBox2);
-            this.FilterPath.Controls.Add(this.label5);
-            this.FilterPath.Controls.Add(this.doneStepTwoLbl);
-            this.FilterPath.Controls.Add(this.shapeContainer3);
-            this.FilterPath.ForeColor = System.Drawing.Color.Cornsilk;
-            this.FilterPath.Location = new System.Drawing.Point(-700, 200);
-            this.FilterPath.Name = "FilterPath";
-            this.FilterPath.Size = new System.Drawing.Size(693, 380);
-            this.FilterPath.TabIndex = 4;
-            this.FilterPath.TabStop = false;
-            this.FilterPath.Visible = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackgroundImage = global::PhotoSelectGui.Properties.Resources.smile33;
-            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox5.Location = new System.Drawing.Point(14, 105);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(119, 113);
-            this.pictureBox5.TabIndex = 25;
-            this.pictureBox5.TabStop = false;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(196, 236);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(14, 13);
-            this.radioButton4.TabIndex = 24;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(320, 236);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(14, 13);
-            this.radioButton3.TabIndex = 23;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(438, 236);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(14, 13);
-            this.radioButton2.TabIndex = 22;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(60, 236);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(14, 13);
-            this.radioButton1.TabIndex = 21;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
             // shapeContainer3
             // 
             this.shapeContainer3.Location = new System.Drawing.Point(3, 16);
@@ -466,7 +440,7 @@
             this.shapeContainer3.Name = "shapeContainer3";
             this.shapeContainer3.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.doneStepTwoRect});
-            this.shapeContainer3.Size = new System.Drawing.Size(687, 361);
+            this.shapeContainer3.Size = new System.Drawing.Size(697, 361);
             this.shapeContainer3.TabIndex = 7;
             this.shapeContainer3.TabStop = false;
             // 
@@ -486,7 +460,7 @@
             this.doneStepTwoRect.Location = new System.Drawing.Point(565, 300);
             this.doneStepTwoRect.Name = "doneStepTwoRect";
             this.doneStepTwoRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.doneStepTwoRect.Size = new System.Drawing.Size(119, 54);
+            this.doneStepTwoRect.Size = new System.Drawing.Size(129, 54);
             // 
             // progressFr
             // 
@@ -494,10 +468,10 @@
             this.progressFr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.progressFr.Controls.Add(this.label2);
             this.progressFr.Controls.Add(this.cancelProgressLbl);
-            this.progressFr.Controls.Add(this.progressBar);
+            this.progressFr.Controls.Add(this.DTprogressBar);
             this.progressFr.Controls.Add(this.shapeContainer4);
             this.progressFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.progressFr.Location = new System.Drawing.Point(50, 600);
+            this.progressFr.Location = new System.Drawing.Point(36, 447);
             this.progressFr.Name = "progressFr";
             this.progressFr.Size = new System.Drawing.Size(688, 380);
             this.progressFr.TabIndex = 14;
@@ -509,7 +483,7 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Miriam", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(101, 44);
+            this.label2.Location = new System.Drawing.Point(86, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(334, 37);
             this.label2.TabIndex = 8;
@@ -529,12 +503,12 @@
             this.cancelProgressLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.cancelProgressLbl.Click += new System.EventHandler(this.cancelProgressLbl_Click);
             // 
-            // progressBar
+            // DTprogressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(93, 84);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(504, 85);
-            this.progressBar.TabIndex = 0;
+            this.DTprogressBar.Location = new System.Drawing.Point(93, 84);
+            this.DTprogressBar.Name = "DTprogressBar";
+            this.DTprogressBar.Size = new System.Drawing.Size(504, 85);
+            this.DTprogressBar.TabIndex = 0;
             // 
             // shapeContainer4
             // 
@@ -565,10 +539,6 @@
             this.rectangleShape1.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.rectangleShape1.Size = new System.Drawing.Size(136, 55);
             // 
-            // progressBarTimer
-            // 
-            this.progressBarTimer.Tick += new System.EventHandler(this.progressBarTimer_Tick);
-            // 
             // bitExactFr
             // 
             this.bitExactFr.BackColor = System.Drawing.SystemColors.HighlightText;
@@ -578,7 +548,7 @@
             this.bitExactFr.Controls.Add(this.label6);
             this.bitExactFr.Controls.Add(this.shapeContainer5);
             this.bitExactFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.bitExactFr.Location = new System.Drawing.Point(-700, 200);
+            this.bitExactFr.Location = new System.Drawing.Point(762, 173);
             this.bitExactFr.Name = "bitExactFr";
             this.bitExactFr.Size = new System.Drawing.Size(688, 380);
             this.bitExactFr.TabIndex = 14;
@@ -641,17 +611,53 @@
             this.rectangleShape3.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.rectangleShape3.Size = new System.Drawing.Size(119, 55);
             // 
+            // frameMovementTimer
+            // 
+            this.frameMovementTimer.Interval = 10;
+            this.frameMovementTimer.Tick += new System.EventHandler(this.frameMovementTimer_Tick);
+            // 
+            // stepOneLbl
+            // 
+            this.stepOneLbl.AutoSize = true;
+            this.stepOneLbl.BackColor = System.Drawing.Color.White;
+            this.stepOneLbl.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.stepOneLbl.Font = new System.Drawing.Font("Mistral", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stepOneLbl.Location = new System.Drawing.Point(61, 123);
+            this.stepOneLbl.Name = "stepOneLbl";
+            this.stepOneLbl.Size = new System.Drawing.Size(120, 44);
+            this.stepOneLbl.TabIndex = 2;
+            this.stepOneLbl.Text = "Step One";
+            this.stepOneLbl.Click += new System.EventHandler(this.stepOneLbl_Click);
+            // 
+            // stepTwoLbl
+            // 
+            this.stepTwoLbl.AutoSize = true;
+            this.stepTwoLbl.BackColor = System.Drawing.Color.White;
+            this.stepTwoLbl.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.stepTwoLbl.Font = new System.Drawing.Font("Mistral", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stepTwoLbl.Location = new System.Drawing.Point(219, 126);
+            this.stepTwoLbl.Name = "stepTwoLbl";
+            this.stepTwoLbl.Size = new System.Drawing.Size(115, 44);
+            this.stepTwoLbl.TabIndex = 3;
+            this.stepTwoLbl.Text = "Step Two";
+            this.stepTwoLbl.Click += new System.EventHandler(this.stepTwoLbl_Click);
+            // 
+            // progressBarTimer
+            // 
+            this.progressBarTimer.Tick += new System.EventHandler(this.progressBarTimer_Tick);
+            // 
             // stepThreeLbl
             // 
             this.stepThreeLbl.AutoSize = true;
             this.stepThreeLbl.BackColor = System.Drawing.Color.White;
             this.stepThreeLbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepThreeLbl.Font = new System.Drawing.Font("Mistral", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stepThreeLbl.Location = new System.Drawing.Point(379, 124);
+            this.stepThreeLbl.Location = new System.Drawing.Point(382, 124);
             this.stepThreeLbl.Name = "stepThreeLbl";
             this.stepThreeLbl.Size = new System.Drawing.Size(127, 44);
             this.stepThreeLbl.TabIndex = 15;
             this.stepThreeLbl.Text = "Step Three";
+            this.stepThreeLbl.Click += new System.EventHandler(this.stepThreeLbl_Click);
             // 
             // shapeContainer1
             // 
@@ -662,7 +668,7 @@
             this.stepThreeRect,
             this.stepTwoRect,
             this.stepOneRect});
-            this.shapeContainer1.Size = new System.Drawing.Size(747, 594);
+            this.shapeContainer1.Size = new System.Drawing.Size(781, 606);
             this.shapeContainer1.TabIndex = 0;
             this.shapeContainer1.TabStop = false;
             // 
@@ -677,7 +683,7 @@
             this.stepThreeRect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepThreeRect.FillColor = System.Drawing.Color.White;
             this.stepThreeRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.stepThreeRect.Location = new System.Drawing.Point(207, 121);
+            this.stepThreeRect.Location = new System.Drawing.Point(214, 120);
             this.stepThreeRect.Name = "stepThreeRect";
             this.stepThreeRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.stepThreeRect.Size = new System.Drawing.Size(150, 50);
@@ -693,7 +699,7 @@
             this.stepTwoRect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepTwoRect.FillColor = System.Drawing.Color.White;
             this.stepTwoRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.stepTwoRect.Location = new System.Drawing.Point(368, 121);
+            this.stepTwoRect.Location = new System.Drawing.Point(376, 121);
             this.stepTwoRect.Name = "stepTwoRect";
             this.stepTwoRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.stepTwoRect.Size = new System.Drawing.Size(150, 50);
@@ -709,7 +715,7 @@
             this.stepOneRect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepOneRect.FillColor = System.Drawing.Color.White;
             this.stepOneRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.stepOneRect.Location = new System.Drawing.Point(49, 119);
+            this.stepOneRect.Location = new System.Drawing.Point(51, 118);
             this.stepOneRect.Name = "stepOneRect";
             this.stepOneRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.stepOneRect.Size = new System.Drawing.Size(150, 50);
@@ -720,11 +726,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(747, 594);
-            this.Controls.Add(this.stepThreeLbl);
+            this.ClientSize = new System.Drawing.Size(781, 606);
             this.Controls.Add(this.bitExactFr);
             this.Controls.Add(this.progressFr);
             this.Controls.Add(this.FilterPath);
+            this.Controls.Add(this.stepThreeLbl);
             this.Controls.Add(this.stepTwoLbl);
             this.Controls.Add(this.stepOneLbl);
             this.Controls.Add(this.PathFrame);
@@ -739,13 +745,13 @@
             this.PathFrame.ResumeLayout(false);
             this.PathFrame.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.FilterPath.ResumeLayout(false);
             this.FilterPath.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.progressFr.ResumeLayout(false);
             this.progressFr.PerformLayout();
             this.bitExactFr.ResumeLayout(false);
@@ -777,10 +783,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox FilterPath;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer3;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape doneStepTwoRect;
         private System.Windows.Forms.PictureBox pictureBox5;
@@ -792,7 +794,7 @@
         private System.Windows.Forms.Label numPicsLbl;
         private System.Windows.Forms.Label numLbl;
         private System.Windows.Forms.GroupBox progressFr;
-        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.ProgressBar DTprogressBar;
         private System.Windows.Forms.Timer progressBarTimer;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label cancelProgressLbl;
@@ -809,6 +811,10 @@
         protected Microsoft.VisualBasic.PowerPacks.RectangleShape stepThreeRect;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape stepTwoRect;
         protected Microsoft.VisualBasic.PowerPacks.RectangleShape stepOneRect;
+        private System.Windows.Forms.CheckBox badContrastChckBox;
+        private System.Windows.Forms.CheckBox partitialChckBox;
+        private System.Windows.Forms.CheckBox identicalPicsChckBox;
+        private System.Windows.Forms.CheckBox similarPicChckBox;
 
 
 

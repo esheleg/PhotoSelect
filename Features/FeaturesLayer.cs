@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Diagnostics;
 namespace Features
 {
     public enum Feature { BIT_EXACT = 0, BAD_CONTRAST, SIMILARITY, PARTIAL_BLOCKAGE, NUM_FEATURES };
@@ -60,16 +62,26 @@ namespace Features
     
     public class FeaturesLayer
     {
+        /// <summary>
+        /// the time that the statusUpdater will check the RunStatus of the features
+        /// </summary>
+        static readonly int TIME_TO_CHECK_RUN_STATUS = 1000; // [ms]
         
         private ImageInfo[] _images;        
 
+        private BitExact _bitExact;
+        private Thread _bitExactThread;
+
+        private Thread _statusUpdaterThread;
+
         private int _loadingImagesStatus; // read only        
-        private int _runStatus; // readonly
-        private Task _task;
+        private int _runStatus; // read only
+        private Task _task;               
 
         public FeaturesLayer(ref Task task)
         {
-            _task = task; // TODO - could cause memory problems
+            _bitExactThread = null;
+            _bitExact = null;
             _loadingImagesStatus = 0;
             _runStatus = 0;
             _images = new ImageInfo[task.ImagePathes.Count];
@@ -123,12 +135,51 @@ namespace Features
             }
 
         }
+
+        /// <summary>
+        /// Get the RunStatus of the running features
+        /// </summary>
+        public int RunStatus
+        {
+            get { return _runStatus; }
+        }
+        /// <summary>
+        /// This will be called in a different thread, 
+        /// It will start the features run and the statusUpdater
+        /// </summary>
+        public void run()
+        {
+            if (_task.Features[(int)Feature.BIT_EXACT])
+            {            
+                _bitExact = new BitExact(_images);
+                _bitExactThread = new Thread(_bitExact.run);
+                _bitExactThread.Start();
+            }
+
+            _statusUpdaterThread = new Thread(statusUpdater);
+            _statusUpdaterThread.Start();
+
+        }
         #endregion (GUI --> BRAIN) Methods
 
-        private void runBitExact()
+
+        /// <summary>
+        /// This will update (in diff thread)  _runStatus;
+        /// </summary>
+        private void statusUpdater()
         {
-            // here we will call the bitExactFeature with the task images
-        }
+            if (_bitExact != null)
+            {
+                while (_bitExact.RunStatus < 100)
+                {                    
+                    _runStatus = _bitExact.RunStatus;
+                    Thread.Sleep(TIME_TO_CHECK_RUN_STATUS);
+                }
+                _runStatus = _bitExact.RunStatus;
+                _bitExact = null;
+                _bitExactThread = null;
+            }
+        }        
 
 
     }

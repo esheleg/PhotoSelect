@@ -126,6 +126,17 @@ namespace Features
             }
             catch (Exception e) { throw e; }
         }
+        public ImageInfo(ImageInfo origIm, Size newSize)
+        {            
+            _imGray = new Bitmap(origIm.getIm(), newSize);
+            _hist = null;
+            _imf = null;
+            _imb = null;
+            _path = null;
+            _width = newSize.Width;
+            _height = newSize.Height;
+
+        }
         public string getPath() { return _path;}
         public Bitmap getIm()
         {
@@ -178,7 +189,7 @@ namespace Features
         /// <param name="image"></original image type>
         public void oirgIm2grayCropped(System.Drawing.Image image)
         {
-            Bitmap origImCropped = new Bitmap(image, croppedSize(image.Size));
+            Bitmap origImCropped = new Bitmap(image, croppedSize(image.Size));            
             _imGray = GRAY_FILTER.Apply(origImCropped);
         }
 

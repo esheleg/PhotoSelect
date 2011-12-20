@@ -118,6 +118,17 @@ namespace FeaturesTests
                 }
                 Console.WriteLine();
             }
-        }       
+        }
+        [TestMethod]
+        public void TestImageInfoCopyResizeConstructor()
+        {
+            string path = @"C:\Users\Yossi\Dropbox\Project\BitExact Pictures\pic450X800.jpg";
+            ImageInfo origIm = new ImageInfo(path);
+            ImageInfo origIm2 = new ImageInfo(origIm, new Size(origIm.Width/2, origIm.Height/2));
+            ImageInfo.writeImage(origIm, @"C:\Users\Yossi\Dropbox\Project\BitExact Pictures\" + "orig.jpg");
+            ImageInfo.writeImage(origIm2, @"C:\Users\Yossi\Dropbox\Project\BitExact Pictures\" + "orig2.jpg");
+
+        }
+
     }
 }
