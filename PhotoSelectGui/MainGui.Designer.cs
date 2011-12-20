@@ -485,7 +485,7 @@
             this.progressFr.Controls.Add(this.DTprogressBar);
             this.progressFr.Controls.Add(this.shapeContainer4);
             this.progressFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.progressFr.Location = new System.Drawing.Point(36, 447);
+            this.progressFr.Location = new System.Drawing.Point(25, 550);
             this.progressFr.Name = "progressFr";
             this.progressFr.Size = new System.Drawing.Size(688, 380);
             this.progressFr.TabIndex = 14;
@@ -664,7 +664,7 @@
             // 
             // bitExactFr
             // 
-            this.bitExactFr.BackColor = System.Drawing.Color.Transparent;
+            this.bitExactFr.BackColor = System.Drawing.Color.GhostWhite;
             this.bitExactFr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bitExactFr.Controls.Add(this.label11);
             this.bitExactFr.Controls.Add(this.labelname);
@@ -794,6 +794,7 @@
             // 
             // buttonDeleteSelected
             // 
+            this.buttonDeleteSelected.Enabled = false;
             this.buttonDeleteSelected.ForeColor = System.Drawing.Color.Black;
             this.buttonDeleteSelected.Location = new System.Drawing.Point(25, 349);
             this.buttonDeleteSelected.Name = "buttonDeleteSelected";
@@ -867,6 +868,7 @@
             // 
             // PictureResult
             // 
+            this.PictureResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PictureResult.Location = new System.Drawing.Point(25, 19);
             this.PictureResult.Name = "PictureResult";
             this.PictureResult.Size = new System.Drawing.Size(186, 148);

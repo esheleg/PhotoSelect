@@ -456,12 +456,21 @@ namespace PhotoSelectGui
 
 
         //creating a demo to check functions for frame 4
-
+                   // foreach (string filepath in filePaths) //  fills the list of files "filePaths" to send to brain 
+               // MatchesList.Items.Add(filepath);
         private void createdemo_Click_1(object sender, EventArgs e)
         {
+            int bitXCurrent=0; //current head to show on bitexact
             MatchesList.Items.Clear();
-            foreach (string filepath in filePaths) //  fills the list of files "filePaths" to send to brain 
-                MatchesList.Items.Add(filepath);
+            if(core.Res.BitExact.Matches.Count!=0){
+                MessageBox.Show("נמצאו תוצאות");
+                for (int i = 0; i < core.Res.BitExact.Matches[bitXCurrent].Count; i++)
+                {
+                    MatchesList.Items.Add(core.Res.BitExact.Matches[bitXCurrent][i]);
+                }
+
+            }else
+                MessageBox.Show("לא נמצאו תמונות דומות");
         }
         //deleting the selected items from checkboxlist
         //in the fouture will not delete- will save in "todelete" list
