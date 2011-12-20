@@ -84,6 +84,7 @@ namespace Features
                 runStatus = (int)Math.Round(((i + 1) / (float)numImages) * 100);
            
             }
+            runStatus = 100;
             // set results
             results = new BitExactRes(matches);
         }
