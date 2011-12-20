@@ -99,10 +99,12 @@ namespace Features
 
         public FeaturesLayer(ref Task task)
         {
+            _res = new Results();
             _bitExactThread = null;
             _bitExact = null;
             _task = task;
             _loadingImagesStatus = 0;
+            _runStatus = 0;
             _images = new ImageInfo[task.ImagePathes.Count];
         }        
 
@@ -179,9 +181,10 @@ namespace Features
                     _runStatus = _bitExact.RunStatus;
                     Thread.Sleep(TIME_TO_CHECK_RUN_STATUS);
                 }
+                _res.setBitExact(_bitExact.Results);
                 _runStatus = _bitExact.RunStatus;
                 _bitExact = null;
-                _bitExactThread = null;
+                _bitExactThread = null;                
             }
         }        
 
