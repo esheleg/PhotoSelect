@@ -181,6 +181,7 @@ namespace Features
                     _runStatus = _bitExact.RunStatus;
                     Thread.Sleep(TIME_TO_CHECK_RUN_STATUS);
                 }
+                _runStatus = _bitExact.RunStatus;
                 _res.setBitExact(_bitExact.Results);
                 _runStatus = _bitExact.RunStatus;
                 _bitExact = null;

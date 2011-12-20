@@ -74,7 +74,6 @@ namespace Features
                     runStatus = (int)Math.Round(((i + 1) / (float)numImages) * 100);
                     continue;
                 }
-                Debug.WriteLine("{0}", numImages);
                    for (int j = i + 1; j <= numImages-1 ; j++)
                     if (propotions[i] == propotions[j] && (!checkedImages[j])) //check only images with similar propotions
                         equalImages(i, j); //equal is true if there is a match
@@ -83,8 +82,9 @@ namespace Features
                 
                     
                 runStatus = (int)Math.Round(((i + 1) / (float)numImages) * 100);
-                Debug.WriteLine("{0}", "After");
+           
             }
+            runStatus = 100;
             // set results
             results = new BitExactRes(matches);
         }
@@ -139,63 +139,53 @@ namespace Features
         //equal images with similar propotion
         public void equalImages(int first, int second)
         {
-            ImageInfo temp1 = images[first], temp2 = images[second];
+            ImageInfo temp1=null, temp2=null;
 
-            int size = similarSizes(first, second);
+            int size = similarSizes(out temp1,out temp2, first, second);
             
-            byte[] firstA = images[first].getImb();
-            byte[] secondA = images[second].getImb();
+            byte[] firstA = temp1.getImb();
+            byte[] secondA = temp2.getImb();
             
             int sum = 0; 
             
             for (int i = 0; i < size; i++)
                 sum += Math.Abs(firstA[i] - secondA[i]);
 
-            images[first] = temp1;
-            images[second] = temp2;
-
-            bool temp = false;
-            //if the success more then (95%) [100 - 100 * ARROUND] the images is eaqual
-            if (sum  <= 100*AROUND*size )
-            {
-                Debug.WriteLine("{0}", "is equal!!!");
-                Debug.WriteLine("{0} \n {1}", images[first].getPath(), images[second].getPath());
-                Debug.WriteLine("{0}", "****************");
-                AddToResult(first, second);
-                temp = true;
-            }
-
-            if (!temp)
-            {
-                Debug.WriteLine("{0}", "unequal !!");
-                Debug.WriteLine("{0} \n {1}", images[first].getPath(), images[second].getPath());
-                Debug.WriteLine("{0}", "****************");
-            }
             
+            //if the success more then (95%) [100 - 100 * ARROUND] the images is eaqual
+            if (sum <= 100 * AROUND * size)
+                AddToResult(first, second);
+                  
 
-
+           
         }
 
-        private int similarSizes(int first, int second)
-        {
-            int size = images[first].Height * images[first].Width;
-            int size2 = images[second].Height * images[second].Width;
 
-            
+        private int similarSizes(out ImageInfo first,out  ImageInfo second, int i, int j)
+        {
+            int size = images[i].Height * images[i].Width;
+            int size2 = images[j].Height * images[j].Width;
+
+
             if (size / size2 != 1)
             {
                 if (size2 < size)
                 {
-                    images[first] =
-                        new ImageInfo(images[first], new Size(images[second].Height, images[second].Width));
+                    first = new ImageInfo(images[i], new Size(images[j].Width, images[j].Height));
+                    second = new ImageInfo(images[j], new Size(images[j].Width, images[j].Height));
                     return size2;
                 }
                 else
                 {
-                    images[second] =
-                         new ImageInfo(images[second], new Size(images[first].Height, images[first].Width));
+                    first = new ImageInfo(images[i], new Size(images[i].Height, images[i].Width));
+                    second = new ImageInfo(images[j], new Size(images[i].Height, images[i].Width));
                     return size;
                 }
+            }
+            else
+            {
+                first = new ImageInfo(images[i], new Size(images[i].Height, images[i].Width));
+                second = new ImageInfo(images[j], new Size(images[i].Height, images[i].Width));
             }
             return size;
         }
