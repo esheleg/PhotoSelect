@@ -576,7 +576,7 @@ namespace PhotoSelectGui
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            if (0< bitcurr)
+            if (1< bitcurr)
                 bitcurr--;
 
             if (core.Res.BitExact.Matches.Count >= bitcurr && bitcurr>=1)
