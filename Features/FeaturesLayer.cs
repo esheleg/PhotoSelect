@@ -46,10 +46,10 @@ namespace Features
             _matches = new List<List<string>>(matches.Count);
             foreach (List<string> lst in matches)
             {
-                matches.Add(new List<string>(lst.Count));
+                _matches.Add(new List<string>(lst.Count));
                 foreach (string path in lst)
                 {
-                    matches.Last().Add(path);
+                    _matches.Last().Add(path);
                 }
             }
         }
@@ -57,6 +57,20 @@ namespace Features
         {            
             get { return _matches; }            
         }
+    }
+
+    public struct Results
+    {
+        private BitExactRes _bitExactRes;
+        public BitExactRes BitExact
+        {
+            get { return _bitExactRes; }
+        }
+        public void setBitExact(BitExactRes bitExactRes)
+        {
+            _bitExactRes = new BitExactRes(bitExactRes.Matches);
+        }
+
     }
     #endregion
     
@@ -78,20 +92,28 @@ namespace Features
 
         private int _loadingImagesStatus; // read only
         private int _runStatus; // read only
-        private Task _task;               
+        private Task _task;
+        private Results _res;    
 
         #endregion
 
         public FeaturesLayer(ref Task task)
         {
+            _res = new Results();
             _bitExactThread = null;
             _bitExact = null;
             _task = task;
             _loadingImagesStatus = 0;
+            _runStatus = 0;
             _images = new ImageInfo[task.ImagePathes.Count];
         }        
 
         # region (GUI --> BRAIN) Methods
+
+        public Results Res
+        {
+            get { return _res; }
+        }
         /// <summary>
         /// returns the completion percetage of the loadImages() method
         /// </summary>
@@ -159,9 +181,10 @@ namespace Features
                     _runStatus = _bitExact.RunStatus;
                     Thread.Sleep(TIME_TO_CHECK_RUN_STATUS);
                 }
+                _res.setBitExact(_bitExact.Results);
                 _runStatus = _bitExact.RunStatus;
                 _bitExact = null;
-                _bitExactThread = null;
+                _bitExactThread = null;                
             }
         }        
 

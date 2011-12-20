@@ -58,9 +58,9 @@ namespace Features
         }
 
         //this is the struct function that will be returned after the BitExact Feature process is ended
-        public BitExactRes getResults()
+        public BitExactRes Results
         {
-            return results;
+            get { return results; }
         }
 
         //function that check matches
