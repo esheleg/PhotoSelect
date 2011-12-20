@@ -432,7 +432,7 @@ namespace PhotoSelectGui
                     frameMovementTimer.Enabled = true;
                     DBprogressBar.Value = 0;
                     //-------------- starting to load results after loading as done -------//
-                    //int bitXCurrent = 0; //current head to show on bitexact
+                    //int bitXCurrent //current head to show on bitexact
                     MatchesList.Items.Clear();
                     if (core.Res.BitExact.Matches.Count != 0)
                     {
@@ -443,6 +443,29 @@ namespace PhotoSelectGui
                         }
                         labelcurr.Text = core.Res.BitExact.Matches.Count.ToString();
                         labelnow.Text = "1";
+                        
+                        
+                        try
+                        {
+                            if (image != null)
+                                image.Dispose();
+                            image = null;
+                            // Check if textbox has a value
+
+                            image = Image.FromFile(core.Res.BitExact.Matches[bitcurr - 1][0].ToString());
+                            // Check if image exists
+                            if (image != null)
+                            {
+                                PictureResult.Image = image.GetThumbnailImage(186, 148, null, new IntPtr());
+                                labelLoc.Text = core.Res.BitExact.Matches[bitcurr - 1][0].ToString();
+                            }
+                        }
+                        catch
+                        {
+                            MessageBox.Show("An error occured");
+                        }
+                        PictureResult.Refresh();
+                        
                     }
                     else
                         MessageBox.Show("לא נמצאו תמונות דומות");
@@ -568,7 +591,30 @@ namespace PhotoSelectGui
                 {
                     MatchesList.Items.Add(core.Res.BitExact.Matches[bitcurr-1][i]);
                 }
+
                 labelnow.Text = bitcurr.ToString();
+                //--- load auto image ---------------------------------------------------
+                try
+                {
+                    if (image != null)
+                        image.Dispose();
+                    image = null;
+                    // Check if textbox has a value
+
+                    image = Image.FromFile(core.Res.BitExact.Matches[bitcurr - 1][0].ToString());
+                    // Check if image exists
+                    if (image != null)
+                    {
+                        PictureResult.Image = image.GetThumbnailImage(186, 148, null, new IntPtr());
+                        labelLoc.Text = core.Res.BitExact.Matches[bitcurr - 1][0].ToString();
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("An error occured");
+                }
+                PictureResult.Refresh();
+                //-----------------------------------------------------------------------
             }
 
 
@@ -587,6 +633,28 @@ namespace PhotoSelectGui
                     MatchesList.Items.Add(core.Res.BitExact.Matches[bitcurr-1][i]);
                 }
                 labelnow.Text = bitcurr.ToString();
+                //--- load auto image ---------------------------------------------------
+                try
+                {
+                    if (image != null)
+                        image.Dispose();
+                    image = null;
+                    // Check if textbox has a value
+
+                    image = Image.FromFile(core.Res.BitExact.Matches[bitcurr - 1][0].ToString());
+                    // Check if image exists
+                    if (image != null)
+                    {
+                        PictureResult.Image = image.GetThumbnailImage(186, 148, null, new IntPtr());
+                        labelLoc.Text = core.Res.BitExact.Matches[bitcurr - 1][0].ToString();
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("An error occured");
+                }
+                PictureResult.Refresh();
+                //-----------------------------------------------------------------------
             }
 
         }

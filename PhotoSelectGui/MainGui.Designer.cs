@@ -274,7 +274,7 @@
             this.FilterPath.Controls.Add(this.doneStepTwoLbl);
             this.FilterPath.Controls.Add(this.shapeContainer3);
             this.FilterPath.ForeColor = System.Drawing.Color.Cornsilk;
-            this.FilterPath.Location = new System.Drawing.Point(25, 582);
+            this.FilterPath.Location = new System.Drawing.Point(12, 579);
             this.FilterPath.Name = "FilterPath";
             this.FilterPath.Size = new System.Drawing.Size(703, 380);
             this.FilterPath.TabIndex = 4;
@@ -310,9 +310,8 @@
             this.partitialChckBox.Enabled = false;
             this.partitialChckBox.Location = new System.Drawing.Point(248, 236);
             this.partitialChckBox.Name = "partitialChckBox";
-            this.partitialChckBox.Size = new System.Drawing.Size(80, 17);
+            this.partitialChckBox.Size = new System.Drawing.Size(15, 14);
             this.partitialChckBox.TabIndex = 27;
-            this.partitialChckBox.Text = "checkBox2";
             this.partitialChckBox.UseVisualStyleBackColor = true;
             this.partitialChckBox.CheckedChanged += new System.EventHandler(this.partitialChckBox_CheckedChanged);
             // 
@@ -493,7 +492,7 @@
             this.progressFr.Controls.Add(this.DBprogressBar);
             this.progressFr.Controls.Add(this.shapeContainer4);
             this.progressFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.progressFr.Location = new System.Drawing.Point(25, 196);
+            this.progressFr.Location = new System.Drawing.Point(12, 588);
             this.progressFr.Name = "progressFr";
             this.progressFr.Size = new System.Drawing.Size(688, 380);
             this.progressFr.TabIndex = 14;
@@ -952,8 +951,8 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(781, 606);
             this.Controls.Add(this.FilterPath);
-            this.Controls.Add(this.PathFrame);
             this.Controls.Add(this.bitExactFr);
+            this.Controls.Add(this.PathFrame);
             this.Controls.Add(this.progressFr);
             this.Controls.Add(this.stepThreeLbl);
             this.Controls.Add(this.stepTwoLbl);
