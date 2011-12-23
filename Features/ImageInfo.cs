@@ -31,7 +31,7 @@ namespace Features
 
         # endregion consts
 
-        # region static functions
+        # region ****************static functions********************
 
         /// <summary>
         /// runs a two dimentional convolution on im,
@@ -83,7 +83,7 @@ namespace Features
 
         # endregion static functions
 
-        # region Class Properties
+        # region ****************Class Properties****************
 
         private float[] _imf;
         private Histogram _hist; // AForge.Math.Histogram
@@ -98,7 +98,7 @@ namespace Features
 
         # endregion **************************Class Properties*********************
 
-        #region Read Only Properties
+        #region ************Read Only Properties**************
 
         public int Width {get { return _width; }}
 
@@ -107,7 +107,7 @@ namespace Features
         #endregion Read Only Properties
 
 
-        # region public functions
+        # region ***************public functions****************
         public ImageInfo(string path)
         {
             _disposed = false;
@@ -171,7 +171,7 @@ namespace Features
 
         # endregion public functions
 
-        # region private functions
+        # region ***************private functions**************
 
         /// <summary>
         /// this construr gets the _imGray of an ImageInfo in order to get another object
