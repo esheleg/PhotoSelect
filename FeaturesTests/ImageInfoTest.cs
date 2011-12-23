@@ -7,6 +7,7 @@ using Features;
 using System.Drawing;
 using System.IO;
 using System.Threading;
+using System.Diagnostics;
 namespace FeaturesTests
 {
     [TestClass]
@@ -127,6 +128,27 @@ namespace FeaturesTests
             ImageInfo origIm2 = new ImageInfo(origIm, new Size(origIm.Width/2, origIm.Height/2));
             ImageInfo.writeImage(origIm, @"C:\Users\Yossi\Dropbox\Project\BitExact Pictures\" + "orig.jpg");
             ImageInfo.writeImage(origIm2, @"C:\Users\Yossi\Dropbox\Project\BitExact Pictures\" + "orig2.jpg");
+
+        }
+        [TestMethod]
+        public void TestDIspose()
+        {
+            string path = @"C:\Users\Daniel\Desktop\iPhone Photos\";
+            string[] pathes = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
+            ImageInfo[] images = new ImageInfo[pathes.Length];
+            for (int i = 0; i < images.Length; i++)
+            {
+                images[i] = new ImageInfo(pathes[i]);
+            }            
+            Thread.Sleep(5000);
+            Debug.WriteLine("Start Dispose");
+            for (int i = 0; i < images.Length; i++)
+            {
+                images[i].Dispose();
+            }
+            Thread.Sleep(4000);
+            Debug.WriteLine("End Dispose");
+            Thread.Sleep(5000);
 
         }
 

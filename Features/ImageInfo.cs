@@ -17,8 +17,8 @@ using BitmapData = System.Drawing.Imaging.BitmapData;
 using Rectangle = System.Drawing.Rectangle;
 
 namespace Features
-{      
-    public class ImageInfo
+{
+    public class ImageInfo : IDisposable
     {
 
         # region consts      
@@ -93,9 +93,10 @@ namespace Features
         private int _width;
         private int _height;
 
+        private bool _disposed;
 
 
-        # endregion Class Properties
+        # endregion **************************Class Properties*********************
 
         #region Read Only Properties
 
@@ -109,6 +110,8 @@ namespace Features
         # region public functions
         public ImageInfo(string path)
         {
+            _disposed = false;
+
             _hist = null;
             _imf = null;
             _imb = null;
@@ -127,7 +130,9 @@ namespace Features
             catch (Exception e) { throw e; }
         }
         public ImageInfo(ImageInfo origIm, Size newSize)
-        {            
+        {
+            _disposed = false;
+
             _imGray = new Bitmap(origIm.getIm(), newSize);
             _hist = null;
             _imf = null;
@@ -175,6 +180,8 @@ namespace Features
         /// <param name="imGray"></param>
         private ImageInfo(Bitmap imGray)
         {
+            _disposed = false;
+
             _path = null;
             _hist = null;
             _imf = null;
@@ -281,6 +288,38 @@ namespace Features
             }
             return _imb;
         }
-        # endregion public functions        
+        # endregion public functions    
+    
+        #region ***************IDisposable*******************
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        // TODO - check if the arrays can be disposed somehow wthout massing the GC work flow
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    _imGray.Dispose();
+                    _imGray = null;
+                    _imb = null;
+                    _imf = null;
+                    _hist = null;
+                }
+                _disposed = true;
+            }          
+        }
+
+        ~ImageInfo()
+        {
+            Dispose(false);
+        }
+
+
+        #endregion ***************IDisposable*******************
     }
 }
