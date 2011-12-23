@@ -5,7 +5,6 @@ using System.Text;
 using System.Drawing;
 using System.Diagnostics;
 using Bitmap = System.Drawing.Bitmap;
-using System.Diagnostics;
 
 namespace Features
 {

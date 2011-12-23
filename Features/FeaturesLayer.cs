@@ -110,6 +110,9 @@ namespace Features
 
         # region (GUI --> BRAIN) Methods
 
+        /// <summary>
+        /// This Property holds the features results structs
+        /// </summary>
         public Results Res
         {
             get { return _res; }
@@ -124,6 +127,7 @@ namespace Features
         }
         /// <summary>
         /// sets the array of ImageInfo and creates the objects
+        /// Throws any generated Exception on ImageInfo constructor call
         /// </summary>
         public void loadImages()
         {
