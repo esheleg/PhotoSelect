@@ -129,6 +129,11 @@ namespace Features
             }
             catch (Exception e) { throw e; }
         }
+        /// <summary>
+        /// Copyies _imGray with newSize, updates size and and null's the rest of the valeus
+        /// </summary>
+        /// <param name="origIm"></param>
+        /// <param name="newSize"></param>
         public ImageInfo(ImageInfo origIm, Size newSize)
         {
             _disposed = false;
@@ -140,6 +145,39 @@ namespace Features
             _path = null;
             _width = newSize.Width;
             _height = newSize.Height;
+
+        }        
+        /// <summary>
+        /// DeepCopy Constructor
+        /// </summary>
+        /// <param name="from">Copied Source</param>
+        public ImageInfo(ImageInfo from)
+        {
+
+            _disposed = false;
+            // copy path
+            _path = from.getPath();
+            // copy gray image
+            _imGray = new Bitmap(from.getIm());
+            // copy histogram
+            _hist = from.getHist() == null ? null : copyHist(from.getHist());
+            // copy _imf
+            if (from.getImF() != null)
+            {
+                _imf = new float[from.getImF().Length];
+                from.getImF().CopyTo(_imf, 0);
+            }
+            else { _imf = null; }
+            // copy _imb
+            if (from.getImF() != null)
+            {
+                _imb = new byte[from.getImb().Length];
+                from.getImb().CopyTo(_imb, 0);
+            }
+            else { _imb = null; }
+            // copy size                        
+            _width = from.Width;
+            _height = from.Height;            
 
         }
         public string getPath() { return _path;}
@@ -189,6 +227,19 @@ namespace Features
             _width = _imGray.Width;
             _height = _imGray.Height;
 
+        }
+        /// <summary>
+        /// return a full depp copy
+        /// </summary>
+        /// <param name="from">Source</param>
+        /// <returns>Copyed reference</returns>
+        private Histogram copyHist(Histogram from)
+        {
+            int[] values = new int[from.Values.Length];
+            from.Values.CopyTo(values, 0);
+            Histogram to = new Histogram(values);
+            to.Update();
+            return to;
         }
         /// <summary>
         /// convers the image into a grayscaled bimap with an area <MAX_IMAGE_AREA
@@ -257,6 +308,7 @@ namespace Features
 
                 }
             }
+            _imGray.UnlockBits(imGrayData);
             return _imf;
         }
         /// <summary>
@@ -286,6 +338,7 @@ namespace Features
 
                 }
             }
+            _imGray.UnlockBits(imGrayData);            
             return _imb;
         }
         # endregion public functions    

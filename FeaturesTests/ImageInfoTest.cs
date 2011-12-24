@@ -84,7 +84,6 @@ namespace FeaturesTests
             Assert.IsTrue(imf.Max() <= 1 && imf.Min() >= 0 &&
                 imf.Length == (im.getIm().Width * im.getIm().Height));
         }
-
         [TestMethod]
         public void TestConv2()
         {
@@ -149,6 +148,20 @@ namespace FeaturesTests
             Thread.Sleep(4000);
             Debug.WriteLine("End Dispose");
             Thread.Sleep(5000);
+
+        }
+        [TestMethod]
+        public void TestDeepCopyCOns()
+        {
+            ImageInfo from = new ImageInfo(PATH_160_120_RGB);
+            from.getHist();
+            from.getImb();
+            from.getImF();
+            ImageInfo to = new ImageInfo(from);
+            from.Dispose();
+            from = null;
+            Debug.WriteLine("B:{0},F:{1}, W:{2}, H:{3}, HISTMEAN:{4}, P:{5}",
+                to.getImb().Length, to.getImF().Length, to.Width, to.Height, to.getHist().Mean, to.getPath());            
 
         }
 

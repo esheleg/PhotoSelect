@@ -8,30 +8,40 @@ namespace Features
 {
     public enum Feature { BIT_EXACT = 0, BAD_CONTRAST, SIMILARITY, PARTIAL_BLOCKAGE, NUM_FEATURES };
 
+
+    # region ******************(GUI --> BRAIN) Structures********************
     /// <summary>
     /// // this struct will recieve the task information from the gui
     /// </summary>
     /// 
-    # region (GUI --> BRAIN) Structures
     public struct Task
-    {
+    {// TODO - test and check if refernced objects can realy be readonly
         private List<string> _pathes;
-        private bool[] _features;        
-
-        public Task(List<string> pathes, bool[] feauters)
-        {
-            _pathes = pathes;
-            _features = feauters;
-        }
-
-        public List<string> ImagePathes
-        {
-            get { return _pathes; }
-        }
         public bool[] Features
         {
             get { return _features; }
         }
+        private bool[] _features;
+        public List<string> ImagePathes
+        {
+            get { return _pathes; }
+        }        
+        /// <summary>
+        /// DeepCopy constructor
+        /// </summary>
+        /// <param name="from"></param>
+        public Task(Task from) : this(from.ImagePathes, from.Features) {}
+        public Task(List<string> pathes, bool[] feauters)
+        {
+
+            // copy pathes
+            _pathes = new List<string>(pathes.Count);
+            foreach (string path in pathes)
+                _pathes.Add(path);
+            // copy features flags
+            _features = new bool[feauters.Length];
+            feauters.CopyTo(_features,0);
+        }        
 
     }
     /// <summary>
@@ -40,9 +50,11 @@ namespace Features
     public struct BitExactRes
     {
         private List<List<string>> _matches;
-
+        /// <summary>
+        /// deep copy of matches
+        /// </summary>
         public BitExactRes(List<List<string>> matches)
-        {
+        {// TODO - need to change this to array
             _matches = new List<List<string>>(matches.Count);
             foreach (List<string> lst in matches)
             {
@@ -62,6 +74,10 @@ namespace Features
     public struct Results
     {
         private BitExactRes _bitExactRes;
+        public Results(BitExactRes bitExactRes)
+        {
+            _bitExactRes = new BitExactRes(bitExactRes.Matches);
+        }
         public BitExactRes BitExact
         {
             get { return _bitExactRes; }
@@ -72,8 +88,8 @@ namespace Features
         }
 
     }
-    #endregion
-    
+    #endregion ******************(GUI --> BRAIN) Structures********************
+
     public class FeaturesLayer
     {
         /// <summary>
@@ -99,12 +115,16 @@ namespace Features
 
         public FeaturesLayer(ref Task task)
         {
+            // copy task
+            _task = new Task(task);
+            // init results struct
             _res = new Results();
             _bitExactThread = null;
-            _bitExact = null;
-            _task = task;
+            _bitExact = null;     
+            // set status to 0
             _loadingImagesStatus = 0;
             _runStatus = 0;
+            // allocate memory for ImageInfo array
             _images = new ImageInfo[task.ImagePathes.Count];
         }        
 
@@ -141,7 +161,7 @@ namespace Features
                 {
                     throw e;
                 }
-                _loadingImagesStatus = (int)(((float)(i + 1) / _images.Length) * 100);
+                _loadingImagesStatus = (int)( ( (float)(i + 1) * 100 ) / _images.Length );
             }
 
         }
