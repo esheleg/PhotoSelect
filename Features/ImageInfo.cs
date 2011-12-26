@@ -85,6 +85,11 @@ namespace Features
 
         # region ****************Class Properties****************
 
+        private Object histLcok = new object();
+        private Object imbLock = new object();
+        private Object imfLcok = new object();        
+
+
         private float[] _imf;
         private Histogram _hist; // AForge.Math.Histogram
         private Bitmap _imGray; // System.Drawing.Bitmap
@@ -109,13 +114,16 @@ namespace Features
 
         # region ***************public functions****************
         public ImageInfo(string path)
-        {
+        {            
             _disposed = false;
 
+            // image info
             _hist = null;
             _imf = null;
             _imb = null;
             _height = _width = 0;
+
+
             this._path = path;
             try
             {
@@ -277,9 +285,12 @@ namespace Features
         /// </summary>
         private Histogram createHist()
         {
-            if (_hist != null) return _hist;
-            _hist = (new ImageStatistics(_imGray)).Gray;            
-            return _hist;
+            lock (histLcok)
+            {
+                if (_hist != null) return _hist;
+                _hist = (new ImageStatistics(_imGray)).Gray;
+                return _hist;
+            }
         }
         /// <summary>
         /// **** THIS FUNCTION CAN BE CALLED ONLY ONES IN THE OBJECT LIFE TIME***
@@ -287,29 +298,32 @@ namespace Features
         /// </summary>
         private float[] createImf()
         {
-            if (_imf != null) return _imf;
-
-            // get image data (for the raw data pointer)
-            BitmapData imGrayData = 
-                _imGray.LockBits(new Rectangle(0,0, _imGray.Width, _imGray.Height),
-                                System.Drawing.Imaging.ImageLockMode.ReadOnly, 
-                                _imGray.PixelFormat);
-            _imf = new float[_imGray.Width * _imGray.Height];
-            // copy image gray val's into normalized float (0.....1)
-            unsafe
+            lock (imfLcok)
             {
-                for (int i = 0; i < imGrayData.Height; i++)
-                {
-                    byte* row = (byte*)imGrayData.Scan0 + (i * imGrayData.Stride);
-                    for (int j = 0; j < imGrayData.Width; j++)
-                    {
-                        _imf[i * imGrayData.Width + j] = (float)row[j]/MAX_GRAY_VALUE;
-                    }
+                if (_imf != null) return _imf;
 
+                // get image data (for the raw data pointer)
+                BitmapData imGrayData =
+                    _imGray.LockBits(new Rectangle(0, 0, _imGray.Width, _imGray.Height),
+                                    System.Drawing.Imaging.ImageLockMode.ReadOnly,
+                                    _imGray.PixelFormat);
+                _imf = new float[_imGray.Width * _imGray.Height];
+                // copy image gray val's into normalized float (0.....1)
+                unsafe
+                {
+                    for (int i = 0; i < imGrayData.Height; i++)
+                    {
+                        byte* row = (byte*)imGrayData.Scan0 + (i * imGrayData.Stride);
+                        for (int j = 0; j < imGrayData.Width; j++)
+                        {
+                            _imf[i * imGrayData.Width + j] = (float)row[j] / MAX_GRAY_VALUE;
+                        }
+
+                    }
                 }
+                _imGray.UnlockBits(imGrayData);
+                return _imf;
             }
-            _imGray.UnlockBits(imGrayData);
-            return _imf;
         }
         /// <summary>
         /// **** THIS FUNCTION CAN BE CALLED ONLY ONES IN THE OBJECT LIFE TIME***
@@ -317,29 +331,32 @@ namespace Features
         /// </summary>
         private byte[] createImb()
         {
-            if (_imb != null) return _imb;
-
-            // get image data (for the raw data pointer)
-            BitmapData imGrayData =
-                _imGray.LockBits(new Rectangle(0, 0, _imGray.Width, _imGray.Height),
-                                System.Drawing.Imaging.ImageLockMode.ReadOnly,
-                                _imGray.PixelFormat);
-            _imb = new byte[_imGray.Width * _imGray.Height];
-            // copy image gray val's into normalized float (0.....1)
-            unsafe
+            lock (imbLock)
             {
-                for (int i = 0; i < imGrayData.Height; i++)
-                {
-                    byte* row = (byte*)imGrayData.Scan0 + (i * imGrayData.Stride);
-                    for (int j = 0; j < imGrayData.Width; j++)
-                    {
-                        _imb[i * imGrayData.Width + j] = row[j];
-                    }
+                if (_imb != null) return _imb;
 
+                // get image data (for the raw data pointer)
+                BitmapData imGrayData =
+                    _imGray.LockBits(new Rectangle(0, 0, _imGray.Width, _imGray.Height),
+                                    System.Drawing.Imaging.ImageLockMode.ReadOnly,
+                                    _imGray.PixelFormat);
+                _imb = new byte[_imGray.Width * _imGray.Height];
+                // copy image gray val's into normalized float (0.....1)
+                unsafe
+                {
+                    for (int i = 0; i < imGrayData.Height; i++)
+                    {
+                        byte* row = (byte*)imGrayData.Scan0 + (i * imGrayData.Stride);
+                        for (int j = 0; j < imGrayData.Width; j++)
+                        {
+                            _imb[i * imGrayData.Width + j] = row[j];
+                        }
+
+                    }
                 }
+                _imGray.UnlockBits(imGrayData);
+                return _imb;
             }
-            _imGray.UnlockBits(imGrayData);            
-            return _imb;
         }
         # endregion public functions    
     

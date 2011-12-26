@@ -17,20 +17,21 @@ namespace Features
     public struct Task
     {// TODO - test and check if refernced objects can realy be readonly
         private List<string> _pathes;
+        public List<string> ImagePathes
+        {
+            get { return _pathes; }
+        }                
+        private bool[] _features;
         public bool[] Features
         {
             get { return _features; }
         }
-        private bool[] _features;
-        public List<string> ImagePathes
-        {
-            get { return _pathes; }
-        }        
         /// <summary>
         /// DeepCopy constructor
         /// </summary>
         /// <param name="from"></param>
         public Task(Task from) : this(from.ImagePathes, from.Features) {}
+
         public Task(List<string> pathes, bool[] feauters)
         {
 
@@ -95,14 +96,14 @@ namespace Features
         /// <summary>
         /// the time that the statusUpdater will check the RunStatus of the features
         /// </summary>
-        public static readonly int TIME_TO_CHECK_RUN_STATUS = 80; // [ms]
+        public static readonly int TIME_TO_CHECK_RUN_STATUS = 10; // [ms]
         
         private ImageInfo[] _images;
 
         private BitExact _bitExact;
         private Thread _bitExactThread;
 
-        private Thread _statusUpdaterThread;
+        //private Thread _statusUpdaterThread;
 
         # region (GUI <-> BRAIN) shared data
 
@@ -171,7 +172,7 @@ namespace Features
         /// </summary>
         public int RunStatus
         {
-            get { return _runStatus; }
+            get { return updateRunStatus(); }
         }
         /// <summary>
         /// This will be called in a different thread, 
@@ -186,32 +187,52 @@ namespace Features
                 _bitExactThread.Start();
             }
 
-            _statusUpdaterThread = new Thread(statusUpdater);
-            _statusUpdaterThread.Start();
+            //_statusUpdaterThread = new Thread(statusUpdater);
+            //_statusUpdaterThread.Start();
 
         }
         #endregion (GUI --> BRAIN) Methods
 
+        /// <summary>
+        /// will update RunStatus and on completion, will collect results
+        /// </summary>
+        /// <returns></returns>
+        private int updateRunStatus()
+        {
+            if (_bitExact != null)
+            {
+                _runStatus = _bitExact.RunStatus;
+                if (_runStatus == 100)
+                {
+                    _res.setBitExact(_bitExact.Results);
+                    _bitExact = null;
+                    _bitExactThread = null;
+                }
+            }
+            return _runStatus;
+        }
 
         /// <summary>
         /// This will update (in diff thread)  _runStatus;
         /// </summary>
-        private void statusUpdater()
-        {
-            if (_bitExact != null)
-            {
-                while (_bitExact.RunStatus < 100)
-                {                    
-                    _runStatus = _bitExact.RunStatus;
-                    Thread.Sleep(TIME_TO_CHECK_RUN_STATUS);
-                }
-                _runStatus = _bitExact.RunStatus;
-                _res.setBitExact(_bitExact.Results);
-                _runStatus = _bitExact.RunStatus;
-                _bitExact = null;
-                _bitExactThread = null;                
-            }
-        }        
+        //private void statusUpdater()
+        //{
+        //    if (_bitExact != null)
+        //    {
+        //        while (_bitExact.RunStatus < 100)
+        //        {                    
+        //            _runStatus = _bitExact.RunStatus;
+        //            Thread.Sleep(TIME_TO_CHECK_RUN_STATUS);
+        //        }
+        //        _runStatus = _bitExact.RunStatus;
+        //        _res.setBitExact(_bitExact.Results);
+        //        _runStatus = _bitExact.RunStatus;
+        //        _bitExact = null;
+        //        _bitExactThread = null;                
+        //    }
+        //}
+
+      
 
 
     }
