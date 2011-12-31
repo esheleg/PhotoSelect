@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Diagnostics;
+using System.Threading;
 using Bitmap = System.Drawing.Bitmap;
 
 namespace Features
@@ -64,28 +65,36 @@ namespace Features
 
         //function that check matches
         public void run()
-        {            
-            setPropotion(); // set propotion to images
-            for (int i = 0; i < numImages-2; i++)
+        {
+            try
             {
-                if (checkedImages[i] || (propotions[i] == Propotion.pOther)) //if we founded match then don't check the image 
+                setPropotion(); // set propotion to images
+                for (int i = 0; i < numImages - 2; i++)
                 {
+                    if (checkedImages[i] || (propotions[i] == Propotion.pOther)) //if we founded match then don't check the image 
+                    {
+                        runStatus = (int)Math.Round(((i + 1) / (float)numImages) * 100);
+                        continue;
+                    }
+                    for (int j = i + 1; j <= numImages - 1; j++)
+                        if (propotions[i] == propotions[j] && (!checkedImages[j])) //check only images with similar propotions
+                            equalImages(i, j); //equal is true if there is a match
+
+
+
+
                     runStatus = (int)Math.Round(((i + 1) / (float)numImages) * 100);
-                    continue;
+
                 }
-                   for (int j = i + 1; j <= numImages-1 ; j++)
-                    if (propotions[i] == propotions[j] && (!checkedImages[j])) //check only images with similar propotions
-                        equalImages(i, j); //equal is true if there is a match
-
-
-                
-                    
-                runStatus = (int)Math.Round(((i + 1) / (float)numImages) * 100);
-           
-            }
-            runStatus = 100;
-            // set results
-            results = new BitExactRes(matches);
+                runStatus = 100;
+                // set results
+                results = new BitExactRes(matches);
+            }       
+            catch (ThreadAbortException)
+            { // ResetAbout() handles and the exception and letting the thread 
+              // finish normally (reaching the end of the function)
+                Thread.ResetAbort();              
+            }          
         }
 
         # endregion public functions

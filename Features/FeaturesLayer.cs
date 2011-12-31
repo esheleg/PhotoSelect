@@ -9,7 +9,7 @@ namespace Features
     public enum Feature { BIT_EXACT = 0, BAD_CONTRAST, SIMILARITY, PARTIAL_BLOCKAGE, NUM_FEATURES };
 
 
-    # region ******************(GUI --> BRAIN) Structures********************
+    # region ******************(GUI <--> BRAIN) Structures********************
     /// <summary>
     /// // this struct will recieve the task information from the gui
     /// </summary>
@@ -89,21 +89,21 @@ namespace Features
         }
 
     }
-    #endregion ******************(GUI --> BRAIN) Structures********************
+    #endregion ******************(GUI <--> BRAIN) Structures********************
 
-    public class FeaturesLayer
+    public class FeaturesLayer : IDisposable
     {
         /// <summary>
         /// the time that the statusUpdater will check the RunStatus of the features
         /// </summary>
         public static readonly int TIME_TO_CHECK_RUN_STATUS = 10; // [ms]
+
+        private bool _disposed;
         
         private ImageInfo[] _images;
-
+        
         private BitExact _bitExact;
         private Thread _bitExactThread;
-
-        //private Thread _statusUpdaterThread;
 
         # region (GUI <-> BRAIN) shared data
 
@@ -116,6 +116,7 @@ namespace Features
 
         public FeaturesLayer(ref Task task)
         {
+            _disposed = false;
             // copy task
             _task = new Task(task);
             // init results struct
@@ -127,6 +128,8 @@ namespace Features
             _runStatus = 0;
             // allocate memory for ImageInfo array
             _images = new ImageInfo[task.ImagePathes.Count];
+            for(int i=0; i<_images.Length; i++)
+                _images[i] = null;
         }        
 
         # region (GUI --> BRAIN) Methods
@@ -184,6 +187,7 @@ namespace Features
             {            
                 _bitExact = new BitExact(_images);
                 _bitExactThread = new Thread(_bitExact.run);
+                _bitExactThread.Name = "bitExact";
                 _bitExactThread.Start();
             }
 
@@ -207,7 +211,7 @@ namespace Features
                     _res.setBitExact(_bitExact.Results);
                     _bitExact = null;
                     _bitExactThread = null;
-                }
+                }                
             }
             return _runStatus;
         }
@@ -232,7 +236,46 @@ namespace Features
         //    }
         //}
 
-      
+
+        #region ***************IDisposable*******************
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {            
+            if (!_disposed) {            
+                // clear bitExact
+                bool isBitExactRunning = (_bitExact != null && _bitExactThread != null &&
+                                          _bitExactThread.IsAlive);
+                if ( isBitExactRunning ) {                 
+                    _bitExactThread.Abort();                
+                }
+                _bitExact = null;
+                _bitExactThread = null;
+                // clear images
+                // assuming that if im[i] is null im[i +..] is null
+                for (int i=0; i< _images.Length; i++) {
+                    if (_images[i] != null) {
+                        _images[i].Dispose();
+                        _images[i] = null;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                _disposed = true;
+            }
+        }
+        ~FeaturesLayer()
+        {
+            Dispose(false);
+        }
+
+        #endregion ***************IDisposable*******************
 
 
     }
