@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BadContrast.cs" />
     <Compile Include="BitExact.cs" />
     <Compile Include="ImageInfo.cs" />
     <Compile Include="FeaturesLayer.cs" />
