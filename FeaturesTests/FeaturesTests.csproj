@@ -49,6 +49,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BadContrastTest.cs" />
     <Compile Include="BitExactTest.cs" />
     <Compile Include="FeaturesLayerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
