@@ -92,11 +92,7 @@ namespace Features
     #endregion ******************(GUI <--> BRAIN) Structures********************
 
     public class FeaturesLayer : IDisposable
-    {
-        /// <summary>
-        /// the time that the statusUpdater will check the RunStatus of the features
-        /// </summary>
-        public static readonly int TIME_TO_CHECK_RUN_STATUS = 10; // [ms]
+    {              
 
         private bool _disposed;
         
@@ -104,6 +100,10 @@ namespace Features
         
         private BitExact _bitExact;
         private Thread _bitExactThread;
+
+        private Thread _loadingImagesThread;
+
+
 
         # region (GUI <-> BRAIN) shared data
 
@@ -122,7 +122,7 @@ namespace Features
             // init results struct
             _res = new Results();
             _bitExactThread = null;
-            _bitExact = null;     
+            _bitExact = null;
             // set status to 0
             _loadingImagesStatus = 0;
             _runStatus = 0;
@@ -130,6 +130,8 @@ namespace Features
             _images = new ImageInfo[task.ImagePathes.Count];
             for(int i=0; i<_images.Length; i++)
                 _images[i] = null;
+            // this will run loading images from run()
+            _loadingImagesThread = null;
         }        
 
         # region (GUI --> BRAIN) Methods
@@ -155,21 +157,31 @@ namespace Features
         /// </summary>
         public void loadImages()
         {
+            if (_loadingImagesThread != null) { return; }
+
+            _loadingImagesThread = new Thread(startLoadingImages);
+            _loadingImagesThread.Start();
+        }
+        private void startLoadingImages()
+        {
             for (int i = 0; i < _images.Length; i++)
             {
                 try
                 {
                     _images[i] = new ImageInfo(_task.ImagePathes[i]);
                 }
+                catch (ThreadAbortException)
+                {
+                    Thread.ResetAbort();
+                    return;
+                }
                 catch (Exception e)
                 {
                     throw e;
                 }
-                _loadingImagesStatus = (int)( ( (float)(i + 1) * 100 ) / _images.Length );
+                _loadingImagesStatus = (int)(((float)(i + 1) * 100) / _images.Length);
             }
-
         }
-
         /// <summary>
         /// Get the RunStatus of the running features
         /// </summary>
@@ -183,6 +195,7 @@ namespace Features
         /// </summary>
         public void run()
         {
+        
             if (_task.Features[(int)Feature.BIT_EXACT])
             {            
                 _bitExact = new BitExact(_images);
@@ -249,13 +262,23 @@ namespace Features
         {            
             if (!_disposed) {            
                 // clear bitExact
-                bool isBitExactRunning = (_bitExact != null && _bitExactThread != null &&
-                                          _bitExactThread.IsAlive);
-                if ( isBitExactRunning ) {                 
-                    _bitExactThread.Abort();                
+                bool isLoadingImages = (_loadingImagesThread != null && _loadingImagesThread.IsAlive);
+
+                if (isLoadingImages)
+                {
+                    _loadingImagesThread.Abort();
                 }
-                _bitExact = null;
-                _bitExactThread = null;
+                else
+                {
+                    bool isBitExactRunning = (_bitExact != null && _bitExactThread != null &&
+                                              _bitExactThread.IsAlive);
+                    if (isBitExactRunning)
+                    {
+                        _bitExactThread.Abort();
+                    }
+                    _bitExact = null;
+                    _bitExactThread = null;
+                }
                 // clear images
                 // assuming that if im[i] is null im[i +..] is null
                 for (int i=0; i< _images.Length; i++) {

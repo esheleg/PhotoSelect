@@ -9,12 +9,12 @@ using System.Windows.Forms;
 using System.IO;
 using Features;
 using System.Threading;
-
 namespace PhotoSelectGui
 {
     public partial class MainPS : Form
     {
 
+        
 
         //basic function to change color for each index we visit, while reset the other colors.
         public void changecolor(int indextab)
@@ -82,6 +82,8 @@ namespace PhotoSelectGui
 
         const double FRAME_SPEED = 50;
 
+        const int TIME_TO_CHECK_RUN_STATUS = 200;
+
         // the origin of the current frame
         const double FRAME_X = 50;
         const double FRAME_Y = 200;
@@ -123,7 +125,7 @@ namespace PhotoSelectGui
 
             image = null;
 
-            bitExactProgressTimer.Interval = FeaturesLayer.TIME_TO_CHECK_RUN_STATUS;            
+            bitExactProgressTimer.Interval = TIME_TO_CHECK_RUN_STATUS;            
 
             PathFrame.Visible = true;
             FilterPath.Visible = false;
@@ -297,8 +299,9 @@ namespace PhotoSelectGui
             {
                 task = new Task(filePaths.ToList(), featuresArr);
                 core = new FeaturesLayer(ref task);
-                Thread t = new Thread(core.loadImages);
-                t.Start();
+                //Thread t = new Thread(core.loadImages);
+                //t.Start();
+                core.loadImages();
 
                 if (FilterPath.Location.X == FRAME_X)
                 {
@@ -317,20 +320,25 @@ namespace PhotoSelectGui
         {
             // ----------daniel need to do something about it----------
 
-            /*if (progressFr.Location.Y == FRAME_Y)
+            if (progressFr.Location.Y == FRAME_Y)
             {
+                core.Dispose();
                 frameShow[(int)frames.progressBarFr_to_stepTwoFr] = true;
                 FilterPath.Visible = true;
                 frameMovementTimer.Enabled = true;
+               
                 progressBarTimer.Stop();
-                DTprogressBar.Value = 0;
-            }*/
+                bitExactProgressTimer.Stop();
+                DBprogressBar.Value = 0;
+                BitExactProgressBar.Value = 0;
+            }
         }
 
         private void stepTwoLbl_Click(object sender, EventArgs e)
         {
             if (bitExactFr.Location.X == FRAME_X)
             {
+                core.Dispose();
                 frameShow[(int)frames.stepthreeFr_to_stepTwoFr] = true;
                 FilterPath.Visible = true;
                 frameMovementTimer.Enabled = true;
@@ -410,8 +418,9 @@ namespace PhotoSelectGui
                 progressBarTimer.Stop();
                 BitExactProgressLbl.Visible = true;
                 BitExactProgressBar.Visible = true;
-                Thread run = new Thread(core.run);
-                run.Start();
+                //Thread run = new Thread(core.run);
+              //  run.Start();
+                core.run();
                 bitExactProgressTimer.Start();
             }
         }
