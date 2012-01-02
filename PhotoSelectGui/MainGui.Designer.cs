@@ -638,7 +638,7 @@
             this.stepThreeRect,
             this.stepTwoRect,
             this.stepOneRect});
-            this.shapeContainer1.Size = new System.Drawing.Size(781, 606);
+            this.shapeContainer1.Size = new System.Drawing.Size(770, 600);
             this.shapeContainer1.TabIndex = 0;
             this.shapeContainer1.TabStop = false;
             // 
@@ -653,7 +653,7 @@
             this.stepThreeRect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepThreeRect.FillColor = System.Drawing.Color.White;
             this.stepThreeRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.stepThreeRect.Location = new System.Drawing.Point(386, 119);
+            this.stepThreeRect.Location = new System.Drawing.Point(382, 121);
             this.stepThreeRect.Name = "stepThreeRect";
             this.stepThreeRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.stepThreeRect.Size = new System.Drawing.Size(150, 50);
@@ -669,7 +669,7 @@
             this.stepTwoRect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepTwoRect.FillColor = System.Drawing.Color.White;
             this.stepTwoRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.stepTwoRect.Location = new System.Drawing.Point(217, 118);
+            this.stepTwoRect.Location = new System.Drawing.Point(213, 120);
             this.stepTwoRect.Name = "stepTwoRect";
             this.stepTwoRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.stepTwoRect.Size = new System.Drawing.Size(150, 50);
@@ -685,7 +685,7 @@
             this.stepOneRect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepOneRect.FillColor = System.Drawing.Color.White;
             this.stepOneRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.stepOneRect.Location = new System.Drawing.Point(51, 118);
+            this.stepOneRect.Location = new System.Drawing.Point(47, 120);
             this.stepOneRect.Name = "stepOneRect";
             this.stepOneRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.stepOneRect.Size = new System.Drawing.Size(150, 50);
@@ -857,7 +857,6 @@
             // 
             // buttonDeleteSelected
             // 
-            this.buttonDeleteSelected.Enabled = false;
             this.buttonDeleteSelected.ForeColor = System.Drawing.Color.Black;
             this.buttonDeleteSelected.Location = new System.Drawing.Point(25, 349);
             this.buttonDeleteSelected.Name = "buttonDeleteSelected";
@@ -949,7 +948,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(781, 606);
+            this.ClientSize = new System.Drawing.Size(770, 600);
             this.Controls.Add(this.FilterPath);
             this.Controls.Add(this.bitExactFr);
             this.Controls.Add(this.PathFrame);

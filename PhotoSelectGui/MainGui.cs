@@ -76,6 +76,8 @@ namespace PhotoSelectGui
 
         // array to save all the photos pthes to send to the brain
         string[] filePaths;
+        //items to delete after succesfull finding(cause by user)
+        public List<string> itemsToDelete = new List<string>();
         bool[] featuresArr = new bool[4];
         Task task;
         FeaturesLayer core;
@@ -527,8 +529,9 @@ namespace PhotoSelectGui
         //in the fouture will not delete- will save in "todelete" list
         private void buttonDeleteSelected_Click_1(object sender, EventArgs e)
         {
+            //---------------remove to last frame --------------
             //dispose all memmory in use
-            PictureResult.Image = null;
+           /* PictureResult.Image = null;
             pictureBox.Image = null;
             image.Dispose();
             //send to delete function if checked
@@ -540,6 +543,19 @@ namespace PhotoSelectGui
                     TryToDelete(MatchesList.Items[i].ToString());
                 }
             }
+            * //---------------------------------------------------
+            */
+            //---------(new)----------------adding all items to delete into list----
+            for (int i = 0; i < MatchesList.Items.Count; i++)
+            {
+                if (MatchesList.GetItemChecked(i))
+                {
+
+                    itemsToDelete.Add(MatchesList.Items[i].ToString());
+                }
+            }      
+            //----------------------------------------------------------------------
+
 
         }
         //un select all list
