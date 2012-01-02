@@ -389,6 +389,11 @@ namespace PhotoSelectGui
                 frameMovementTimer.Enabled = true;
                 //changecolor(2);
             }
+            for (int i = 0; i < itemsToDelete.Count; i++)
+            {
+                    DeleteList.Items.Add(itemsToDelete[i].ToString());
+            }      
+
         }
 
         private void stepThreeLbl_Click(object sender, EventArgs e)
@@ -713,6 +718,49 @@ namespace PhotoSelectGui
                 //-----------------------------------------------------------------------
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //dispose all memmory in use
+            PictureResult.Image = null;
+            pictureBox.Image = null;
+            PicLastRes.Image = null;
+            image.Dispose();
+            //send to delete function if checked
+            for (int i = 0; i < DeleteList.Items.Count; i++)
+            {
+                if (DeleteList.GetItemChecked(i))
+                {
+
+                    TryToDelete(DeleteList.Items[i].ToString());
+                }
+            }
+        }
+
+        private void DeleteList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (image != null)
+                    image.Dispose();
+                image = null;
+                // Check if textbox has a value
+                if (DeleteList.SelectedItem.ToString() != String.Empty)
+                    image = Image.FromFile(DeleteList.SelectedItem.ToString());
+                // Check if image exists
+                if (image != null)
+                {
+                   
+                    PicLastRes.Image = image.GetThumbnailImage(293, 190, null, new IntPtr());
+                    pathLbl.Text = DeleteList.SelectedItem.ToString();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("An error occured");
+            }
+            PicLastRes.Refresh();
         }
 
      

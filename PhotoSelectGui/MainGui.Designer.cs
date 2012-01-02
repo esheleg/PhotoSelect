@@ -31,10 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPS));
             this.PathFrame = new System.Windows.Forms.GroupBox();
-            this.filesToDeleteFR = new System.Windows.Forms.GroupBox();
-            this.fileToDeletLbl = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.filePathesToDelete = new System.Windows.Forms.ListBox();
             this.numPicsLbl = new System.Windows.Forms.Label();
             this.numLbl = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
@@ -45,6 +41,9 @@
             this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.browseRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.doneStepOneRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.filesToDeleteFR = new System.Windows.Forms.GroupBox();
+            this.fileToDeletLbl = new System.Windows.Forms.Label();
+            this.PicLastRes = new System.Windows.Forms.PictureBox();
             this.FilterPath = new System.Windows.Forms.GroupBox();
             this.similarPicChckBox = new System.Windows.Forms.CheckBox();
             this.badContrastChckBox = new System.Windows.Forms.CheckBox();
@@ -105,10 +104,12 @@
             this.doneBitExactRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.bitExactProgressTimer = new System.Windows.Forms.Timer(this.components);
             this.process1 = new System.Diagnostics.Process();
+            this.DeleteList = new System.Windows.Forms.CheckedListBox();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.PathFrame.SuspendLayout();
-            this.filesToDeleteFR.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            this.filesToDeleteFR.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicLastRes)).BeginInit();
             this.FilterPath.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -138,45 +139,6 @@
             this.PathFrame.Size = new System.Drawing.Size(688, 380);
             this.PathFrame.TabIndex = 1;
             this.PathFrame.TabStop = false;
-            // 
-            // filesToDeleteFR
-            // 
-            this.filesToDeleteFR.BackColor = System.Drawing.Color.White;
-            this.filesToDeleteFR.Controls.Add(this.fileToDeletLbl);
-            this.filesToDeleteFR.Controls.Add(this.pictureBox6);
-            this.filesToDeleteFR.Controls.Add(this.filePathesToDelete);
-            this.filesToDeleteFR.Location = new System.Drawing.Point(592, 103);
-            this.filesToDeleteFR.Name = "filesToDeleteFR";
-            this.filesToDeleteFR.Size = new System.Drawing.Size(690, 395);
-            this.filesToDeleteFR.TabIndex = 31;
-            this.filesToDeleteFR.TabStop = false;
-            // 
-            // fileToDeletLbl
-            // 
-            this.fileToDeletLbl.AutoSize = true;
-            this.fileToDeletLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.fileToDeletLbl.ForeColor = System.Drawing.Color.ForestGreen;
-            this.fileToDeletLbl.Location = new System.Drawing.Point(23, 28);
-            this.fileToDeletLbl.Name = "fileToDeletLbl";
-            this.fileToDeletLbl.Size = new System.Drawing.Size(628, 37);
-            this.fileToDeletLbl.TabIndex = 13;
-            this.fileToDeletLbl.Text = "Those are the pictures you chose to delete:";
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Location = new System.Drawing.Point(342, 64);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(293, 190);
-            this.pictureBox6.TabIndex = 12;
-            this.pictureBox6.TabStop = false;
-            // 
-            // filePathesToDelete
-            // 
-            this.filePathesToDelete.FormattingEnabled = true;
-            this.filePathesToDelete.Location = new System.Drawing.Point(28, 68);
-            this.filePathesToDelete.Name = "filePathesToDelete";
-            this.filePathesToDelete.Size = new System.Drawing.Size(241, 251);
-            this.filePathesToDelete.TabIndex = 0;
             // 
             // numPicsLbl
             // 
@@ -300,6 +262,38 @@
             this.doneStepOneRect.Name = "doneStepOneRect";
             this.doneStepOneRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.doneStepOneRect.Size = new System.Drawing.Size(119, 55);
+            // 
+            // filesToDeleteFR
+            // 
+            this.filesToDeleteFR.BackColor = System.Drawing.Color.White;
+            this.filesToDeleteFR.Controls.Add(this.buttonDelete);
+            this.filesToDeleteFR.Controls.Add(this.DeleteList);
+            this.filesToDeleteFR.Controls.Add(this.fileToDeletLbl);
+            this.filesToDeleteFR.Controls.Add(this.PicLastRes);
+            this.filesToDeleteFR.Location = new System.Drawing.Point(29, 55);
+            this.filesToDeleteFR.Name = "filesToDeleteFR";
+            this.filesToDeleteFR.Size = new System.Drawing.Size(690, 395);
+            this.filesToDeleteFR.TabIndex = 31;
+            this.filesToDeleteFR.TabStop = false;
+            // 
+            // fileToDeletLbl
+            // 
+            this.fileToDeletLbl.AutoSize = true;
+            this.fileToDeletLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.fileToDeletLbl.ForeColor = System.Drawing.Color.ForestGreen;
+            this.fileToDeletLbl.Location = new System.Drawing.Point(23, 28);
+            this.fileToDeletLbl.Name = "fileToDeletLbl";
+            this.fileToDeletLbl.Size = new System.Drawing.Size(628, 37);
+            this.fileToDeletLbl.TabIndex = 13;
+            this.fileToDeletLbl.Text = "Those are the pictures you chose to delete:";
+            // 
+            // PicLastRes
+            // 
+            this.PicLastRes.Location = new System.Drawing.Point(343, 97);
+            this.PicLastRes.Name = "PicLastRes";
+            this.PicLastRes.Size = new System.Drawing.Size(293, 190);
+            this.PicLastRes.TabIndex = 12;
+            this.PicLastRes.TabStop = false;
             // 
             // FilterPath
             // 
@@ -1034,6 +1028,26 @@
             this.process1.StartInfo.UserName = "";
             this.process1.SynchronizingObject = this;
             // 
+            // DeleteList
+            // 
+            this.DeleteList.FormattingEnabled = true;
+            this.DeleteList.Location = new System.Drawing.Point(35, 73);
+            this.DeleteList.Name = "DeleteList";
+            this.DeleteList.Size = new System.Drawing.Size(261, 304);
+            this.DeleteList.TabIndex = 14;
+            this.DeleteList.SelectedIndexChanged += new System.EventHandler(this.DeleteList_SelectedIndexChanged);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.ForeColor = System.Drawing.Color.Black;
+            this.buttonDelete.Location = new System.Drawing.Point(343, 346);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(74, 31);
+            this.buttonDelete.TabIndex = 20;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainPS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1043,12 +1057,12 @@
             this.ClientSize = new System.Drawing.Size(770, 600);
             this.Controls.Add(this.filesToDeleteFR);
             this.Controls.Add(this.progressFr);
-            this.Controls.Add(this.FilterPath);
             this.Controls.Add(this.bitExactFr);
             this.Controls.Add(this.PathFrame);
             this.Controls.Add(this.stepThreeLbl);
             this.Controls.Add(this.stepTwoLbl);
             this.Controls.Add(this.stepOneLbl);
+            this.Controls.Add(this.FilterPath);
             this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
@@ -1059,10 +1073,10 @@
             this.Load += new System.EventHandler(this.MainPS_Load);
             this.PathFrame.ResumeLayout(false);
             this.PathFrame.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.filesToDeleteFR.ResumeLayout(false);
             this.filesToDeleteFR.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicLastRes)).EndInit();
             this.FilterPath.ResumeLayout(false);
             this.FilterPath.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1151,12 +1165,13 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label labelnow;
         private System.Windows.Forms.GroupBox filesToDeleteFR;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.ListBox filePathesToDelete;
+        private System.Windows.Forms.PictureBox PicLastRes;
         private System.Windows.Forms.Label fileToDeletLbl;
         private System.Windows.Forms.Label doneBitExactLbl;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer5;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape doneBitExactRect;
+        private System.Windows.Forms.CheckedListBox DeleteList;
+        private System.Windows.Forms.Button buttonDelete;
 
 
 
