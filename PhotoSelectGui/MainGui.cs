@@ -562,31 +562,25 @@ namespace PhotoSelectGui
         //in the fouture will not delete- will save in "todelete" list
         private void buttonDeleteSelected_Click_1(object sender, EventArgs e)
         {
-            //---------------remove to last frame --------------
-            //dispose all memmory in use
-           /* PictureResult.Image = null;
-            pictureBox.Image = null;
-            image.Dispose();
-            //send to delete function if checked
-            for (int i = 0; i < MatchesList.Items.Count; i++)
-            {
-                if (MatchesList.GetItemChecked(i))
-                {
-
-                    TryToDelete(MatchesList.Items[i].ToString());
-                }
-            }
-            * //---------------------------------------------------
-            */
+            Boolean degel;
             //---------(new)----------------adding all items to delete into list----
             for (int i = 0; i < MatchesList.Items.Count; i++)
             {
+                degel=true;
                 if (MatchesList.GetItemChecked(i))
                 {
+                    foreach (string item in itemsToDelete)
+                    {
 
-                    itemsToDelete.Add(MatchesList.Items[i].ToString());
+                        if (item == MatchesList.Items[i].ToString())
+                            degel = false;
+                            
+                    }
+                    if(degel==true)
+                     itemsToDelete.Add(MatchesList.Items[i].ToString());
                 }
-            }      
+            }  
+    
             //----------------------------------------------------------------------
 
 
@@ -624,6 +618,7 @@ namespace PhotoSelectGui
 
                     PictureResult.Image = image.GetThumbnailImage(186, 148, null, new IntPtr());
                     pathLbl.Text = MatchesList.SelectedItem.ToString();
+                    
                 }
             }
             catch
@@ -762,6 +757,22 @@ namespace PhotoSelectGui
             }
             PicLastRes.Refresh();
         }
+
+        private void buttonChooseAll_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < DeleteList.Items.Count; i++)
+                DeleteList.SetItemChecked(i, true);
+        }
+
+        private void buttonCancelSelect_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < DeleteList.Items.Count; i++)
+                DeleteList.SetItemChecked(i, false);
+        }
+
+  
+
+
 
      
 

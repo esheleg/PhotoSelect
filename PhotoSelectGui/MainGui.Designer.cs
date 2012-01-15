@@ -42,6 +42,10 @@
             this.browseRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.doneStepOneRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.filesToDeleteFR = new System.Windows.Forms.GroupBox();
+            this.buttonCancelSelect = new System.Windows.Forms.Button();
+            this.buttonChooseAll = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.DeleteList = new System.Windows.Forms.CheckedListBox();
             this.fileToDeletLbl = new System.Windows.Forms.Label();
             this.PicLastRes = new System.Windows.Forms.PictureBox();
             this.FilterPath = new System.Windows.Forms.GroupBox();
@@ -104,8 +108,6 @@
             this.doneBitExactRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.bitExactProgressTimer = new System.Windows.Forms.Timer(this.components);
             this.process1 = new System.Diagnostics.Process();
-            this.DeleteList = new System.Windows.Forms.CheckedListBox();
-            this.buttonDelete = new System.Windows.Forms.Button();
             this.PathFrame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.filesToDeleteFR.SuspendLayout();
@@ -266,30 +268,87 @@
             // filesToDeleteFR
             // 
             this.filesToDeleteFR.BackColor = System.Drawing.Color.White;
+            this.filesToDeleteFR.BackgroundImage = global::PhotoSelectGui.Properties.Resources.wavy_blue_background;
+            this.filesToDeleteFR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.filesToDeleteFR.Controls.Add(this.buttonCancelSelect);
+            this.filesToDeleteFR.Controls.Add(this.buttonChooseAll);
             this.filesToDeleteFR.Controls.Add(this.buttonDelete);
             this.filesToDeleteFR.Controls.Add(this.DeleteList);
             this.filesToDeleteFR.Controls.Add(this.fileToDeletLbl);
             this.filesToDeleteFR.Controls.Add(this.PicLastRes);
-            this.filesToDeleteFR.Location = new System.Drawing.Point(29, 55);
+            this.filesToDeleteFR.Location = new System.Drawing.Point(627, 76);
             this.filesToDeleteFR.Name = "filesToDeleteFR";
             this.filesToDeleteFR.Size = new System.Drawing.Size(690, 395);
             this.filesToDeleteFR.TabIndex = 31;
             this.filesToDeleteFR.TabStop = false;
             // 
+            // buttonCancelSelect
+            // 
+            this.buttonCancelSelect.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonCancelSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCancelSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.buttonCancelSelect.ForeColor = System.Drawing.Color.White;
+            this.buttonCancelSelect.Location = new System.Drawing.Point(530, 280);
+            this.buttonCancelSelect.Name = "buttonCancelSelect";
+            this.buttonCancelSelect.Size = new System.Drawing.Size(154, 31);
+            this.buttonCancelSelect.TabIndex = 22;
+            this.buttonCancelSelect.Text = "Cancel Selection";
+            this.buttonCancelSelect.UseVisualStyleBackColor = false;
+            this.buttonCancelSelect.Click += new System.EventHandler(this.buttonCancelSelect_Click);
+            // 
+            // buttonChooseAll
+            // 
+            this.buttonChooseAll.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonChooseAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.buttonChooseAll.ForeColor = System.Drawing.Color.White;
+            this.buttonChooseAll.Location = new System.Drawing.Point(530, 317);
+            this.buttonChooseAll.Name = "buttonChooseAll";
+            this.buttonChooseAll.Size = new System.Drawing.Size(154, 31);
+            this.buttonChooseAll.TabIndex = 21;
+            this.buttonChooseAll.Text = "Choose All";
+            this.buttonChooseAll.UseVisualStyleBackColor = false;
+            this.buttonChooseAll.Click += new System.EventHandler(this.buttonChooseAll_Click);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.buttonDelete.ForeColor = System.Drawing.Color.White;
+            this.buttonDelete.Location = new System.Drawing.Point(530, 354);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(154, 31);
+            this.buttonDelete.TabIndex = 20;
+            this.buttonDelete.Text = "Delete Selected";
+            this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // DeleteList
+            // 
+            this.DeleteList.FormattingEnabled = true;
+            this.DeleteList.Location = new System.Drawing.Point(37, 261);
+            this.DeleteList.Name = "DeleteList";
+            this.DeleteList.Size = new System.Drawing.Size(487, 124);
+            this.DeleteList.TabIndex = 14;
+            this.DeleteList.SelectedIndexChanged += new System.EventHandler(this.DeleteList_SelectedIndexChanged);
+            // 
             // fileToDeletLbl
             // 
             this.fileToDeletLbl.AutoSize = true;
-            this.fileToDeletLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.fileToDeletLbl.ForeColor = System.Drawing.Color.ForestGreen;
-            this.fileToDeletLbl.Location = new System.Drawing.Point(23, 28);
+            this.fileToDeletLbl.BackColor = System.Drawing.Color.Transparent;
+            this.fileToDeletLbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fileToDeletLbl.Font = new System.Drawing.Font("Bodoni MT Poster Compressed", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fileToDeletLbl.ForeColor = System.Drawing.Color.White;
+            this.fileToDeletLbl.Location = new System.Drawing.Point(32, 16);
             this.fileToDeletLbl.Name = "fileToDeletLbl";
-            this.fileToDeletLbl.Size = new System.Drawing.Size(628, 37);
+            this.fileToDeletLbl.Size = new System.Drawing.Size(574, 62);
             this.fileToDeletLbl.TabIndex = 13;
             this.fileToDeletLbl.Text = "Those are the pictures you chose to delete:";
             // 
             // PicLastRes
             // 
-            this.PicLastRes.Location = new System.Drawing.Point(343, 97);
+            this.PicLastRes.Location = new System.Drawing.Point(37, 65);
             this.PicLastRes.Name = "PicLastRes";
             this.PicLastRes.Size = new System.Drawing.Size(293, 190);
             this.PicLastRes.TabIndex = 12;
@@ -534,7 +593,7 @@
             this.progressFr.Controls.Add(this.DBprogressBar);
             this.progressFr.Controls.Add(this.shapeContainer4);
             this.progressFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.progressFr.Location = new System.Drawing.Point(716, 23);
+            this.progressFr.Location = new System.Drawing.Point(585, 100);
             this.progressFr.Name = "progressFr";
             this.progressFr.Size = new System.Drawing.Size(688, 380);
             this.progressFr.TabIndex = 14;
@@ -569,9 +628,9 @@
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(86, 37);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(334, 37);
+            this.label2.Size = new System.Drawing.Size(321, 37);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Building Data Base...";
+            this.label2.Text = "Preparing pictures...";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // cancelProgressLbl
@@ -758,7 +817,7 @@
             this.bitExactFr.Controls.Add(this.PictureResult);
             this.bitExactFr.Controls.Add(this.shapeContainer5);
             this.bitExactFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.bitExactFr.Location = new System.Drawing.Point(47, 205);
+            this.bitExactFr.Location = new System.Drawing.Point(27, 193);
             this.bitExactFr.Name = "bitExactFr";
             this.bitExactFr.Size = new System.Drawing.Size(688, 395);
             this.bitExactFr.TabIndex = 16;
@@ -914,57 +973,72 @@
             // 
             // buttonDeleteSelected
             // 
-            this.buttonDeleteSelected.ForeColor = System.Drawing.Color.Black;
+            this.buttonDeleteSelected.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonDeleteSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.buttonDeleteSelected.ForeColor = System.Drawing.Color.White;
             this.buttonDeleteSelected.Location = new System.Drawing.Point(207, 349);
             this.buttonDeleteSelected.Name = "buttonDeleteSelected";
             this.buttonDeleteSelected.Size = new System.Drawing.Size(74, 31);
             this.buttonDeleteSelected.TabIndex = 19;
             this.buttonDeleteSelected.Text = "Delete";
-            this.buttonDeleteSelected.UseVisualStyleBackColor = true;
+            this.buttonDeleteSelected.UseVisualStyleBackColor = false;
             this.buttonDeleteSelected.Click += new System.EventHandler(this.buttonDeleteSelected_Click_1);
             // 
             // buttonAbortSelect
             // 
-            this.buttonAbortSelect.ForeColor = System.Drawing.Color.Black;
+            this.buttonAbortSelect.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonAbortSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAbortSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.buttonAbortSelect.ForeColor = System.Drawing.Color.White;
             this.buttonAbortSelect.Location = new System.Drawing.Point(103, 349);
             this.buttonAbortSelect.Name = "buttonAbortSelect";
             this.buttonAbortSelect.Size = new System.Drawing.Size(98, 31);
             this.buttonAbortSelect.TabIndex = 16;
             this.buttonAbortSelect.Text = "Cancel Selection";
-            this.buttonAbortSelect.UseVisualStyleBackColor = true;
+            this.buttonAbortSelect.UseVisualStyleBackColor = false;
             this.buttonAbortSelect.Click += new System.EventHandler(this.buttonAbortSelect_Click_1);
             // 
             // buttonSelectAll
             // 
-            this.buttonSelectAll.ForeColor = System.Drawing.Color.Black;
+            this.buttonSelectAll.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonSelectAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSelectAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.buttonSelectAll.ForeColor = System.Drawing.Color.White;
             this.buttonSelectAll.Location = new System.Drawing.Point(23, 349);
             this.buttonSelectAll.Name = "buttonSelectAll";
             this.buttonSelectAll.Size = new System.Drawing.Size(74, 31);
             this.buttonSelectAll.TabIndex = 15;
             this.buttonSelectAll.Text = "Choose All";
-            this.buttonSelectAll.UseVisualStyleBackColor = true;
+            this.buttonSelectAll.UseVisualStyleBackColor = false;
             this.buttonSelectAll.Click += new System.EventHandler(this.buttonSelectAll_Click_1);
             // 
             // buttonBack
             // 
-            this.buttonBack.ForeColor = System.Drawing.Color.Black;
+            this.buttonBack.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.buttonBack.ForeColor = System.Drawing.Color.White;
             this.buttonBack.Location = new System.Drawing.Point(486, 170);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(64, 30);
             this.buttonBack.TabIndex = 14;
             this.buttonBack.Text = "Previous";
-            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.UseVisualStyleBackColor = false;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // buttonForward
             // 
-            this.buttonForward.ForeColor = System.Drawing.Color.Black;
+            this.buttonForward.BackColor = System.Drawing.SystemColors.Highlight;
+            this.buttonForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.buttonForward.ForeColor = System.Drawing.Color.White;
             this.buttonForward.Location = new System.Drawing.Point(608, 170);
             this.buttonForward.Name = "buttonForward";
             this.buttonForward.Size = new System.Drawing.Size(64, 30);
             this.buttonForward.TabIndex = 13;
             this.buttonForward.Text = "Next";
-            this.buttonForward.UseVisualStyleBackColor = true;
+            this.buttonForward.UseVisualStyleBackColor = false;
             this.buttonForward.Click += new System.EventHandler(this.buttonForward_Click);
             // 
             // MatchesList
@@ -1028,26 +1102,6 @@
             this.process1.StartInfo.UserName = "";
             this.process1.SynchronizingObject = this;
             // 
-            // DeleteList
-            // 
-            this.DeleteList.FormattingEnabled = true;
-            this.DeleteList.Location = new System.Drawing.Point(35, 73);
-            this.DeleteList.Name = "DeleteList";
-            this.DeleteList.Size = new System.Drawing.Size(261, 304);
-            this.DeleteList.TabIndex = 14;
-            this.DeleteList.SelectedIndexChanged += new System.EventHandler(this.DeleteList_SelectedIndexChanged);
-            // 
-            // buttonDelete
-            // 
-            this.buttonDelete.ForeColor = System.Drawing.Color.Black;
-            this.buttonDelete.Location = new System.Drawing.Point(343, 346);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(74, 31);
-            this.buttonDelete.TabIndex = 20;
-            this.buttonDelete.Text = "Delete";
-            this.buttonDelete.UseVisualStyleBackColor = true;
-            this.buttonDelete.Click += new System.EventHandler(this.button1_Click);
-            // 
             // MainPS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1055,9 +1109,9 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(770, 600);
+            this.Controls.Add(this.bitExactFr);
             this.Controls.Add(this.filesToDeleteFR);
             this.Controls.Add(this.progressFr);
-            this.Controls.Add(this.bitExactFr);
             this.Controls.Add(this.PathFrame);
             this.Controls.Add(this.stepThreeLbl);
             this.Controls.Add(this.stepTwoLbl);
@@ -1172,6 +1226,8 @@
         private Microsoft.VisualBasic.PowerPacks.RectangleShape doneBitExactRect;
         private System.Windows.Forms.CheckedListBox DeleteList;
         private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Button buttonCancelSelect;
+        private System.Windows.Forms.Button buttonChooseAll;
 
 
 
