@@ -18,8 +18,8 @@ namespace Features
         private int num_images;
         private const int BRIGHT = 200;
         private const int DARK = 50;
-        
-        public BadContrast(ImageInfo [] images)
+
+        public BadContrast(ImageInfo[] images)
         {
             this.images = images;
             matches = new List<string>();
@@ -33,25 +33,24 @@ namespace Features
                 Histogram hist = images[i].getHist();
                 double mean = hist.Mean;
                 double median = hist.Median;
-                //Debug.WriteLine(mean);
-                //Debug.WriteLine(images[i].getPath());
 
-                if (isBadContrast(mean,median))
+
+                if (isBadContrast(mean, median))
                 {
                     matches.Add(images[i].getPath());
                     Debug.WriteLine(images[i].getPath());
                 }
-            }    
+            }
         }
 
         private bool isBadContrast(double mean, double median)
         {
             if (mean < DARK && median < DARK)
                 return true;
-            
+
             if (mean > BRIGHT && median > BRIGHT)
                 return true;
-            
+
             return false;
         }
     }
