@@ -41,6 +41,9 @@
             this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.browseRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.doneStepOneRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.filesToDeleteFR = new System.Windows.Forms.GroupBox();
+            this.fileToDeletLbl = new System.Windows.Forms.Label();
+            this.PicLastRes = new System.Windows.Forms.PictureBox();
             this.FilterPath = new System.Windows.Forms.GroupBox();
             this.similarPicChckBox = new System.Windows.Forms.CheckBox();
             this.badContrastChckBox = new System.Windows.Forms.CheckBox();
@@ -78,13 +81,14 @@
             this.stepTwoRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.stepOneRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.bitExactFr = new System.Windows.Forms.GroupBox();
+            this.doneBitExactLbl = new System.Windows.Forms.Label();
             this.labelcurr = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.labelnow = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.labelname = new System.Windows.Forms.Label();
-            this.labelRes = new System.Windows.Forms.Label();
-            this.labelLoc = new System.Windows.Forms.Label();
+            this.pictureNameLbl = new System.Windows.Forms.Label();
+            this.ResulutionLbl = new System.Windows.Forms.Label();
+            this.pathLbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -96,10 +100,16 @@
             this.buttonForward = new System.Windows.Forms.Button();
             this.MatchesList = new System.Windows.Forms.CheckedListBox();
             this.PictureResult = new System.Windows.Forms.PictureBox();
+            this.shapeContainer5 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.doneBitExactRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.bitExactProgressTimer = new System.Windows.Forms.Timer(this.components);
             this.process1 = new System.Diagnostics.Process();
+            this.DeleteList = new System.Windows.Forms.CheckedListBox();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.PathFrame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            this.filesToDeleteFR.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicLastRes)).BeginInit();
             this.FilterPath.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -124,7 +134,7 @@
             this.PathFrame.Controls.Add(this.doneStepOneLbl);
             this.PathFrame.Controls.Add(this.shapeContainer2);
             this.PathFrame.ForeColor = System.Drawing.Color.Cornsilk;
-            this.PathFrame.Location = new System.Drawing.Point(327, 582);
+            this.PathFrame.Location = new System.Drawing.Point(676, 60);
             this.PathFrame.Name = "PathFrame";
             this.PathFrame.Size = new System.Drawing.Size(688, 380);
             this.PathFrame.TabIndex = 1;
@@ -199,9 +209,9 @@
             this.doneStepOneLbl.Font = new System.Drawing.Font("Miriam", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.doneStepOneLbl.Location = new System.Drawing.Point(576, 326);
             this.doneStepOneLbl.Name = "doneStepOneLbl";
-            this.doneStepOneLbl.Size = new System.Drawing.Size(98, 37);
+            this.doneStepOneLbl.Size = new System.Drawing.Size(86, 37);
             this.doneStepOneLbl.TabIndex = 5;
-            this.doneStepOneLbl.Text = "Done";
+            this.doneStepOneLbl.Text = "Next";
             this.doneStepOneLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.doneStepOneLbl.Click += new System.EventHandler(this.doneStepOneLbl_Click);
             // 
@@ -253,6 +263,38 @@
             this.doneStepOneRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.doneStepOneRect.Size = new System.Drawing.Size(119, 55);
             // 
+            // filesToDeleteFR
+            // 
+            this.filesToDeleteFR.BackColor = System.Drawing.Color.White;
+            this.filesToDeleteFR.Controls.Add(this.buttonDelete);
+            this.filesToDeleteFR.Controls.Add(this.DeleteList);
+            this.filesToDeleteFR.Controls.Add(this.fileToDeletLbl);
+            this.filesToDeleteFR.Controls.Add(this.PicLastRes);
+            this.filesToDeleteFR.Location = new System.Drawing.Point(29, 55);
+            this.filesToDeleteFR.Name = "filesToDeleteFR";
+            this.filesToDeleteFR.Size = new System.Drawing.Size(690, 395);
+            this.filesToDeleteFR.TabIndex = 31;
+            this.filesToDeleteFR.TabStop = false;
+            // 
+            // fileToDeletLbl
+            // 
+            this.fileToDeletLbl.AutoSize = true;
+            this.fileToDeletLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.fileToDeletLbl.ForeColor = System.Drawing.Color.ForestGreen;
+            this.fileToDeletLbl.Location = new System.Drawing.Point(23, 28);
+            this.fileToDeletLbl.Name = "fileToDeletLbl";
+            this.fileToDeletLbl.Size = new System.Drawing.Size(628, 37);
+            this.fileToDeletLbl.TabIndex = 13;
+            this.fileToDeletLbl.Text = "Those are the pictures you chose to delete:";
+            // 
+            // PicLastRes
+            // 
+            this.PicLastRes.Location = new System.Drawing.Point(343, 97);
+            this.PicLastRes.Name = "PicLastRes";
+            this.PicLastRes.Size = new System.Drawing.Size(293, 190);
+            this.PicLastRes.TabIndex = 12;
+            this.PicLastRes.TabStop = false;
+            // 
             // FilterPath
             // 
             this.FilterPath.BackColor = System.Drawing.SystemColors.HighlightText;
@@ -274,7 +316,7 @@
             this.FilterPath.Controls.Add(this.doneStepTwoLbl);
             this.FilterPath.Controls.Add(this.shapeContainer3);
             this.FilterPath.ForeColor = System.Drawing.Color.Cornsilk;
-            this.FilterPath.Location = new System.Drawing.Point(12, 579);
+            this.FilterPath.Location = new System.Drawing.Point(524, 201);
             this.FilterPath.Name = "FilterPath";
             this.FilterPath.Size = new System.Drawing.Size(703, 380);
             this.FilterPath.TabIndex = 4;
@@ -354,9 +396,9 @@
             this.label10.ForeColor = System.Drawing.Color.Black;
             this.label10.Location = new System.Drawing.Point(207, 256);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(93, 16);
+            this.label10.Size = new System.Drawing.Size(84, 16);
             this.label10.TabIndex = 20;
-            this.label10.Text = "חסימה חלקית";
+            this.label10.Text = "Paritial blockage";
             // 
             // label9
             // 
@@ -364,11 +406,11 @@
             this.label9.BackColor = System.Drawing.Color.White;
             this.label9.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(334, 256);
+            this.label9.Location = new System.Drawing.Point(356, 261);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(121, 16);
+            this.label9.Size = new System.Drawing.Size(60, 16);
             this.label9.TabIndex = 19;
-            this.label9.Text = "תמונות מטושטשות";
+            this.label9.Text = "Bad cotrast";
             // 
             // label8
             // 
@@ -376,23 +418,23 @@
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(517, 256);
+            this.label8.Location = new System.Drawing.Point(499, 256);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 16);
+            this.label8.Size = new System.Drawing.Size(78, 16);
             this.label8.TabIndex = 18;
-            this.label8.Text = "דומות";
+            this.label8.Text = "Similar pictures";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.White;
-            this.label7.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(69, 256);
+            this.label7.Location = new System.Drawing.Point(42, 250);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 16);
+            this.label7.Size = new System.Drawing.Size(139, 20);
             this.label7.TabIndex = 17;
-            this.label7.Text = "תמונות זהות\r\n";
+            this.label7.Text = "Find identical pictures";
             // 
             // pictureBox4
             // 
@@ -435,9 +477,9 @@
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(6, 3);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(232, 37);
+            this.label5.Size = new System.Drawing.Size(221, 37);
             this.label5.TabIndex = 8;
-            this.label5.Text = "בחר תכנית עבודה";
+            this.label5.Text = "Choose Features";
             // 
             // doneStepTwoLbl
             // 
@@ -446,9 +488,9 @@
             this.doneStepTwoLbl.Font = new System.Drawing.Font("Miriam", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.doneStepTwoLbl.Location = new System.Drawing.Point(582, 327);
             this.doneStepTwoLbl.Name = "doneStepTwoLbl";
-            this.doneStepTwoLbl.Size = new System.Drawing.Size(98, 37);
+            this.doneStepTwoLbl.Size = new System.Drawing.Size(86, 37);
             this.doneStepTwoLbl.TabIndex = 5;
-            this.doneStepTwoLbl.Text = "Done";
+            this.doneStepTwoLbl.Text = "Next";
             this.doneStepTwoLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.doneStepTwoLbl.Click += new System.EventHandler(this.doneStepTwoLbl_Click);
             // 
@@ -492,7 +534,7 @@
             this.progressFr.Controls.Add(this.DBprogressBar);
             this.progressFr.Controls.Add(this.shapeContainer4);
             this.progressFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.progressFr.Location = new System.Drawing.Point(12, 588);
+            this.progressFr.Location = new System.Drawing.Point(716, 23);
             this.progressFr.Name = "progressFr";
             this.progressFr.Size = new System.Drawing.Size(688, 380);
             this.progressFr.TabIndex = 14;
@@ -695,13 +737,14 @@
             this.bitExactFr.BackColor = System.Drawing.Color.SeaShell;
             this.bitExactFr.BackgroundImage = global::PhotoSelectGui.Properties.Resources.eye_light_11;
             this.bitExactFr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bitExactFr.Controls.Add(this.doneBitExactLbl);
             this.bitExactFr.Controls.Add(this.labelcurr);
             this.bitExactFr.Controls.Add(this.label13);
             this.bitExactFr.Controls.Add(this.labelnow);
             this.bitExactFr.Controls.Add(this.label11);
-            this.bitExactFr.Controls.Add(this.labelname);
-            this.bitExactFr.Controls.Add(this.labelRes);
-            this.bitExactFr.Controls.Add(this.labelLoc);
+            this.bitExactFr.Controls.Add(this.pictureNameLbl);
+            this.bitExactFr.Controls.Add(this.ResulutionLbl);
+            this.bitExactFr.Controls.Add(this.pathLbl);
             this.bitExactFr.Controls.Add(this.label6);
             this.bitExactFr.Controls.Add(this.label4);
             this.bitExactFr.Controls.Add(this.label3);
@@ -713,12 +756,26 @@
             this.bitExactFr.Controls.Add(this.buttonForward);
             this.bitExactFr.Controls.Add(this.MatchesList);
             this.bitExactFr.Controls.Add(this.PictureResult);
+            this.bitExactFr.Controls.Add(this.shapeContainer5);
             this.bitExactFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.bitExactFr.Location = new System.Drawing.Point(49, 187);
+            this.bitExactFr.Location = new System.Drawing.Point(47, 205);
             this.bitExactFr.Name = "bitExactFr";
             this.bitExactFr.Size = new System.Drawing.Size(688, 395);
             this.bitExactFr.TabIndex = 16;
             this.bitExactFr.TabStop = false;
+            // 
+            // doneBitExactLbl
+            // 
+            this.doneBitExactLbl.AutoSize = true;
+            this.doneBitExactLbl.BackColor = System.Drawing.SystemColors.Highlight;
+            this.doneBitExactLbl.Font = new System.Drawing.Font("Miriam", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.doneBitExactLbl.Location = new System.Drawing.Point(573, 343);
+            this.doneBitExactLbl.Name = "doneBitExactLbl";
+            this.doneBitExactLbl.Size = new System.Drawing.Size(86, 37);
+            this.doneBitExactLbl.TabIndex = 31;
+            this.doneBitExactLbl.Text = "Next";
+            this.doneBitExactLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.doneBitExactLbl.Click += new System.EventHandler(this.doneBitExactLbl_Click);
             // 
             // labelcurr
             // 
@@ -726,7 +783,7 @@
             this.labelcurr.BackColor = System.Drawing.Color.Transparent;
             this.labelcurr.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelcurr.ForeColor = System.Drawing.Color.White;
-            this.labelcurr.Location = new System.Drawing.Point(261, 174);
+            this.labelcurr.Location = new System.Drawing.Point(284, 177);
             this.labelcurr.Name = "labelcurr";
             this.labelcurr.Size = new System.Drawing.Size(68, 30);
             this.labelcurr.TabIndex = 30;
@@ -738,11 +795,11 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(335, 174);
+            this.label13.Location = new System.Drawing.Point(238, 177);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(66, 30);
             this.label13.TabIndex = 29;
-            this.label13.Text = "מתוך";
+            this.label13.Text = "Of";
             // 
             // labelnow
             // 
@@ -750,7 +807,7 @@
             this.labelnow.BackColor = System.Drawing.Color.Transparent;
             this.labelnow.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelnow.ForeColor = System.Drawing.Color.White;
-            this.labelnow.Location = new System.Drawing.Point(408, 174);
+            this.labelnow.Location = new System.Drawing.Point(190, 175);
             this.labelnow.Name = "labelnow";
             this.labelnow.Size = new System.Drawing.Size(63, 30);
             this.labelnow.TabIndex = 28;
@@ -762,47 +819,47 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(473, 174);
+            this.label11.Location = new System.Drawing.Point(23, 174);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(209, 30);
             this.label11.TabIndex = 27;
-            this.label11.Text = "התוצאות שהתקבלו: מציג";
+            this.label11.Text = "Resoults: Showing";
             // 
-            // labelname
+            // pictureNameLbl
             // 
-            this.labelname.BackColor = System.Drawing.Color.Transparent;
-            this.labelname.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelname.ForeColor = System.Drawing.Color.White;
-            this.labelname.Location = new System.Drawing.Point(231, 65);
-            this.labelname.Name = "labelname";
-            this.labelname.Size = new System.Drawing.Size(312, 18);
-            this.labelname.TabIndex = 26;
-            this.labelname.Text = "פרטים";
-            this.labelname.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.pictureNameLbl.BackColor = System.Drawing.Color.Transparent;
+            this.pictureNameLbl.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.pictureNameLbl.ForeColor = System.Drawing.Color.White;
+            this.pictureNameLbl.Location = new System.Drawing.Point(147, 47);
+            this.pictureNameLbl.Name = "pictureNameLbl";
+            this.pictureNameLbl.Size = new System.Drawing.Size(147, 18);
+            this.pictureNameLbl.TabIndex = 26;
+            this.pictureNameLbl.Text = "pictureName";
+            this.pictureNameLbl.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // labelRes
+            // ResulutionLbl
             // 
-            this.labelRes.BackColor = System.Drawing.Color.Transparent;
-            this.labelRes.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelRes.ForeColor = System.Drawing.Color.White;
-            this.labelRes.Location = new System.Drawing.Point(231, 117);
-            this.labelRes.Name = "labelRes";
-            this.labelRes.Size = new System.Drawing.Size(312, 18);
-            this.labelRes.TabIndex = 26;
-            this.labelRes.Text = "פרטים";
-            this.labelRes.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.ResulutionLbl.BackColor = System.Drawing.Color.Transparent;
+            this.ResulutionLbl.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.ResulutionLbl.ForeColor = System.Drawing.Color.White;
+            this.ResulutionLbl.Location = new System.Drawing.Point(166, 101);
+            this.ResulutionLbl.Name = "ResulutionLbl";
+            this.ResulutionLbl.Size = new System.Drawing.Size(128, 18);
+            this.ResulutionLbl.TabIndex = 26;
+            this.ResulutionLbl.Text = "פרטים";
+            this.ResulutionLbl.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // labelLoc
+            // pathLbl
             // 
-            this.labelLoc.BackColor = System.Drawing.Color.Transparent;
-            this.labelLoc.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelLoc.ForeColor = System.Drawing.Color.White;
-            this.labelLoc.Location = new System.Drawing.Point(231, 92);
-            this.labelLoc.Name = "labelLoc";
-            this.labelLoc.Size = new System.Drawing.Size(312, 18);
-            this.labelLoc.TabIndex = 25;
-            this.labelLoc.Text = "פרטים";
-            this.labelLoc.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.pathLbl.BackColor = System.Drawing.Color.Transparent;
+            this.pathLbl.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.pathLbl.ForeColor = System.Drawing.Color.White;
+            this.pathLbl.Location = new System.Drawing.Point(166, 76);
+            this.pathLbl.Name = "pathLbl";
+            this.pathLbl.Size = new System.Drawing.Size(128, 18);
+            this.pathLbl.TabIndex = 25;
+            this.pathLbl.Text = "פרטים";
+            this.pathLbl.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label6
             // 
@@ -811,11 +868,11 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.label6.ForeColor = System.Drawing.Color.Orange;
-            this.label6.Location = new System.Drawing.Point(576, 122);
+            this.label6.Location = new System.Drawing.Point(23, 103);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 19);
+            this.label6.Size = new System.Drawing.Size(96, 19);
             this.label6.TabIndex = 23;
-            this.label6.Text = "רזולוציה";
+            this.label6.Text = "Resulusion";
             // 
             // label4
             // 
@@ -824,11 +881,11 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.label4.ForeColor = System.Drawing.Color.Orange;
-            this.label4.Location = new System.Drawing.Point(592, 92);
+            this.label4.Location = new System.Drawing.Point(23, 75);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 19);
+            this.label4.Size = new System.Drawing.Size(136, 19);
             this.label4.TabIndex = 22;
-            this.label4.Text = "מיקום";
+            this.label4.Text = "Location on disk";
             // 
             // label3
             // 
@@ -837,11 +894,11 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.label3.ForeColor = System.Drawing.Color.Orange;
-            this.label3.Location = new System.Drawing.Point(549, 64);
+            this.label3.Location = new System.Drawing.Point(23, 47);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 19);
+            this.label3.Size = new System.Drawing.Size(111, 19);
             this.label3.TabIndex = 21;
-            this.label3.Text = "שם התמונה";
+            this.label3.Text = "Picture Name";
             // 
             // label1
             // 
@@ -849,20 +906,20 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.label1.ForeColor = System.Drawing.Color.Orange;
-            this.label1.Location = new System.Drawing.Point(558, 19);
+            this.label1.Location = new System.Drawing.Point(20, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 30);
+            this.label1.Size = new System.Drawing.Size(181, 31);
             this.label1.TabIndex = 20;
-            this.label1.Text = "פרטי התמונה";
+            this.label1.Text = "Picture Properties";
             // 
             // buttonDeleteSelected
             // 
             this.buttonDeleteSelected.ForeColor = System.Drawing.Color.Black;
-            this.buttonDeleteSelected.Location = new System.Drawing.Point(25, 349);
+            this.buttonDeleteSelected.Location = new System.Drawing.Point(207, 349);
             this.buttonDeleteSelected.Name = "buttonDeleteSelected";
             this.buttonDeleteSelected.Size = new System.Drawing.Size(74, 31);
             this.buttonDeleteSelected.TabIndex = 19;
-            this.buttonDeleteSelected.Text = "מחיקה";
+            this.buttonDeleteSelected.Text = "Delete";
             this.buttonDeleteSelected.UseVisualStyleBackColor = true;
             this.buttonDeleteSelected.Click += new System.EventHandler(this.buttonDeleteSelected_Click_1);
             // 
@@ -871,62 +928,91 @@
             this.buttonAbortSelect.ForeColor = System.Drawing.Color.Black;
             this.buttonAbortSelect.Location = new System.Drawing.Point(103, 349);
             this.buttonAbortSelect.Name = "buttonAbortSelect";
-            this.buttonAbortSelect.Size = new System.Drawing.Size(74, 31);
+            this.buttonAbortSelect.Size = new System.Drawing.Size(98, 31);
             this.buttonAbortSelect.TabIndex = 16;
-            this.buttonAbortSelect.Text = "בטל בחירה";
+            this.buttonAbortSelect.Text = "Cancel Selection";
             this.buttonAbortSelect.UseVisualStyleBackColor = true;
             this.buttonAbortSelect.Click += new System.EventHandler(this.buttonAbortSelect_Click_1);
             // 
             // buttonSelectAll
             // 
             this.buttonSelectAll.ForeColor = System.Drawing.Color.Black;
-            this.buttonSelectAll.Location = new System.Drawing.Point(181, 349);
+            this.buttonSelectAll.Location = new System.Drawing.Point(23, 349);
             this.buttonSelectAll.Name = "buttonSelectAll";
             this.buttonSelectAll.Size = new System.Drawing.Size(74, 31);
             this.buttonSelectAll.TabIndex = 15;
-            this.buttonSelectAll.Text = "בחר הכל";
+            this.buttonSelectAll.Text = "Choose All";
             this.buttonSelectAll.UseVisualStyleBackColor = true;
             this.buttonSelectAll.Click += new System.EventHandler(this.buttonSelectAll_Click_1);
             // 
             // buttonBack
             // 
             this.buttonBack.ForeColor = System.Drawing.Color.Black;
-            this.buttonBack.Location = new System.Drawing.Point(25, 169);
+            this.buttonBack.Location = new System.Drawing.Point(486, 170);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(64, 30);
             this.buttonBack.TabIndex = 14;
-            this.buttonBack.Text = "אחורה";
+            this.buttonBack.Text = "Previous";
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // buttonForward
             // 
             this.buttonForward.ForeColor = System.Drawing.Color.Black;
-            this.buttonForward.Location = new System.Drawing.Point(147, 169);
+            this.buttonForward.Location = new System.Drawing.Point(608, 170);
             this.buttonForward.Name = "buttonForward";
             this.buttonForward.Size = new System.Drawing.Size(64, 30);
             this.buttonForward.TabIndex = 13;
-            this.buttonForward.Text = "הבא";
+            this.buttonForward.Text = "Next";
             this.buttonForward.UseVisualStyleBackColor = true;
             this.buttonForward.Click += new System.EventHandler(this.buttonForward_Click);
             // 
             // MatchesList
             // 
             this.MatchesList.FormattingEnabled = true;
-            this.MatchesList.Location = new System.Drawing.Point(24, 210);
+            this.MatchesList.Location = new System.Drawing.Point(25, 210);
             this.MatchesList.Name = "MatchesList";
-            this.MatchesList.Size = new System.Drawing.Size(636, 139);
+            this.MatchesList.Size = new System.Drawing.Size(635, 124);
             this.MatchesList.TabIndex = 12;
             this.MatchesList.SelectedIndexChanged += new System.EventHandler(this.MatchesList_SelectedIndexChanged_1);
             // 
             // PictureResult
             // 
             this.PictureResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PictureResult.Location = new System.Drawing.Point(25, 19);
+            this.PictureResult.Location = new System.Drawing.Point(486, 16);
             this.PictureResult.Name = "PictureResult";
             this.PictureResult.Size = new System.Drawing.Size(186, 148);
             this.PictureResult.TabIndex = 11;
             this.PictureResult.TabStop = false;
+            // 
+            // shapeContainer5
+            // 
+            this.shapeContainer5.Location = new System.Drawing.Point(3, 16);
+            this.shapeContainer5.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer5.Name = "shapeContainer5";
+            this.shapeContainer5.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.doneBitExactRect});
+            this.shapeContainer5.Size = new System.Drawing.Size(682, 376);
+            this.shapeContainer5.TabIndex = 32;
+            this.shapeContainer5.TabStop = false;
+            // 
+            // doneBitExactRect
+            // 
+            this.doneBitExactRect.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.doneBitExactRect.BackColor = System.Drawing.Color.Maroon;
+            this.doneBitExactRect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.doneBitExactRect.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.doneBitExactRect.BorderColor = System.Drawing.SystemColors.Desktop;
+            this.doneBitExactRect.CornerRadius = 8;
+            this.doneBitExactRect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.doneBitExactRect.FillColor = System.Drawing.SystemColors.Highlight;
+            this.doneBitExactRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
+            this.doneBitExactRect.Location = new System.Drawing.Point(557, 319);
+            this.doneBitExactRect.Name = "doneBitExactRect";
+            this.doneBitExactRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.doneBitExactRect.Size = new System.Drawing.Size(119, 55);
             // 
             // bitExactProgressTimer
             // 
@@ -942,6 +1028,26 @@
             this.process1.StartInfo.UserName = "";
             this.process1.SynchronizingObject = this;
             // 
+            // DeleteList
+            // 
+            this.DeleteList.FormattingEnabled = true;
+            this.DeleteList.Location = new System.Drawing.Point(35, 73);
+            this.DeleteList.Name = "DeleteList";
+            this.DeleteList.Size = new System.Drawing.Size(261, 304);
+            this.DeleteList.TabIndex = 14;
+            this.DeleteList.SelectedIndexChanged += new System.EventHandler(this.DeleteList_SelectedIndexChanged);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.ForeColor = System.Drawing.Color.Black;
+            this.buttonDelete.Location = new System.Drawing.Point(343, 346);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(74, 31);
+            this.buttonDelete.TabIndex = 20;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainPS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -949,13 +1055,14 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(770, 600);
-            this.Controls.Add(this.FilterPath);
+            this.Controls.Add(this.filesToDeleteFR);
+            this.Controls.Add(this.progressFr);
             this.Controls.Add(this.bitExactFr);
             this.Controls.Add(this.PathFrame);
-            this.Controls.Add(this.progressFr);
             this.Controls.Add(this.stepThreeLbl);
             this.Controls.Add(this.stepTwoLbl);
             this.Controls.Add(this.stepOneLbl);
+            this.Controls.Add(this.FilterPath);
             this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
@@ -967,6 +1074,9 @@
             this.PathFrame.ResumeLayout(false);
             this.PathFrame.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            this.filesToDeleteFR.ResumeLayout(false);
+            this.filesToDeleteFR.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicLastRes)).EndInit();
             this.FilterPath.ResumeLayout(false);
             this.FilterPath.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1033,9 +1143,9 @@
         private System.Windows.Forms.CheckBox similarPicChckBox;
         private System.Windows.Forms.GroupBox bitExactFr;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label labelname;
-        private System.Windows.Forms.Label labelRes;
-        private System.Windows.Forms.Label labelLoc;
+        private System.Windows.Forms.Label pictureNameLbl;
+        private System.Windows.Forms.Label ResulutionLbl;
+        private System.Windows.Forms.Label pathLbl;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -1054,6 +1164,14 @@
         private System.Windows.Forms.Label labelcurr;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label labelnow;
+        private System.Windows.Forms.GroupBox filesToDeleteFR;
+        private System.Windows.Forms.PictureBox PicLastRes;
+        private System.Windows.Forms.Label fileToDeletLbl;
+        private System.Windows.Forms.Label doneBitExactLbl;
+        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer5;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape doneBitExactRect;
+        private System.Windows.Forms.CheckedListBox DeleteList;
+        private System.Windows.Forms.Button buttonDelete;
 
 
 

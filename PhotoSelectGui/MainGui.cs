@@ -102,9 +102,9 @@ namespace PhotoSelectGui
         enum frames
         {
             stepOneFr_to_stepTwoFr, stepTwoFr_to_stepOneFr, stepTwoFr_to_progressBarFr,
-            progressBarFr_to_stepTwoFr, progressBarFr_to_bitExactFr, stepthreeFr_to_stepOneFr, stepthreeFr_to_stepTwoFr
+            progressBarFr_to_stepTwoFr, progressBarFr_to_bitExactFr, stepthreeFr_to_stepOneFr, stepthreeFr_to_stepTwoFr, stepthreeFr_to_filesToDeleteFr
         };
-        bool[] frameShow = new bool[7];
+        bool[] frameShow = new bool[8];
 
         private void frameShowInit()
         {
@@ -133,6 +133,7 @@ namespace PhotoSelectGui
             FilterPath.Visible = false;
             progressFr.Visible = false;
             bitExactFr.Visible = false;
+            filesToDeleteFR.Visible = false;
             changecolor(1);
         }
 
@@ -143,6 +144,7 @@ namespace PhotoSelectGui
             bitExactFr.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
             FilterPath.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
             progressFr.Location = new Point((int)BOTTOM_FRAME_X, (int)BOTTOM_FRAME_Y);
+            filesToDeleteFR.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
 
         }
 
@@ -250,6 +252,21 @@ namespace PhotoSelectGui
                     frameShow[(int)frames.stepthreeFr_to_stepTwoFr] = false;
                 }
             }
+
+
+            if (frameShow[(int)frames.stepthreeFr_to_filesToDeleteFr] == true)
+            {
+                bitExactFr.Location = new Point(bitExactFr.Location.X + (int)FRAME_SPEED, bitExactFr.Location.Y);
+                filesToDeleteFR.Location = new Point(filesToDeleteFR.Location.X + (int)FRAME_SPEED, filesToDeleteFR.Location.Y);
+
+                if (filesToDeleteFR.Location.X == FRAME_X)
+                {
+                    bitExactFr.Visible = false;
+                    frameMovementTimer.Enabled = false;
+                    frameShow[(int)frames.stepthreeFr_to_filesToDeleteFr] = false;
+                }
+            }
+
         }
 
 
@@ -269,7 +286,7 @@ namespace PhotoSelectGui
                 }
 
             }
-            else MessageBox.Show("לא נבחרה תיקייה המכילה תמונות");
+            else MessageBox.Show("you didn't choose a directory with Pictures!");
         }
 
         private void stepOneLbl_Click(object sender, EventArgs e)
@@ -315,7 +332,7 @@ namespace PhotoSelectGui
                     changecolor(3);
                 }
             }
-            else MessageBox.Show("חובה לבחור באפשרות אחת לפחות");
+            else MessageBox.Show("You have to choos at least one feature!");
         }
 
         private void cancelProgressLbl_Click(object sender, EventArgs e)
@@ -358,8 +375,24 @@ namespace PhotoSelectGui
                     frameMovementTimer.Enabled = true; // turn on the animation
                     changecolor(2);
                 }
-                else MessageBox.Show("לא נבחרה תיקייה המכילה תמונות");
+                else MessageBox.Show("you didn't choose a directory with Pictures!");
             }
+
+        }
+
+        private void doneBitExactLbl_Click(object sender, EventArgs e)
+        {
+            if (bitExactFr.Location.X == FRAME_X)
+            {
+                frameShow[(int)frames.stepthreeFr_to_filesToDeleteFr] = true;
+                filesToDeleteFR.Visible = true;
+                frameMovementTimer.Enabled = true;
+                //changecolor(2);
+            }
+            for (int i = 0; i < itemsToDelete.Count; i++)
+            {
+                    DeleteList.Items.Add(itemsToDelete[i].ToString());
+            }      
 
         }
 
@@ -406,7 +439,7 @@ namespace PhotoSelectGui
                 if (filePaths.Length > 0)
                     foreach (string filepath in filePaths) //  fills the list of files "filePaths" to send to brain 
                         photosPaths.Items.Add(filepath);
-                else MessageBox.Show("התיקייה אותה בחרת אינה מכילה תמונות");
+                else MessageBox.Show("there are no pictures in the directory (only JPGs for now...)");
                 numLbl.Text = filePaths.Length.ToString(); // number of photos in the folder
             }
         }
@@ -468,7 +501,7 @@ namespace PhotoSelectGui
                             if (image != null)
                             {
                                 PictureResult.Image = image.GetThumbnailImage(186, 148, null, new IntPtr());
-                                labelLoc.Text = core.Res.BitExact.Matches[bitcurr - 1][0].ToString();
+                                pathLbl.Text = core.Res.BitExact.Matches[bitcurr - 1][0].ToString();
                             }
                         }
                         catch
@@ -479,7 +512,7 @@ namespace PhotoSelectGui
                         
                     }
                     else
-                        MessageBox.Show("לא נמצאו תמונות דומות");
+                        MessageBox.Show("there are no identical pictures");
                     //-------------------end of load results -----------------------------//
                 }
             }
@@ -586,8 +619,11 @@ namespace PhotoSelectGui
                 // Check if image exists
                 if (image != null)
                 {
+                    ResulutionLbl.Text = (image.Width + "x" + image.Height);
+                  //  pictureNameLbl.Text = image.
+
                     PictureResult.Image = image.GetThumbnailImage(186, 148, null, new IntPtr());
-                    labelLoc.Text = MatchesList.SelectedItem.ToString();
+                    pathLbl.Text = MatchesList.SelectedItem.ToString();
                 }
             }
             catch
@@ -631,7 +667,7 @@ namespace PhotoSelectGui
                     if (image != null)
                     {
                         PictureResult.Image = image.GetThumbnailImage(186, 148, null, new IntPtr());
-                        labelLoc.Text = core.Res.BitExact.Matches[bitcurr - 1][0].ToString();
+                        pathLbl.Text = core.Res.BitExact.Matches[bitcurr - 1][0].ToString();
                     }
                 }
                 catch
@@ -671,7 +707,7 @@ namespace PhotoSelectGui
                     if (image != null)
                     {
                         PictureResult.Image = image.GetThumbnailImage(186, 148, null, new IntPtr());
-                        labelLoc.Text = core.Res.BitExact.Matches[bitcurr - 1][0].ToString();
+                        pathLbl.Text = core.Res.BitExact.Matches[bitcurr - 1][0].ToString();
                     }
                 }
                 catch
@@ -683,6 +719,51 @@ namespace PhotoSelectGui
             }
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //dispose all memmory in use
+            PictureResult.Image = null;
+            pictureBox.Image = null;
+            PicLastRes.Image = null;
+            image.Dispose();
+            //send to delete function if checked
+            for (int i = 0; i < DeleteList.Items.Count; i++)
+            {
+                if (DeleteList.GetItemChecked(i))
+                {
+
+                    TryToDelete(DeleteList.Items[i].ToString());
+                }
+            }
+        }
+
+        private void DeleteList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (image != null)
+                    image.Dispose();
+                image = null;
+                // Check if textbox has a value
+                if (DeleteList.SelectedItem.ToString() != String.Empty)
+                    image = Image.FromFile(DeleteList.SelectedItem.ToString());
+                // Check if image exists
+                if (image != null)
+                {
+                   
+                    PicLastRes.Image = image.GetThumbnailImage(293, 190, null, new IntPtr());
+                    pathLbl.Text = DeleteList.SelectedItem.ToString();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("An error occured");
+            }
+            PicLastRes.Refresh();
+        }
+
+     
 
        
 
