@@ -16,6 +16,8 @@ namespace Features
         private ImageInfo[] images;
         private List<string> matches;
         private int num_images;
+        private const int BRIGHT = 200;
+        private const int DARK = 50;
         
         public BadContrast(ImageInfo [] images)
         {
@@ -26,9 +28,31 @@ namespace Features
 
         public void run()
         {
-            Histogram x = images[0].getHist();
-            double m = x.StdDev;
-            Debug.WriteLine(m);
+            for (int i = 0; i < num_images; i++)
+            {
+                Histogram hist = images[i].getHist();
+                double mean = hist.Mean;
+                double median = hist.Median;
+                //Debug.WriteLine(mean);
+                //Debug.WriteLine(images[i].getPath());
+
+                if (isBadContrast(mean,median))
+                {
+                    matches.Add(images[i].getPath());
+                    Debug.WriteLine(images[i].getPath());
+                }
+            }    
+        }
+
+        private bool isBadContrast(double mean, double median)
+        {
+            if (mean < DARK && median < DARK)
+                return true;
+            
+            if (mean > BRIGHT && median > BRIGHT)
+                return true;
+            
+            return false;
         }
     }
 }
