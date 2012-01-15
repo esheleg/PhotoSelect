@@ -72,6 +72,31 @@ namespace Features
         }
     }
 
+    // BadContrustRes added by Yossi
+    public struct BadContrastRes
+    {
+        private List<string> _matches;
+        /// <summary>
+        /// deep copy of matches
+        /// </summary>
+
+        public BadContrastRes(List<string> matches)
+        {// TODO - need to change this to array
+            _matches = new List<string>(matches.Count);
+            foreach (string path in matches)
+            {
+                _matches.Add(path);
+            }
+
+
+        }
+
+        public List<string> Matches
+        {
+            get { return _matches; }
+        }
+    }
+
     public struct Results
     {
         private BitExactRes _bitExactRes;

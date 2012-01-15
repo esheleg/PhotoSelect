@@ -19,6 +19,8 @@ namespace Features
         private const int BRIGHT = 200;
         private const int DARK = 50;
 
+        protected BadContrastRes results;
+
         public BadContrast(ImageInfo[] images)
         {
             this.images = images;
@@ -41,6 +43,12 @@ namespace Features
                     Debug.WriteLine(images[i].getPath());
                 }
             }
+            results = new BadContrastRes(matches);
+        }
+
+        public BadContrastRes Results
+        {
+            get { return results; }
         }
 
         private bool isBadContrast(double mean, double median)
