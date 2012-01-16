@@ -819,6 +819,11 @@ namespace PhotoSelectGui
                 DeleteList.SetItemChecked(i, false);
         }
 
+        private void textpath_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
   
 
 

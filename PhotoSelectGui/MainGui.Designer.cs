@@ -108,6 +108,9 @@
             this.doneBitExactRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.bitExactProgressTimer = new System.Windows.Forms.Timer(this.components);
             this.process1 = new System.Diagnostics.Process();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.PathFrame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.filesToDeleteFR.SuspendLayout();
@@ -127,6 +130,9 @@
             // 
             this.PathFrame.BackColor = System.Drawing.SystemColors.HighlightText;
             this.PathFrame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PathFrame.Controls.Add(this.label15);
+            this.PathFrame.Controls.Add(this.label14);
+            this.PathFrame.Controls.Add(this.label12);
             this.PathFrame.Controls.Add(this.numPicsLbl);
             this.PathFrame.Controls.Add(this.numLbl);
             this.PathFrame.Controls.Add(this.pictureBox);
@@ -136,9 +142,9 @@
             this.PathFrame.Controls.Add(this.doneStepOneLbl);
             this.PathFrame.Controls.Add(this.shapeContainer2);
             this.PathFrame.ForeColor = System.Drawing.Color.Cornsilk;
-            this.PathFrame.Location = new System.Drawing.Point(676, 60);
+            this.PathFrame.Location = new System.Drawing.Point(44, 181);
             this.PathFrame.Name = "PathFrame";
-            this.PathFrame.Size = new System.Drawing.Size(688, 380);
+            this.PathFrame.Size = new System.Drawing.Size(670, 386);
             this.PathFrame.TabIndex = 1;
             this.PathFrame.TabStop = false;
             // 
@@ -146,29 +152,28 @@
             // 
             this.numPicsLbl.AutoSize = true;
             this.numPicsLbl.BackColor = System.Drawing.Color.Green;
-            this.numPicsLbl.Font = new System.Drawing.Font("Miriam", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.numPicsLbl.Location = new System.Drawing.Point(389, 321);
+            this.numPicsLbl.Font = new System.Drawing.Font("Miriam", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.numPicsLbl.Location = new System.Drawing.Point(471, 305);
             this.numPicsLbl.Name = "numPicsLbl";
-            this.numPicsLbl.Size = new System.Drawing.Size(138, 37);
+            this.numPicsLbl.Size = new System.Drawing.Size(171, 27);
             this.numPicsLbl.TabIndex = 13;
-            this.numPicsLbl.Text = "Pictures";
+            this.numPicsLbl.Text = "Pictures found";
             this.numPicsLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // numLbl
             // 
-            this.numLbl.AutoSize = true;
             this.numLbl.BackColor = System.Drawing.Color.Green;
-            this.numLbl.Font = new System.Drawing.Font("Miriam", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.numLbl.Location = new System.Drawing.Point(286, 321);
+            this.numLbl.Font = new System.Drawing.Font("Miriam", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.numLbl.Location = new System.Drawing.Point(349, 305);
             this.numLbl.Name = "numLbl";
-            this.numLbl.Size = new System.Drawing.Size(34, 37);
+            this.numLbl.Size = new System.Drawing.Size(127, 27);
             this.numLbl.TabIndex = 12;
             this.numLbl.Text = "0";
             this.numLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox
             // 
-            this.pictureBox.Location = new System.Drawing.Point(286, 120);
+            this.pictureBox.Location = new System.Drawing.Point(349, 112);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(293, 190);
             this.pictureBox.TabIndex = 11;
@@ -176,12 +181,12 @@
             // 
             // browseLbl
             // 
-            this.browseLbl.AutoSize = true;
             this.browseLbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.browseLbl.Font = new System.Drawing.Font("Miriam", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.browseLbl.Location = new System.Drawing.Point(70, 43);
+            this.browseLbl.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.browseLbl.Font = new System.Drawing.Font("Monotype Corsiva", 35F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.browseLbl.Location = new System.Drawing.Point(19, 30);
             this.browseLbl.Name = "browseLbl";
-            this.browseLbl.Size = new System.Drawing.Size(129, 37);
+            this.browseLbl.Size = new System.Drawing.Size(233, 49);
             this.browseLbl.TabIndex = 10;
             this.browseLbl.Text = "Browse";
             this.browseLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -190,28 +195,29 @@
             // photosPaths
             // 
             this.photosPaths.FormattingEnabled = true;
-            this.photosPaths.Location = new System.Drawing.Point(14, 120);
+            this.photosPaths.Location = new System.Drawing.Point(14, 131);
             this.photosPaths.Name = "photosPaths";
-            this.photosPaths.Size = new System.Drawing.Size(266, 238);
+            this.photosPaths.Size = new System.Drawing.Size(327, 199);
             this.photosPaths.TabIndex = 9;
             this.photosPaths.SelectedIndexChanged += new System.EventHandler(this.photosPaths_SelectedIndexChanged);
             // 
             // textpath
             // 
-            this.textpath.Location = new System.Drawing.Point(14, 94);
+            this.textpath.Location = new System.Drawing.Point(277, 65);
             this.textpath.Name = "textpath";
             this.textpath.ReadOnly = true;
-            this.textpath.Size = new System.Drawing.Size(565, 20);
+            this.textpath.Size = new System.Drawing.Size(377, 20);
             this.textpath.TabIndex = 6;
+            this.textpath.TextChanged += new System.EventHandler(this.textpath_TextChanged);
             // 
             // doneStepOneLbl
             // 
-            this.doneStepOneLbl.AutoSize = true;
+            this.doneStepOneLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.doneStepOneLbl.BackColor = System.Drawing.SystemColors.Highlight;
-            this.doneStepOneLbl.Font = new System.Drawing.Font("Miriam", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.doneStepOneLbl.Location = new System.Drawing.Point(576, 326);
+            this.doneStepOneLbl.Font = new System.Drawing.Font("Miriam", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.doneStepOneLbl.Location = new System.Drawing.Point(563, 344);
             this.doneStepOneLbl.Name = "doneStepOneLbl";
-            this.doneStepOneLbl.Size = new System.Drawing.Size(86, 37);
+            this.doneStepOneLbl.Size = new System.Drawing.Size(86, 31);
             this.doneStepOneLbl.TabIndex = 5;
             this.doneStepOneLbl.Text = "Next";
             this.doneStepOneLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -225,15 +231,12 @@
             this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.browseRect,
             this.doneStepOneRect});
-            this.shapeContainer2.Size = new System.Drawing.Size(682, 361);
+            this.shapeContainer2.Size = new System.Drawing.Size(664, 367);
             this.shapeContainer2.TabIndex = 7;
             this.shapeContainer2.TabStop = false;
             // 
             // browseRect
             // 
-            this.browseRect.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
             this.browseRect.BackColor = System.Drawing.Color.Maroon;
             this.browseRect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.browseRect.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
@@ -242,16 +245,14 @@
             this.browseRect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.browseRect.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.browseRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.browseRect.Location = new System.Drawing.Point(11, 24);
+            this.browseRect.Location = new System.Drawing.Point(11, 8);
             this.browseRect.Name = "browseRect";
             this.browseRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.browseRect.Size = new System.Drawing.Size(249, 44);
+            this.browseRect.Size = new System.Drawing.Size(253, 60);
             // 
             // doneStepOneRect
             // 
-            this.doneStepOneRect.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.doneStepOneRect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.doneStepOneRect.BackColor = System.Drawing.Color.Maroon;
             this.doneStepOneRect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.doneStepOneRect.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
@@ -260,10 +261,10 @@
             this.doneStepOneRect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.doneStepOneRect.FillColor = System.Drawing.SystemColors.Highlight;
             this.doneStepOneRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.doneStepOneRect.Location = new System.Drawing.Point(559, 300);
+            this.doneStepOneRect.Location = new System.Drawing.Point(541, 325);
             this.doneStepOneRect.Name = "doneStepOneRect";
             this.doneStepOneRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.doneStepOneRect.Size = new System.Drawing.Size(119, 55);
+            this.doneStepOneRect.Size = new System.Drawing.Size(119, 36);
             // 
             // filesToDeleteFR
             // 
@@ -276,7 +277,7 @@
             this.filesToDeleteFR.Controls.Add(this.DeleteList);
             this.filesToDeleteFR.Controls.Add(this.fileToDeletLbl);
             this.filesToDeleteFR.Controls.Add(this.PicLastRes);
-            this.filesToDeleteFR.Location = new System.Drawing.Point(122, 55);
+            this.filesToDeleteFR.Location = new System.Drawing.Point(306, 508);
             this.filesToDeleteFR.Name = "filesToDeleteFR";
             this.filesToDeleteFR.Size = new System.Drawing.Size(690, 395);
             this.filesToDeleteFR.TabIndex = 31;
@@ -376,7 +377,7 @@
             this.FilterPath.Controls.Add(this.doneStepTwoLbl);
             this.FilterPath.Controls.Add(this.shapeContainer3);
             this.FilterPath.ForeColor = System.Drawing.Color.Cornsilk;
-            this.FilterPath.Location = new System.Drawing.Point(302, 517);
+            this.FilterPath.Location = new System.Drawing.Point(382, 446);
             this.FilterPath.Name = "FilterPath";
             this.FilterPath.Size = new System.Drawing.Size(703, 380);
             this.FilterPath.TabIndex = 4;
@@ -587,7 +588,6 @@
             // 
             this.progressFr.BackColor = System.Drawing.SystemColors.HighlightText;
             this.progressFr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.progressFr.Controls.Add(this.filesToDeleteFR);
             this.progressFr.Controls.Add(this.BitExactProgressLbl);
             this.progressFr.Controls.Add(this.BitExactProgressBar);
             this.progressFr.Controls.Add(this.label2);
@@ -595,7 +595,7 @@
             this.progressFr.Controls.Add(this.DBprogressBar);
             this.progressFr.Controls.Add(this.shapeContainer4);
             this.progressFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.progressFr.Location = new System.Drawing.Point(21, 60);
+            this.progressFr.Location = new System.Drawing.Point(271, 524);
             this.progressFr.Name = "progressFr";
             this.progressFr.Size = new System.Drawing.Size(688, 380);
             this.progressFr.TabIndex = 14;
@@ -695,7 +695,7 @@
             this.stepOneLbl.BackColor = System.Drawing.Color.White;
             this.stepOneLbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepOneLbl.Font = new System.Drawing.Font("Mistral", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stepOneLbl.Location = new System.Drawing.Point(61, 123);
+            this.stepOneLbl.Location = new System.Drawing.Point(76, 123);
             this.stepOneLbl.Name = "stepOneLbl";
             this.stepOneLbl.Size = new System.Drawing.Size(120, 44);
             this.stepOneLbl.TabIndex = 2;
@@ -741,13 +741,12 @@
             this.stepThreeRect,
             this.stepTwoRect,
             this.stepOneRect});
-            this.shapeContainer1.Size = new System.Drawing.Size(770, 600);
+            this.shapeContainer1.Size = new System.Drawing.Size(764, 590);
             this.shapeContainer1.TabIndex = 0;
             this.shapeContainer1.TabStop = false;
             // 
             // stepThreeRect
             // 
-            this.stepThreeRect.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.stepThreeRect.BackColor = System.Drawing.Color.Maroon;
             this.stepThreeRect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.stepThreeRect.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
@@ -756,14 +755,13 @@
             this.stepThreeRect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepThreeRect.FillColor = System.Drawing.Color.White;
             this.stepThreeRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.stepThreeRect.Location = new System.Drawing.Point(382, 121);
+            this.stepThreeRect.Location = new System.Drawing.Point(387, 121);
             this.stepThreeRect.Name = "stepThreeRect";
             this.stepThreeRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.stepThreeRect.Size = new System.Drawing.Size(150, 50);
+            this.stepThreeRect.Size = new System.Drawing.Size(142, 50);
             // 
             // stepTwoRect
             // 
-            this.stepTwoRect.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.stepTwoRect.BackColor = System.Drawing.Color.Maroon;
             this.stepTwoRect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.stepTwoRect.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
@@ -772,14 +770,13 @@
             this.stepTwoRect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepTwoRect.FillColor = System.Drawing.Color.White;
             this.stepTwoRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.stepTwoRect.Location = new System.Drawing.Point(213, 120);
+            this.stepTwoRect.Location = new System.Drawing.Point(226, 120);
             this.stepTwoRect.Name = "stepTwoRect";
             this.stepTwoRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.stepTwoRect.Size = new System.Drawing.Size(150, 50);
+            this.stepTwoRect.Size = new System.Drawing.Size(142, 50);
             // 
             // stepOneRect
             // 
-            this.stepOneRect.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.stepOneRect.BackColor = System.Drawing.Color.Maroon;
             this.stepOneRect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.stepOneRect.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
@@ -788,10 +785,10 @@
             this.stepOneRect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.stepOneRect.FillColor = System.Drawing.Color.White;
             this.stepOneRect.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.stepOneRect.Location = new System.Drawing.Point(47, 120);
+            this.stepOneRect.Location = new System.Drawing.Point(60, 120);
             this.stepOneRect.Name = "stepOneRect";
             this.stepOneRect.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.stepOneRect.Size = new System.Drawing.Size(150, 50);
+            this.stepOneRect.Size = new System.Drawing.Size(142, 50);
             // 
             // bitExactFr
             // 
@@ -819,7 +816,7 @@
             this.bitExactFr.Controls.Add(this.PictureResult);
             this.bitExactFr.Controls.Add(this.shapeContainer5);
             this.bitExactFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.bitExactFr.Location = new System.Drawing.Point(3, 109);
+            this.bitExactFr.Location = new System.Drawing.Point(338, 489);
             this.bitExactFr.Name = "bitExactFr";
             this.bitExactFr.Size = new System.Drawing.Size(688, 395);
             this.bitExactFr.TabIndex = 16;
@@ -1105,17 +1102,57 @@
             this.process1.StartInfo.UserName = "";
             this.process1.SynchronizingObject = this;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.White;
+            this.label12.Font = new System.Drawing.Font("Miriam", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(273, 38);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(143, 24);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "Selected path";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.White;
+            this.label14.Font = new System.Drawing.Font("Miriam", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(10, 104);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(138, 24);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "Photos found";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.White;
+            this.label15.Font = new System.Drawing.Font("Miriam", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label15.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label15.Location = new System.Drawing.Point(154, 110);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(131, 16);
+            this.label15.TabIndex = 16;
+            this.label15.Text = "*choose to preview";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // MainPS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(770, 600);
-            this.Controls.Add(this.bitExactFr);
-            this.Controls.Add(this.progressFr);
-            this.Controls.Add(this.FilterPath);
+            this.ClientSize = new System.Drawing.Size(764, 590);
             this.Controls.Add(this.PathFrame);
+            this.Controls.Add(this.progressFr);
+            this.Controls.Add(this.filesToDeleteFR);
+            this.Controls.Add(this.bitExactFr);
+            this.Controls.Add(this.FilterPath);
             this.Controls.Add(this.stepThreeLbl);
             this.Controls.Add(this.stepTwoLbl);
             this.Controls.Add(this.stepOneLbl);
@@ -1230,6 +1267,9 @@
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonCancelSelect;
         private System.Windows.Forms.Button buttonChooseAll;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label12;
 
 
 
