@@ -276,7 +276,7 @@
             this.filesToDeleteFR.Controls.Add(this.DeleteList);
             this.filesToDeleteFR.Controls.Add(this.fileToDeletLbl);
             this.filesToDeleteFR.Controls.Add(this.PicLastRes);
-            this.filesToDeleteFR.Location = new System.Drawing.Point(627, 76);
+            this.filesToDeleteFR.Location = new System.Drawing.Point(122, 55);
             this.filesToDeleteFR.Name = "filesToDeleteFR";
             this.filesToDeleteFR.Size = new System.Drawing.Size(690, 395);
             this.filesToDeleteFR.TabIndex = 31;
@@ -376,7 +376,7 @@
             this.FilterPath.Controls.Add(this.doneStepTwoLbl);
             this.FilterPath.Controls.Add(this.shapeContainer3);
             this.FilterPath.ForeColor = System.Drawing.Color.Cornsilk;
-            this.FilterPath.Location = new System.Drawing.Point(524, 201);
+            this.FilterPath.Location = new System.Drawing.Point(302, 517);
             this.FilterPath.Name = "FilterPath";
             this.FilterPath.Size = new System.Drawing.Size(703, 380);
             this.FilterPath.TabIndex = 4;
@@ -587,6 +587,7 @@
             // 
             this.progressFr.BackColor = System.Drawing.SystemColors.HighlightText;
             this.progressFr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.progressFr.Controls.Add(this.filesToDeleteFR);
             this.progressFr.Controls.Add(this.BitExactProgressLbl);
             this.progressFr.Controls.Add(this.BitExactProgressBar);
             this.progressFr.Controls.Add(this.label2);
@@ -594,7 +595,7 @@
             this.progressFr.Controls.Add(this.DBprogressBar);
             this.progressFr.Controls.Add(this.shapeContainer4);
             this.progressFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.progressFr.Location = new System.Drawing.Point(17, 195);
+            this.progressFr.Location = new System.Drawing.Point(21, 60);
             this.progressFr.Name = "progressFr";
             this.progressFr.Size = new System.Drawing.Size(688, 380);
             this.progressFr.TabIndex = 14;
@@ -818,7 +819,7 @@
             this.bitExactFr.Controls.Add(this.PictureResult);
             this.bitExactFr.Controls.Add(this.shapeContainer5);
             this.bitExactFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.bitExactFr.Location = new System.Drawing.Point(600, 92);
+            this.bitExactFr.Location = new System.Drawing.Point(3, 109);
             this.bitExactFr.Name = "bitExactFr";
             this.bitExactFr.Size = new System.Drawing.Size(688, 395);
             this.bitExactFr.TabIndex = 16;
@@ -1112,13 +1113,12 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(770, 600);
             this.Controls.Add(this.bitExactFr);
-            this.Controls.Add(this.filesToDeleteFR);
             this.Controls.Add(this.progressFr);
+            this.Controls.Add(this.FilterPath);
             this.Controls.Add(this.PathFrame);
             this.Controls.Add(this.stepThreeLbl);
             this.Controls.Add(this.stepTwoLbl);
             this.Controls.Add(this.stepOneLbl);
-            this.Controls.Add(this.FilterPath);
             this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;

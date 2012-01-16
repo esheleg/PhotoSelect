@@ -743,9 +743,20 @@ namespace PhotoSelectGui
             }
 
         }
-
+        //delete selected photos buttun 
         private void button1_Click(object sender, EventArgs e)
         {
+            const string message = "you are going to delete all the selected photos,\n it means you will lose that picture completely. \n\nARE YOU SURE THAT YOU WANT TO DO THESE?";
+            const string caption = "Delete Files";
+            var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Warning);
+
+            // If the no button was pressed ...
+            if (result == DialogResult.No)
+            {
+                return;
+            }
             //dispose all memmory in use
             PictureResult.Image = null;
             pictureBox.Image = null;
@@ -758,8 +769,17 @@ namespace PhotoSelectGui
                 {
 
                     TryToDelete(DeleteList.Items[i].ToString());
+                    itemsToDelete[i] = null;
+                    
                 }
             }
+            DeleteList.Items.Clear();
+            for (int i = 0; i < itemsToDelete.Count; i++)
+            {
+                if(itemsToDelete[i]!=null)
+                    DeleteList.Items.Add(itemsToDelete[i].ToString());
+            }    
+
         }
 
         private void DeleteList_SelectedIndexChanged(object sender, EventArgs e)
