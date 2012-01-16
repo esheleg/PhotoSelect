@@ -18,8 +18,14 @@ namespace Features
         private int num_images;
         private const int BRIGHT = 200;
         private const int DARK = 50;
+        private int runStatus;
 
         protected BadContrastRes results;
+
+        public int RunStatus
+        {
+            get { return runStatus; }
+        }
 
         public BadContrast(ImageInfo[] images)
         {
@@ -46,7 +52,9 @@ namespace Features
                     Debug.WriteLine(images[i].getPath());
                     //Debug.WriteLine(sd);
                 }
+                runStatus = (int)Math.Round(((i + 1) / (float)num_images) * 100);
             }
+            runStatus = 100;
             results = new BadContrastRes(matches);
         }
 
