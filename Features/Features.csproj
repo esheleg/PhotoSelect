@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="BadContrast.cs" />
     <Compile Include="BitExact.cs" />
+    <Compile Include="Types.cs" />
     <Compile Include="ImageInfo.cs" />
     <Compile Include="FeaturesLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

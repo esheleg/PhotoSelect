@@ -9,112 +9,7 @@ namespace Features
     public enum Feature { BIT_EXACT = 0, BAD_CONTRAST, SIMILARITY, PARTIAL_BLOCKAGE, NUM_FEATURES };
 
 
-    # region ******************(GUI <--> BRAIN) Structures********************
-    /// <summary>
-    /// // this struct will recieve the task information from the gui
-    /// </summary>
-    /// 
-    public struct Task
-    {// TODO - test and check if refernced objects can realy be readonly
-        private List<string> _pathes;
-        public List<string> ImagePathes
-        {
-            get { return _pathes; }
-        }                
-        private bool[] _features;
-        public bool[] Features
-        {
-            get { return _features; }
-        }
-        /// <summary>
-        /// DeepCopy constructor
-        /// </summary>
-        /// <param name="from"></param>
-        public Task(Task from) : this(from.ImagePathes, from.Features) {}
-
-        public Task(List<string> pathes, bool[] feauters)
-        {
-
-            // copy pathes
-            _pathes = new List<string>(pathes.Count);
-            foreach (string path in pathes)
-                _pathes.Add(path);
-            // copy features flags
-            _features = new bool[feauters.Length];
-            feauters.CopyTo(_features,0);
-        }        
-
-    }
-    /// <summary>
-    /// // this is the struct that will be returned after the BitExact Feature process is ended
-    /// </summary>
-    public struct BitExactRes
-    {
-        private List<List<string>> _matches;
-        /// <summary>
-        /// deep copy of matches
-        /// </summary>
-        public BitExactRes(List<List<string>> matches)
-        {// TODO - need to change this to array
-            _matches = new List<List<string>>(matches.Count);
-            foreach (List<string> lst in matches)
-            {
-                _matches.Add(new List<string>(lst.Count));
-                foreach (string path in lst)
-                {
-                    _matches.Last().Add(path);
-                }
-            }
-        }
-        public List<List<string>> Matches
-        {            
-            get { return _matches; }            
-        }
-    }
-
-    // BadContrustRes added by Yossi
-    public struct BadContrastRes
-    {
-        private List<string> _matches;
-        /// <summary>
-        /// deep copy of matches
-        /// </summary>
-
-        public BadContrastRes(List<string> matches)
-        {// TODO - need to change this to array
-            _matches = new List<string>(matches.Count);
-            foreach (string path in matches)
-            {
-                _matches.Add(path);
-            }
-
-
-        }
-
-        public List<string> Matches
-        {
-            get { return _matches; }
-        }
-    }
-
-    public struct Results
-    {
-        private BitExactRes _bitExactRes;
-        public Results(BitExactRes bitExactRes)
-        {
-            _bitExactRes = new BitExactRes(bitExactRes.Matches);
-        }
-        public BitExactRes BitExact
-        {
-            get { return _bitExactRes; }
-        }
-        public void setBitExact(BitExactRes bitExactRes)
-        {
-            _bitExactRes = new BitExactRes(bitExactRes.Matches);
-        }
-
-    }
-    #endregion ******************(GUI <--> BRAIN) Structures********************
+  
 
     public class FeaturesLayer : IDisposable
     {              
@@ -126,8 +21,12 @@ namespace Features
         private BitExact _bitExact;
         private Thread _bitExactThread;
 
+        private BadContrast _badContrast;
+        private Thread _badContrastThread;
+
         private Thread _loadingImagesThread;
 
+        private int _numRunningFeat;
 
 
         # region (GUI <-> BRAIN) shared data
@@ -146,8 +45,14 @@ namespace Features
             _task = new Task(task);
             // init results struct
             _res = new Results();
+
+            _numRunningFeat = 0;
+            // features vars
             _bitExactThread = null;
             _bitExact = null;
+            _badContrast = null;
+            _badContrastThread = null;
+            // ---------------
             // set status to 0
             _loadingImagesStatus = 0;
             _runStatus = 0;
@@ -227,6 +132,14 @@ namespace Features
                 _bitExactThread = new Thread(_bitExact.run);
                 _bitExactThread.Name = "bitExact";
                 _bitExactThread.Start();
+                _numRunningFeat++;
+            }
+            if (_task.Features[(int)Feature.BAD_CONTRAST])
+            {
+                _badContrast = new BadContrast(_images);
+                _badContrastThread = new Thread(_badContrast.run);
+                _badContrastThread.Start();
+                _numRunningFeat++;
             }
 
             //_statusUpdaterThread = new Thread(statusUpdater);
@@ -241,38 +154,30 @@ namespace Features
         /// <returns></returns>
         private int updateRunStatus()
         {
+            _runStatus = 0;
             if (_bitExact != null)
             {
-                _runStatus = _bitExact.RunStatus;
-                if (_runStatus == 100)
+                _runStatus += _bitExact.RunStatus/_numRunningFeat;
+                if (_bitExact.RunStatus == 100)
                 {
                     _res.setBitExact(_bitExact.Results);
                     _bitExact = null;
                     _bitExactThread = null;
                 }                
             }
+            if (_badContrast != null)
+            {
+                //_runStatus += _badContrast.RunStatus / _numRunningFeat;
+                //if (_badContrast.RunStatus == 100)
+                //{
+                //    _res.setBadContrast(_badContrast.Results);
+                //    _badContrast = null;
+                //    _badContrastThread = null;
+                //}                
+            }
             return _runStatus;
         }
 
-        /// <summary>
-        /// This will update (in diff thread)  _runStatus;
-        /// </summary>
-        //private void statusUpdater()
-        //{
-        //    if (_bitExact != null)
-        //    {
-        //        while (_bitExact.RunStatus < 100)
-        //        {                    
-        //            _runStatus = _bitExact.RunStatus;
-        //            Thread.Sleep(TIME_TO_CHECK_RUN_STATUS);
-        //        }
-        //        _runStatus = _bitExact.RunStatus;
-        //        _res.setBitExact(_bitExact.Results);
-        //        _runStatus = _bitExact.RunStatus;
-        //        _bitExact = null;
-        //        _bitExactThread = null;                
-        //    }
-        //}
 
 
         #region ***************IDisposable*******************
