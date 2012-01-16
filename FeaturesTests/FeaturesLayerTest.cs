@@ -16,6 +16,7 @@ namespace FeaturesTests
         FeaturesLayer core = null;
         Thread loadingImagesT = null;
         Thread bitExactT = null;
+
         public void SetupCoreBitExact()
         {
             if (core != null)
@@ -38,6 +39,7 @@ namespace FeaturesTests
 
         }
 
+       
         [TestMethod]
         public void TestLoadingImages()
         {
@@ -58,6 +60,28 @@ namespace FeaturesTests
             Assert.IsTrue(100 == core.LoadingImagesStatus);
             //Thread.Sleep(10000);
 
+        }
+        [TestMethod]
+        public void TestRunBadContrast()
+        {
+            string path = @"C:\Users\Maya\Dropbox\פרויקט - הנדסת תוכנה\badContrast\";
+            string[] pathes = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
+            bool[] feat = new bool[4];
+            feat[(int)Feature.BAD_CONTRAST] = true;
+            Task task = new Task(pathes.ToList(), feat);
+            FeaturesLayer core = new FeaturesLayer(ref task);
+            core.loadImages();
+            while (core.LoadingImagesStatus < 100)
+            {
+                Thread.Sleep(300);
+                Debug.WriteLine("li: {0}", core.LoadingImagesStatus);
+            }
+            core.run();         
+            while (core.RunStatus < 100)
+            {
+                Thread.Sleep(50);
+                Debug.WriteLine("run: {0}", core.RunStatus);
+            }            
         }
         [TestMethod]
         public void TestRunBitExact()

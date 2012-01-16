@@ -167,13 +167,13 @@ namespace Features
             }
             if (_badContrast != null)
             {
-                //_runStatus += _badContrast.RunStatus / _numRunningFeat;
-                //if (_badContrast.RunStatus == 100)
-                //{
-                //    _res.setBadContrast(_badContrast.Results);
-                //    _badContrast = null;
-                //    _badContrastThread = null;
-                //}                
+                _runStatus += _badContrast.RunStatus / _numRunningFeat;
+                if (_badContrast.RunStatus == 100)
+                {
+                    _res.setBadContrast(_badContrast.Results);
+                    _badContrast = null;
+                    _badContrastThread = null;
+                }                
             }
             return _runStatus;
         }

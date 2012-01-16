@@ -94,10 +94,8 @@ namespace Features
     public struct Results
     {
         private BitExactRes _bitExactRes;
-        public Results(BitExactRes bitExactRes)
-        {
-            _bitExactRes = new BitExactRes(bitExactRes.Matches);
-        }
+        private BadContrastRes _badContrastRes;
+        
         public BitExactRes BitExact
         {
             get { return _bitExactRes; }
@@ -105,6 +103,10 @@ namespace Features
         public void setBitExact(BitExactRes bitExactRes)
         {
             _bitExactRes = new BitExactRes(bitExactRes.Matches);
+        }
+        public void setBadContrast(BadContrastRes badContrast)
+        {
+            _badContrastRes = new BadContrastRes(badContrast.Matches);
         }
 
     }
