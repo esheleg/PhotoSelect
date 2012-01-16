@@ -154,10 +154,10 @@ namespace Features
         /// <returns></returns>
         private int updateRunStatus()
         {
-            _runStatus = 0;
+            int currStatus = 0;            
             if (_bitExact != null)
             {
-                _runStatus += _bitExact.RunStatus/_numRunningFeat;
+                currStatus += _bitExact.RunStatus/_numRunningFeat;
                 if (_bitExact.RunStatus == 100)
                 {
                     _res.setBitExact(_bitExact.Results);
@@ -167,7 +167,7 @@ namespace Features
             }
             if (_badContrast != null)
             {
-                _runStatus += _badContrast.RunStatus / _numRunningFeat;
+                currStatus += _badContrast.RunStatus / _numRunningFeat;
                 if (_badContrast.RunStatus == 100)
                 {
                     _res.setBadContrast(_badContrast.Results);
@@ -175,6 +175,7 @@ namespace Features
                     _badContrastThread = null;
                 }                
             }
+            _runStatus = System.Math.Max(currStatus, _runStatus);
             return _runStatus;
         }
 
