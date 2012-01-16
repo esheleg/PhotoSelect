@@ -101,6 +101,15 @@
       <Name>Features</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\retro_blue_background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1206951_blue_flowers_splatter_and_swirls_background_set_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wavy_blue_background.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

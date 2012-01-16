@@ -60,6 +60,13 @@ namespace PhotoSelectGui.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap _1206951_blue_flowers_splatter_and_swirls_background_set_1 {
+            get {
+                object obj = ResourceManager.GetObject("1206951_blue_flowers_splatter_and_swirls_background_set_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap dsones_similar {
             get {
                 object obj = ResourceManager.GetObject("dsones-similar", resourceCulture);
@@ -74,6 +81,13 @@ namespace PhotoSelectGui.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap retro_blue_background {
+            get {
+                object obj = ResourceManager.GetObject("retro_blue_background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap smile33 {
             get {
                 object obj = ResourceManager.GetObject("smile33", resourceCulture);
@@ -84,6 +98,13 @@ namespace PhotoSelectGui.Properties {
         internal static System.Drawing.Bitmap switzerland_mountain_lake {
             get {
                 object obj = ResourceManager.GetObject("switzerland-mountain-lake", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap wavy_blue_background {
+            get {
+                object obj = ResourceManager.GetObject("wavy_blue_background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
