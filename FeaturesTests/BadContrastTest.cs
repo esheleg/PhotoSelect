@@ -13,7 +13,7 @@ namespace FeaturesTests
 {
     class BadContrastTest
     {
-        public const string PATH = @"C:\Users\Maya\Dropbox\פרויקט - הנדסת תוכנה\badContrast";
+        public const string PATH = @"C:\Users\Daniel\Dropbox\פרויקט - הנדסת תוכנה\badContrast";
         string[] pathes = Directory.GetFiles(PATH, "*.jpg", SearchOption.AllDirectories);
 
         [TestMethod]

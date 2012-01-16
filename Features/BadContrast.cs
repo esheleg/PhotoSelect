@@ -18,8 +18,14 @@ namespace Features
         private int num_images;
         private const int BRIGHT = 200;
         private const int DARK = 50;
+        private int runStatus;
 
         protected BadContrastRes results;
+
+        public int RunStatus
+        {
+            get { return runStatus; }
+        }
 
         public BadContrast(ImageInfo[] images)
         {
@@ -35,14 +41,20 @@ namespace Features
                 Histogram hist = images[i].getHist();
                 double mean = hist.Mean;
                 double median = hist.Median;
-
-
-                if (isBadContrast(mean, median))
+                double sd = hist.StdDev;
+               /* Debug.WriteLine(images[i].getPath());
+                Debug.WriteLine("sd is: "+sd);
+                Debug.WriteLine("median is: "+median);
+                Debug.WriteLine("mean is: " +mean);*/
+                if (isBadContrast(mean, median, sd))
                 {
                     matches.Add(images[i].getPath());
                     Debug.WriteLine(images[i].getPath());
+                    //Debug.WriteLine(sd);
                 }
+                runStatus = (int)Math.Round(((i + 1) / (float)num_images) * 100);
             }
+            runStatus = 100;
             results = new BadContrastRes(matches);
         }
 
@@ -51,14 +63,17 @@ namespace Features
             get { return results; }
         }
 
-        private bool isBadContrast(double mean, double median)
+        private bool isBadContrast(double mean, double median, double sd)
         {
-            if (mean < DARK && median < DARK)
+            /*if (mean < DARK && median < DARK)
                 return true;
 
             if (mean > BRIGHT && median > BRIGHT)
+                return true;*/
+            if(sd<=15)
                 return true;
-
+            if ((mean > 200 && median > 200) || (mean < 90 && median < 90))
+                return true;
             return false;
         }
     }
