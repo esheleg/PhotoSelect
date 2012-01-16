@@ -1158,6 +1158,7 @@
             this.Controls.Add(this.stepOneLbl);
             this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "MainPS";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
