@@ -14,7 +14,11 @@ namespace PhotoSelectGui
     public partial class MainPS : Form
     {
 
-        
+        //MOVEMENT
+        System.Windows.Forms.GroupBox from;
+        System.Windows.Forms.GroupBox to;
+        Boolean farward = true;
+        Boolean horizon = true;
 
         //basic function to change color for each index we visit, while reset the other colors.
         public void changecolor(int indextab)
@@ -143,14 +147,86 @@ namespace PhotoSelectGui
             PathFrame.Location = new Point((int)FRAME_X, (int)FRAME_Y);
             bitExactFr.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
             FilterPath.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
-            progressFr.Location = new Point((int)BOTTOM_FRAME_X, (int)BOTTOM_FRAME_Y);
+            //progressFr.Location = new Point((int)BOTTOM_FRAME_X, (int)BOTTOM_FRAME_Y);
+            progressFr.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
             filesToDeleteFR.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
 
         }
+       
+        private void framesMoveHorizon(System.Windows.Forms.GroupBox from, System.Windows.Forms.GroupBox to)
+        {
+            this.from = from;
+            this.to = to;
+            to.Visible = true;
 
+            if (to.Location.X == LEFT_FRAME_X)
+                farward = true;
+            else
+                farward = false;
+            frameMovementTimer.Start();
+        }
+        private void MoveForward(System.Windows.Forms.GroupBox from, System.Windows.Forms.GroupBox to)
+        {
+            from.Location = new Point(from.Location.X + (int)FRAME_SPEED, from.Location.Y);
+            to.Location = new Point(to.Location.X + (int)FRAME_SPEED, to.Location.Y);
+           
+        }
+
+        private void MoveBackward(System.Windows.Forms.GroupBox from, System.Windows.Forms.GroupBox to)
+        {
+            from.Location = new Point(from.Location.X - (int)FRAME_SPEED, from.Location.Y);
+            to.Location = new Point(to.Location.X - (int)FRAME_SPEED, to.Location.Y);
+           
+        }
+
+        /*private void framesMoveVertical(System.Windows.Forms.GroupBox from, System.Windows.Forms.GroupBox to)
+        {
+            if (to == progressFr)
+            {
+                    from.Location = new Point(from.Location.X + (int)FRAME_SPEED, from.Location.Y);
+                    to.Location = new Point(to.Location.X, to.Location.Y - (int)FRAME_SPEED);
+            }
+            else
+            {
+                if (to.Location.X == LEFT_FRAME_X) 
+                {
+                    from.Location = new Point(from.Location.X + (int)FRAME_SPEED, from.Location.Y);
+                    to.Location = new Point(to.Location.X, to.Location.Y + (int)FRAME_SPEED);
+                }
+                else
+                {
+                    from.Location = new Point(from.Location.X - (int)FRAME_SPEED, from.Location.Y);
+                    to.Location = new Point(to.Location.X, to.Location.Y + (int)FRAME_SPEED);
+                }
+            }
+            
+            if (to.Location.X == FRAME_X)
+            {
+                from.Visible = false;
+                frameMovementTimer.Enabled = false;
+                //frameShow[(int)frames.stepOneFr_to_stepTwoFr] = false;
+            }
+        }*/
+
+        
         // timer for the animation - frame change
         private void frameMovementTimer_Tick(object sender, EventArgs e)
         {
+            if (farward)
+                MoveForward(this.from, this.to);
+            else
+                MoveBackward(this.from, this.to);
+
+            if (to.Location.X == FRAME_X)
+            {
+                from.Visible = false;
+                frameMovementTimer.Enabled = false;
+                //frameShow[(int)frames.stepOneFr_to_stepTwoFr] = false;
+            }
+
+            
+            
+            /*
             // step one to step two (when clicking Done label)
             if (frameShow[(int)frames.stepOneFr_to_stepTwoFr] == true)
             {
@@ -266,8 +342,9 @@ namespace PhotoSelectGui
                     frameShow[(int)frames.stepthreeFr_to_filesToDeleteFr] = false;
                 }
             }
-
-        }
+             */
+        } 
+            
 
 
         //------------------------ buttons------------------------------
@@ -276,14 +353,8 @@ namespace PhotoSelectGui
 
             if (photosPaths.Items.Count > 0)
             {
-                if (PathFrame.Location.X == FRAME_X) // if PathFrame is the current frame
-                {
-                    frameShow[(int)frames.stepOneFr_to_stepTwoFr] = true; // choose the frame animation
-                    FilterPath.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
-                    FilterPath.Visible = true;
-                    frameMovementTimer.Enabled = true; // turn on the animation
-                    changecolor(2);
-                }
+                framesMoveHorizon(PathFrame, FilterPath);
+                changecolor(2);
 
             }
             else MessageBox.Show("you didn't choose a directory with Pictures!");
@@ -293,17 +364,14 @@ namespace PhotoSelectGui
         {
             if (FilterPath.Location.X == FRAME_X)
             {
-                frameShow[(int)frames.stepTwoFr_to_stepOneFr] = true;
-                PathFrame.Visible = true;
-                frameMovementTimer.Enabled = true;
+                framesMoveHorizon(FilterPath, PathFrame);
                 changecolor(1);
             }
             if (bitExactFr.Location.X == FRAME_X)
             {
-                frameShow[(int)frames.stepthreeFr_to_stepOneFr] = true;
-                FilterPath.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
-                PathFrame.Visible = true;
-                frameMovementTimer.Enabled = true;
+                framesMoveHorizon(bitExactFr, PathFrame);
+               //frameShow[(int)frames.stepthreeFr_to_stepOneFr] = true;
+                //FilterPath.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
                 changecolor(1);
             }
         }
@@ -321,35 +389,24 @@ namespace PhotoSelectGui
                 //Thread t = new Thread(core.loadImages);
                 //t.Start();
                 core.loadImages();
-
-                if (FilterPath.Location.X == FRAME_X)
-                {
-                    frameShow[(int)frames.stepTwoFr_to_progressBarFr] = true;
-                    progressFr.Location = new Point((int)BOTTOM_FRAME_X, (int)BOTTOM_FRAME_Y);
-                    progressFr.Visible = true;
-                    frameMovementTimer.Enabled = true;
-                    progressBarTimer.Start();
-                    changecolor(3);
-                }
+                framesMoveHorizon(FilterPath, progressFr);
+                progressBarTimer.Start();
+                changecolor(3);
             }
             else MessageBox.Show("You have to choos at least one feature!");
         }
 
         private void cancelProgressLbl_Click(object sender, EventArgs e)
         {
-            // ----------daniel need to do something about it----------
-
             if (progressFr.Location.Y == FRAME_Y)
             {
                 core.Dispose();
-                frameShow[(int)frames.progressBarFr_to_stepTwoFr] = true;
-                FilterPath.Visible = true;
-                frameMovementTimer.Enabled = true;
-               
                 progressBarTimer.Stop();
                 bitExactProgressTimer.Stop();
                 DBprogressBar.Value = 0;
                 BitExactProgressBar.Value = 0;
+
+                framesMoveHorizon(progressFr, FilterPath);
             }
         }
 
@@ -358,9 +415,7 @@ namespace PhotoSelectGui
             if (bitExactFr.Location.X == FRAME_X)
             {
                 core.Dispose();
-                frameShow[(int)frames.stepthreeFr_to_stepTwoFr] = true;
-                FilterPath.Visible = true;
-                frameMovementTimer.Enabled = true;
+                framesMoveHorizon(bitExactFr, FilterPath);
                 changecolor(2);
             }
 
@@ -369,10 +424,7 @@ namespace PhotoSelectGui
                 // if PathFrame is the current frame
                 if (photosPaths.Items.Count > 0)
                 {
-                    frameShow[(int)frames.stepOneFr_to_stepTwoFr] = true; // choose the frame animation
-                    FilterPath.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
-                    FilterPath.Visible = true;
-                    frameMovementTimer.Enabled = true; // turn on the animation
+                    framesMoveHorizon(PathFrame, FilterPath);
                     changecolor(2);
                 }
                 else MessageBox.Show("you didn't choose a directory with Pictures!");
@@ -384,10 +436,8 @@ namespace PhotoSelectGui
         {
             if (bitExactFr.Location.X == FRAME_X)
             {
-                frameShow[(int)frames.stepthreeFr_to_filesToDeleteFr] = true;
-                filesToDeleteFR.Visible = true;
-                frameMovementTimer.Enabled = true;
                 //changecolor(2);
+                framesMoveHorizon(bitExactFr, filesToDeleteFR);
             }
             for (int i = 0; i < itemsToDelete.Count; i++)
             {
@@ -478,10 +528,7 @@ namespace PhotoSelectGui
                 // changing form. for now its to the bitmap exact - need to change in future
                 if (progressFr.Location.Y == FRAME_Y)
                 {
-                    frameShow[(int)frames.progressBarFr_to_bitExactFr] = true;
-                    bitExactFr.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
-                    bitExactFr.Visible = true;
-                    frameMovementTimer.Enabled = true;
+                    framesMoveHorizon(progressFr, bitExactFr);
                     DBprogressBar.Value = 0;
                     //-------------- starting to load results after loading as done -------//
                     //int bitXCurrent //current head to show on bitexact

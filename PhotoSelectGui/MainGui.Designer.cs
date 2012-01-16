@@ -136,7 +136,7 @@
             this.PathFrame.Controls.Add(this.doneStepOneLbl);
             this.PathFrame.Controls.Add(this.shapeContainer2);
             this.PathFrame.ForeColor = System.Drawing.Color.Cornsilk;
-            this.PathFrame.Location = new System.Drawing.Point(676, 60);
+            this.PathFrame.Location = new System.Drawing.Point(99, 35);
             this.PathFrame.Name = "PathFrame";
             this.PathFrame.Size = new System.Drawing.Size(688, 380);
             this.PathFrame.TabIndex = 1;
@@ -276,7 +276,7 @@
             this.filesToDeleteFR.Controls.Add(this.DeleteList);
             this.filesToDeleteFR.Controls.Add(this.fileToDeletLbl);
             this.filesToDeleteFR.Controls.Add(this.PicLastRes);
-            this.filesToDeleteFR.Location = new System.Drawing.Point(627, 76);
+            this.filesToDeleteFR.Location = new System.Drawing.Point(80, 76);
             this.filesToDeleteFR.Name = "filesToDeleteFR";
             this.filesToDeleteFR.Size = new System.Drawing.Size(690, 395);
             this.filesToDeleteFR.TabIndex = 31;
@@ -818,7 +818,7 @@
             this.bitExactFr.Controls.Add(this.PictureResult);
             this.bitExactFr.Controls.Add(this.shapeContainer5);
             this.bitExactFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.bitExactFr.Location = new System.Drawing.Point(600, 92);
+            this.bitExactFr.Location = new System.Drawing.Point(37, 103);
             this.bitExactFr.Name = "bitExactFr";
             this.bitExactFr.Size = new System.Drawing.Size(688, 395);
             this.bitExactFr.TabIndex = 16;
