@@ -451,12 +451,20 @@ namespace PhotoSelectGui
             if (DBprogressBar.Value == DBprogressBar.Maximum)
             {
                 progressBarTimer.Stop();
-                BitExactProgressLbl.Visible = true;
-                BitExactProgressBar.Visible = true;
-                //Thread run = new Thread(core.run);
-              //  run.Start();
                 core.run();
-                bitExactProgressTimer.Start();
+                if (featuresArr[(int)Feature.BIT_EXACT] == true)
+                {
+                    BitExactProgressLbl.Visible = true;
+                    BitExactProgressBar.Visible = true;
+                    //Thread run = new Thread(core.run);
+                    //  run.Start(); 
+                    bitExactProgressTimer.Start();
+                }
+                
+                if (featuresArr[(int)Feature.BAD_CONTRAST] == true)
+                {
+
+                }
             }
         }
 
@@ -465,7 +473,7 @@ namespace PhotoSelectGui
             BitExactProgressBar.Value = core.RunStatus;
             if (BitExactProgressBar.Value == BitExactProgressBar.Maximum)
             {
-                progressBarTimer.Stop();
+                bitExactProgressTimer.Stop();
 
                 // changing form. for now its to the bitmap exact - need to change in future
                 if (progressFr.Location.Y == FRAME_Y)
@@ -563,7 +571,24 @@ namespace PhotoSelectGui
         private void buttonDeleteSelected_Click_1(object sender, EventArgs e)
         {
             Boolean degel;
+            degel = true;
             //---------(new)----------------adding all items to delete into list----
+            if (MatchesList.Items.Count == MatchesList.CheckedItems.Count)
+            {
+                //MessageBox.Show("You chose all the copys of the picture to delete,\n it means you will lose that picture completely\n ");
+                const string message = "You chose all the copys of the picture to delete,\n it means you will lose that picture completely. \n\nARE YOU SURE THAT YOU WANT TO DO THESE?";
+                const string caption = "Form Closing";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Warning);
+
+                // If the no button was pressed ...
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+            }
+                
             for (int i = 0; i < MatchesList.Items.Count; i++)
             {
                 degel=true;
@@ -576,10 +601,14 @@ namespace PhotoSelectGui
                             degel = false;
                             
                     }
-                    if(degel==true)
-                     itemsToDelete.Add(MatchesList.Items[i].ToString());
+                    if (degel == true)
+                    {
+                        itemsToDelete.Add(MatchesList.Items[i].ToString());
+                    }
                 }
-            }  
+            }
+            if(degel == true)
+              MessageBox.Show("The files moved to a delete list, to be deleted on next step."); 
     
             //----------------------------------------------------------------------
 

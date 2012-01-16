@@ -326,6 +326,7 @@
             // 
             // DeleteList
             // 
+            this.DeleteList.CheckOnClick = true;
             this.DeleteList.FormattingEnabled = true;
             this.DeleteList.Location = new System.Drawing.Point(37, 261);
             this.DeleteList.Name = "DeleteList";
@@ -593,7 +594,7 @@
             this.progressFr.Controls.Add(this.DBprogressBar);
             this.progressFr.Controls.Add(this.shapeContainer4);
             this.progressFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.progressFr.Location = new System.Drawing.Point(585, 100);
+            this.progressFr.Location = new System.Drawing.Point(17, 195);
             this.progressFr.Name = "progressFr";
             this.progressFr.Size = new System.Drawing.Size(688, 380);
             this.progressFr.TabIndex = 14;
@@ -605,7 +606,7 @@
             this.BitExactProgressLbl.BackColor = System.Drawing.Color.White;
             this.BitExactProgressLbl.Font = new System.Drawing.Font("Miriam", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.BitExactProgressLbl.ForeColor = System.Drawing.Color.Black;
-            this.BitExactProgressLbl.Location = new System.Drawing.Point(86, 155);
+            this.BitExactProgressLbl.Location = new System.Drawing.Point(86, 138);
             this.BitExactProgressLbl.Name = "BitExactProgressLbl";
             this.BitExactProgressLbl.Size = new System.Drawing.Size(460, 37);
             this.BitExactProgressLbl.TabIndex = 10;
@@ -614,7 +615,7 @@
             // 
             // BitExactProgressBar
             // 
-            this.BitExactProgressBar.Location = new System.Drawing.Point(93, 195);
+            this.BitExactProgressBar.Location = new System.Drawing.Point(93, 178);
             this.BitExactProgressBar.Name = "BitExactProgressBar";
             this.BitExactProgressBar.Size = new System.Drawing.Size(500, 42);
             this.BitExactProgressBar.TabIndex = 9;
@@ -817,7 +818,7 @@
             this.bitExactFr.Controls.Add(this.PictureResult);
             this.bitExactFr.Controls.Add(this.shapeContainer5);
             this.bitExactFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.bitExactFr.Location = new System.Drawing.Point(27, 193);
+            this.bitExactFr.Location = new System.Drawing.Point(600, 92);
             this.bitExactFr.Name = "bitExactFr";
             this.bitExactFr.Size = new System.Drawing.Size(688, 395);
             this.bitExactFr.TabIndex = 16;
@@ -1043,6 +1044,7 @@
             // 
             // MatchesList
             // 
+            this.MatchesList.CheckOnClick = true;
             this.MatchesList.FormattingEnabled = true;
             this.MatchesList.Location = new System.Drawing.Point(25, 210);
             this.MatchesList.Name = "MatchesList";
