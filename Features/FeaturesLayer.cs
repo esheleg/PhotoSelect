@@ -125,22 +125,8 @@ namespace Features
         /// </summary>
         public void run()
         {
-        
-            if (_task.Features[(int)Feature.BIT_EXACT])
-            {            
-                _bitExact = new BitExact(_images);
-                _bitExactThread = new Thread(_bitExact.run);
-                _bitExactThread.Name = "bitExact";
-                _bitExactThread.Start();
-                _numRunningFeat++;
-            }
-            if (_task.Features[(int)Feature.BAD_CONTRAST])
-            {
-                _badContrast = new BadContrast(_images);
-                _badContrastThread = new Thread(_badContrast.run);
-                _badContrastThread.Start();
-                _numRunningFeat++;
-            }
+            Thread runFeatThread = new Thread(runFeatures);
+            runFeatThread.Start();
 
             //_statusUpdaterThread = new Thread(statusUpdater);
             //_statusUpdaterThread.Start();
@@ -148,16 +134,36 @@ namespace Features
         }
         #endregion (GUI --> BRAIN) Methods
 
+        private void runFeatures()
+        {
+            if (_task.Features[(int)Feature.BIT_EXACT])
+            {
+                _bitExact = new BitExact(_images);
+                _bitExactThread = new Thread(_bitExact.run);
+                _bitExactThread.Name = "bitExact";
+                _bitExactThread.Start();
+                _numRunningFeat++;
+            }
+            if (_bitExactThread != null)
+                _bitExactThread.Join();
+            if (_task.Features[(int)Feature.BAD_CONTRAST])
+            {
+                _badContrast = new BadContrast(_images);
+                _badContrastThread = new Thread(_badContrast.run);
+                _badContrastThread.Start();
+                _numRunningFeat++;
+            }
+        }
         /// <summary>
         /// will update RunStatus and on completion, will collect results
         /// </summary>
         /// <returns></returns>
         private int updateRunStatus()
         {
-            _runStatus = 0;
+            int currStatus = 0;            
             if (_bitExact != null)
             {
-                _runStatus += _bitExact.RunStatus/_numRunningFeat;
+                currStatus += _bitExact.RunStatus/_numRunningFeat;
                 if (_bitExact.RunStatus == 100)
                 {
                     _res.setBitExact(_bitExact.Results);
@@ -167,14 +173,15 @@ namespace Features
             }
             if (_badContrast != null)
             {
-                //_runStatus += _badContrast.RunStatus / _numRunningFeat;
-                //if (_badContrast.RunStatus == 100)
-                //{
-                //    _res.setBadContrast(_badContrast.Results);
-                //    _badContrast = null;
-                //    _badContrastThread = null;
-                //}                
+                currStatus += _badContrast.RunStatus / _numRunningFeat;
+                if (_badContrast.RunStatus == 100)
+                {
+                    _res.setBadContrast(_badContrast.Results);
+                    _badContrast = null;
+                    _badContrastThread = null;
+                }                
             }
+            _runStatus = System.Math.Max(currStatus, _runStatus);
             return _runStatus;
         }
 

@@ -16,6 +16,7 @@ namespace FeaturesTests
         FeaturesLayer core = null;
         Thread loadingImagesT = null;
         Thread bitExactT = null;
+
         public void SetupCoreBitExact()
         {
             if (core != null)
@@ -38,6 +39,7 @@ namespace FeaturesTests
 
         }
 
+       
         [TestMethod]
         public void TestLoadingImages()
         {
@@ -60,26 +62,72 @@ namespace FeaturesTests
 
         }
         [TestMethod]
-        public void TestRunBitExact()
+        public void TestRunBadContrast()
         {
             string path = @"C:\Users\Daniel\Desktop\iPhone Photos\";
+            string[] pathes = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
+            bool[] feat = new bool[4];
+            feat[(int)Feature.BAD_CONTRAST] = true;
+            Task task = new Task(pathes.ToList(), feat);
+            FeaturesLayer core = new FeaturesLayer(ref task);
+            core.loadImages();
+            while (core.LoadingImagesStatus < 100)
+            {
+                Thread.Sleep(300);
+                Debug.WriteLine("li: {0}", core.LoadingImagesStatus);
+            }
+            core.run();         
+            while (core.RunStatus < 100)
+            {
+                Thread.Sleep(50);
+                Debug.WriteLine("run: {0}", core.RunStatus);
+            }            
+        }
+        [TestMethod]
+        public void TestRunBitExact()
+        {
+            string path = @"C:\Users\Daniel\Desktop\BitExact Pictures\";
             string[] pathes = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
             bool[] feat = new bool[4];
             feat[(int)Feature.BIT_EXACT] = true;
             Task task = new Task(pathes.ToList(), feat);
             FeaturesLayer core = new FeaturesLayer(ref task);
-            Thread t = new Thread(core.loadImages);
-            t.Start();
-            t.Join();            
-            t = new Thread(core.run);
-            t.Start();
+            core.loadImages();
+            while (core.LoadingImagesStatus < 100)
+            {
+                Debug.WriteLine("li: {0}", core.LoadingImagesStatus);
+                Thread.Sleep(1000);
+            }
+            core.run();
             while (core.RunStatus < 100)
             {
-                Thread.Sleep(100);
+                Thread.Sleep(1000);
                 Debug.WriteLine("{0}", core.RunStatus);
-            }
-            // here we will call runBitExat
+            }      
             
+        }
+        [TestMethod]
+        public void TestAllFeatures()
+        {
+            string path = @"C:\Users\Daniel\Desktop\BitExact Pictures\";
+            string[] pathes = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
+            bool[] feat = new bool[4];
+            feat[(int)Feature.BAD_CONTRAST] = true;
+            feat[(int)Feature.BIT_EXACT] = true;
+            Task task = new Task(pathes.ToList(), feat);
+            FeaturesLayer core = new FeaturesLayer(ref task);
+            core.loadImages();
+            while (core.LoadingImagesStatus < 100)
+            {
+                Thread.Sleep(300);
+                Debug.WriteLine("li: {0}", core.LoadingImagesStatus);
+            }
+            core.run();
+            while (core.RunStatus < 100)
+            {
+                Thread.Sleep(300);
+                Debug.WriteLine("run: {0}", core.RunStatus);
+            }            
         }
         [TestMethod]
         public void TestResultsStructure()
