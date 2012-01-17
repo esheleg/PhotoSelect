@@ -112,10 +112,12 @@
             this.bitExactProgressTimer = new System.Windows.Forms.Timer(this.components);
             this.process1 = new System.Diagnostics.Process();
             this.badContrastFr = new System.Windows.Forms.GroupBox();
+            this.label28 = new System.Windows.Forms.Label();
             this.badContDoneLbl = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
@@ -129,8 +131,6 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.shapeContainer6 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
             this.PathFrame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.filesToDeleteFR.SuspendLayout();
@@ -164,7 +164,7 @@
             this.PathFrame.Controls.Add(this.doneStepOneLbl);
             this.PathFrame.Controls.Add(this.shapeContainer2);
             this.PathFrame.ForeColor = System.Drawing.Color.Cornsilk;
-            this.PathFrame.Location = new System.Drawing.Point(226, 551);
+            this.PathFrame.Location = new System.Drawing.Point(12, 455);
             this.PathFrame.Name = "PathFrame";
             this.PathFrame.Size = new System.Drawing.Size(670, 386);
             this.PathFrame.TabIndex = 1;
@@ -655,7 +655,7 @@
             this.progressFr.Controls.Add(this.DBprogressBar);
             this.progressFr.Controls.Add(this.shapeContainer4);
             this.progressFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.progressFr.Location = new System.Drawing.Point(722, 383);
+            this.progressFr.Location = new System.Drawing.Point(725, 317);
             this.progressFr.Name = "progressFr";
             this.progressFr.Size = new System.Drawing.Size(688, 380);
             this.progressFr.TabIndex = 14;
@@ -1186,11 +1186,23 @@
             this.badContrastFr.Controls.Add(this.pictureBox6);
             this.badContrastFr.Controls.Add(this.shapeContainer6);
             this.badContrastFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.badContrastFr.Location = new System.Drawing.Point(31, 183);
+            this.badContrastFr.Location = new System.Drawing.Point(37, 194);
             this.badContrastFr.Name = "badContrastFr";
             this.badContrastFr.Size = new System.Drawing.Size(688, 395);
             this.badContrastFr.TabIndex = 33;
             this.badContrastFr.TabStop = false;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.SystemColors.Highlight;
+            this.label28.Font = new System.Drawing.Font("Miriam", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label28.Location = new System.Drawing.Point(6, 27);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(335, 37);
+            this.label28.TabIndex = 33;
+            this.label28.Text = "Bad contrast pictures";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // badContDoneLbl
             // 
@@ -1240,6 +1252,18 @@
             this.label19.Size = new System.Drawing.Size(63, 30);
             this.label19.TabIndex = 28;
             this.label19.Text = "Now";
+            // 
+            // label20
+            // 
+            this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(335, 16);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(209, 30);
+            this.label20.TabIndex = 27;
+            this.label20.Text = "Resoults: Showing";
             // 
             // label21
             // 
@@ -1405,30 +1429,6 @@
             this.rectangleShape2.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.rectangleShape2.Size = new System.Drawing.Size(119, 55);
             // 
-            // label20
-            // 
-            this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(335, 16);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(209, 30);
-            this.label20.TabIndex = 27;
-            this.label20.Text = "Resoults: Showing";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.BackColor = System.Drawing.SystemColors.Highlight;
-            this.label28.Font = new System.Drawing.Font("Miriam", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label28.Location = new System.Drawing.Point(6, 27);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(335, 37);
-            this.label28.TabIndex = 33;
-            this.label28.Text = "Bad contrast pictures";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // MainPS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1436,16 +1436,16 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(764, 590);
-            this.Controls.Add(this.FilterPath);
             this.Controls.Add(this.PathFrame);
+            this.Controls.Add(this.FilterPath);
             this.Controls.Add(this.filesToDeleteFR);
             this.Controls.Add(this.bitExactFr);
             this.Controls.Add(this.stepThreeLbl);
             this.Controls.Add(this.stepTwoLbl);
             this.Controls.Add(this.stepOneLbl);
             this.Controls.Add(this.badContrastFr);
-            this.Controls.Add(this.shapeContainer1);
             this.Controls.Add(this.progressFr);
+            this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
