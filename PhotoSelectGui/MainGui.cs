@@ -133,6 +133,8 @@ namespace PhotoSelectGui
             frameShowInit();
             featuresArrInit();
 
+
+
             image = null;
 
             bitExactProgressTimer.Interval = TIME_TO_CHECK_RUN_STATUS;
@@ -232,126 +234,6 @@ namespace PhotoSelectGui
                 frameMovementTimer.Enabled = false;
                 //frameShow[(int)frames.stepOneFr_to_stepTwoFr] = false;
             }
-
-            
-            
-            /*
-            // step one to step two (when clicking Done label)
-            if (frameShow[(int)frames.stepOneFr_to_stepTwoFr] == true)
-            {
-                PathFrame.Location = new Point(PathFrame.Location.X + (int)FRAME_SPEED, PathFrame.Location.Y);
-                FilterPath.Location = new Point(FilterPath.Location.X + (int)FRAME_SPEED, FilterPath.Location.Y);
-
-                if (FilterPath.Location.X == FRAME_X)
-                {
-                    PathFrame.Visible = false;
-                    frameMovementTimer.Enabled = false;
-                    frameShow[(int)frames.stepOneFr_to_stepTwoFr] = false;
-                }
-            }
-
-            // step two to step one (when clicking step one label)
-            if (frameShow[(int)frames.stepTwoFr_to_stepOneFr] == true)
-            {
-                PathFrame.Location = new Point(PathFrame.Location.X - (int)FRAME_SPEED, PathFrame.Location.Y);
-                FilterPath.Location = new Point(FilterPath.Location.X - (int)FRAME_SPEED, FilterPath.Location.Y);
-
-                if (PathFrame.Location.X == FRAME_X)
-                {
-                    FilterPath.Visible = false;
-                    frameMovementTimer.Enabled = false;
-                    frameShow[(int)frames.stepTwoFr_to_stepOneFr] = false;
-                }
-            }
-
-            // step two to the progress bar (when clicking Done label in step two) 
-            if (frameShow[(int)frames.stepTwoFr_to_progressBarFr] == true)
-            {
-                // make the bitExact progressBar no visible
-                BitExactProgressLbl.Visible = false;
-                BitExactProgressBar.Visible = false;
-                
-                FilterPath.Location = new Point(FilterPath.Location.X + (int)FRAME_SPEED, FilterPath.Location.Y);
-                progressFr.Location = new Point(progressFr.Location.X, progressFr.Location.Y - (int)FRAME_SPEED);
-
-                if (progressFr.Location.Y == FRAME_Y)
-                {
-                    FilterPath.Visible = false;
-                    frameMovementTimer.Enabled = false;
-                    frameShow[(int)frames.stepTwoFr_to_progressBarFr] = false;
-                }
-            }
-
-            // progress bar to step two (when clicking on the Cancel label)
-            if (frameShow[(int)frames.progressBarFr_to_stepTwoFr] == true)
-            {
-                progressFr.Location = new Point(progressFr.Location.X, progressFr.Location.Y + (int)FRAME_SPEED);
-                FilterPath.Location = new Point(FilterPath.Location.X - (int)FRAME_SPEED, FilterPath.Location.Y);
-
-                if (FilterPath.Location.X == FRAME_X)
-                {
-                    progressFr.Visible = false;
-                    frameMovementTimer.Enabled = false;
-                    frameShow[(int)frames.progressBarFr_to_stepTwoFr] = false;
-                }
-            }
-
-            // progress bar to bit exact frame (when progress bar is done, for now...)
-            if (frameShow[(int)frames.progressBarFr_to_bitExactFr] == true)
-            {
-                progressFr.Location = new Point(progressFr.Location.X, progressFr.Location.Y + (int)FRAME_SPEED);
-                bitExactFr.Location = new Point(bitExactFr.Location.X + (int)FRAME_SPEED, bitExactFr.Location.Y);
-
-                if (bitExactFr.Location.X == FRAME_X)
-                {
-                    progressFr.Visible = false;
-                    frameMovementTimer.Enabled = false;
-                    frameShow[(int)frames.progressBarFr_to_bitExactFr] = false;
-                }
-            }
-
-            // bitExact frame to pathFrame(stepOne) frame (when when clicking step One button)
-            if (frameShow[(int)frames.stepthreeFr_to_stepOneFr] == true)
-            {
-                PathFrame.Location = new Point(PathFrame.Location.X - (int)FRAME_SPEED, PathFrame.Location.Y);
-                bitExactFr.Location = new Point(bitExactFr.Location.X - (int)FRAME_SPEED, bitExactFr.Location.Y);
-
-                if (PathFrame.Location.X == FRAME_X)
-                {
-                    bitExactFr.Visible = false;
-                    frameMovementTimer.Enabled = false;
-                    frameShow[(int)frames.stepthreeFr_to_stepOneFr] = false;
-                }
-            }
-
-            // bitExact frame to step two frame (when clicking step Two button)
-            if (frameShow[(int)frames.stepthreeFr_to_stepTwoFr] == true)
-            {
-                FilterPath.Location = new Point(FilterPath.Location.X - (int)FRAME_SPEED, FilterPath.Location.Y);
-                bitExactFr.Location = new Point(bitExactFr.Location.X - (int)FRAME_SPEED, bitExactFr.Location.Y);
-
-                if (FilterPath.Location.X == FRAME_X)
-                {
-                    bitExactFr.Visible = false;
-                    frameMovementTimer.Enabled = false;
-                    frameShow[(int)frames.stepthreeFr_to_stepTwoFr] = false;
-                }
-            }
-
-
-            if (frameShow[(int)frames.stepthreeFr_to_filesToDeleteFr] == true)
-            {
-                bitExactFr.Location = new Point(bitExactFr.Location.X + (int)FRAME_SPEED, bitExactFr.Location.Y);
-                filesToDeleteFR.Location = new Point(filesToDeleteFR.Location.X + (int)FRAME_SPEED, filesToDeleteFR.Location.Y);
-
-                if (filesToDeleteFR.Location.X == FRAME_X)
-                {
-                    bitExactFr.Visible = false;
-                    frameMovementTimer.Enabled = false;
-                    frameShow[(int)frames.stepthreeFr_to_filesToDeleteFr] = false;
-                }
-            }
-             */
         } 
             
 
@@ -556,7 +438,6 @@ namespace PhotoSelectGui
                         MatchesList.Items.Clear();
                         if (core.Res.BitExact.Matches.Count != 0)
                         {
-
                             for (int i = 0; i < core.Res.BitExact.Matches[bitcurr - 1].Count; i++)
                             {
                                 MatchesList.Items.Add(core.Res.BitExact.Matches[bitcurr - 1][i]);
