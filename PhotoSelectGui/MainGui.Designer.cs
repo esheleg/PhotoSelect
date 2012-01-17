@@ -655,7 +655,7 @@
             this.progressFr.Controls.Add(this.DBprogressBar);
             this.progressFr.Controls.Add(this.shapeContainer4);
             this.progressFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.progressFr.Location = new System.Drawing.Point(271, 524);
+            this.progressFr.Location = new System.Drawing.Point(722, 383);
             this.progressFr.Name = "progressFr";
             this.progressFr.Size = new System.Drawing.Size(688, 380);
             this.progressFr.TabIndex = 14;
@@ -669,9 +669,9 @@
             this.BitExactProgressLbl.ForeColor = System.Drawing.Color.Black;
             this.BitExactProgressLbl.Location = new System.Drawing.Point(86, 138);
             this.BitExactProgressLbl.Name = "BitExactProgressLbl";
-            this.BitExactProgressLbl.Size = new System.Drawing.Size(460, 37);
+            this.BitExactProgressLbl.Size = new System.Drawing.Size(465, 37);
             this.BitExactProgressLbl.TabIndex = 10;
-            this.BitExactProgressLbl.Text = "Looking for identical photos...";
+            this.BitExactProgressLbl.Text = "Selecting photos by features..";
             this.BitExactProgressLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // BitExactProgressBar
@@ -1186,7 +1186,7 @@
             this.badContrastFr.Controls.Add(this.pictureBox6);
             this.badContrastFr.Controls.Add(this.shapeContainer6);
             this.badContrastFr.ForeColor = System.Drawing.Color.Cornsilk;
-            this.badContrastFr.Location = new System.Drawing.Point(25, 166);
+            this.badContrastFr.Location = new System.Drawing.Point(31, 183);
             this.badContrastFr.Name = "badContrastFr";
             this.badContrastFr.Size = new System.Drawing.Size(688, 395);
             this.badContrastFr.TabIndex = 33;
@@ -1438,7 +1438,6 @@
             this.ClientSize = new System.Drawing.Size(764, 590);
             this.Controls.Add(this.FilterPath);
             this.Controls.Add(this.PathFrame);
-            this.Controls.Add(this.progressFr);
             this.Controls.Add(this.filesToDeleteFR);
             this.Controls.Add(this.bitExactFr);
             this.Controls.Add(this.stepThreeLbl);
@@ -1446,6 +1445,7 @@
             this.Controls.Add(this.stepOneLbl);
             this.Controls.Add(this.badContrastFr);
             this.Controls.Add(this.shapeContainer1);
+            this.Controls.Add(this.progressFr);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;

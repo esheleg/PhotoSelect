@@ -135,7 +135,10 @@ namespace PhotoSelectGui
 
             image = null;
 
-            bitExactProgressTimer.Interval = TIME_TO_CHECK_RUN_STATUS;            
+            bitExactProgressTimer.Interval = TIME_TO_CHECK_RUN_STATUS;
+
+            BitExactProgressBar.Visible = false;
+            BitExactProgressLbl.Visible = false;
 
             PathFrame.Visible = true;
             FilterPath.Visible = false;
