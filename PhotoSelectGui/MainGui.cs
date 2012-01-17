@@ -103,6 +103,8 @@ namespace PhotoSelectGui
         const double BOTTOM_FRAME_Y = 600;
         public int bitcurr = 1;
         //enum and array of booleans to choose the next step frame
+        
+        ///--------------------to delete later-------------
         enum frames
         {
             stepOneFr_to_stepTwoFr, stepTwoFr_to_stepOneFr, stepTwoFr_to_progressBarFr,
@@ -115,6 +117,8 @@ namespace PhotoSelectGui
             for (int i = 0; i < frameShow.Length; i++)
                 frameShow[i] = false;
         }
+        //------------------------end to delete------------
+
 
         private void featuresArrInit()
         {
@@ -137,6 +141,7 @@ namespace PhotoSelectGui
             FilterPath.Visible = false;
             progressFr.Visible = false;
             bitExactFr.Visible = false;
+            badContrastFr.Visible = false;
             filesToDeleteFR.Visible = false;
             changecolor(1);
         }
@@ -150,6 +155,7 @@ namespace PhotoSelectGui
             //progressFr.Location = new Point((int)BOTTOM_FRAME_X, (int)BOTTOM_FRAME_Y);
             progressFr.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
             filesToDeleteFR.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
+            badContrastFr.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
 
         }
        
@@ -370,8 +376,6 @@ namespace PhotoSelectGui
             if (bitExactFr.Location.X == FRAME_X)
             {
                 framesMoveHorizon(bitExactFr, PathFrame);
-               //frameShow[(int)frames.stepthreeFr_to_stepOneFr] = true;
-                //FilterPath.Location = new Point((int)LEFT_FRAME_X, (int)LEFT_FRAME_Y);
                 changecolor(1);
             }
         }
@@ -434,11 +438,11 @@ namespace PhotoSelectGui
 
         private void doneBitExactLbl_Click(object sender, EventArgs e)
         {
-            if (bitExactFr.Location.X == FRAME_X)
-            {
+            if (featuresArr[(int)Feature.BAD_CONTRAST] == true)
+                framesMoveHorizon(bitExactFr, badContrastFr);
+            else
                 //changecolor(2);
                 framesMoveHorizon(bitExactFr, filesToDeleteFR);
-            }
             for (int i = 0; i < itemsToDelete.Count; i++)
             {
                     DeleteList.Items.Add(itemsToDelete[i].ToString());
@@ -446,10 +450,17 @@ namespace PhotoSelectGui
 
         }
 
+        private void badContDoneLbl_Click(object sender, EventArgs e)
+        {
+            framesMoveHorizon(badContrastFr, filesToDeleteFR);
+        }
+
         private void stepThreeLbl_Click(object sender, EventArgs e)
         {
 
         }
+
+      
         //----------------------end buttons-----------------------------------
 
 
@@ -502,19 +513,11 @@ namespace PhotoSelectGui
             {
                 progressBarTimer.Stop();
                 core.run();
-                if (featuresArr[(int)Feature.BIT_EXACT] == true)
-                {
-                    BitExactProgressLbl.Visible = true;
-                    BitExactProgressBar.Visible = true;
+                BitExactProgressLbl.Visible = true;
+                BitExactProgressBar.Visible = true;
                     //Thread run = new Thread(core.run);
                     //  run.Start(); 
-                    bitExactProgressTimer.Start();
-                }
-                
-                if (featuresArr[(int)Feature.BAD_CONTRAST] == true)
-                {
-
-                }
+                bitExactProgressTimer.Start();
             }
         }
 
@@ -525,51 +528,66 @@ namespace PhotoSelectGui
             {
                 bitExactProgressTimer.Stop();
 
-                // changing form. for now its to the bitmap exact - need to change in future
-                if (progressFr.Location.Y == FRAME_Y)
-                {
+                  // changing form. for now its to the bitmap exact - need to change in future
+                   
+                if(featuresArr[(int)Feature.BIT_EXACT] == true)
                     framesMoveHorizon(progressFr, bitExactFr);
+                else if(featuresArr[(int)Feature.BAD_CONTRAST] == true)
+                         framesMoveHorizon(progressFr, badContrastFr);
+               /*else{if(featuresArr[(int)Feature.SIMILARITY] == true)
+                        framesMoveHorizon(progressFr, similarityFr);
+                        else{if(featuresArr[(int)Feature.PARTIAL_BLOCKAGE] == true)
+                        framesMoveHorizon(progressFr, parBlockFr);
+                        }
+                        }
+                }*/
+
+                
+
+
                     DBprogressBar.Value = 0;
                     //-------------- starting to load results after loading as done -------//
                     //int bitXCurrent //current head to show on bitexact
-                    MatchesList.Items.Clear();
-                    if (core.Res.BitExact.Matches.Count != 0)
+                    if (featuresArr[(int)Feature.BIT_EXACT] == true)
                     {
-                        
-                        for (int i = 0; i < core.Res.BitExact.Matches[bitcurr-1].Count; i++)
+                        MatchesList.Items.Clear();
+                        if (core.Res.BitExact.Matches.Count != 0)
                         {
-                            MatchesList.Items.Add(core.Res.BitExact.Matches[bitcurr-1][i]);
-                        }
-                        labelcurr.Text = core.Res.BitExact.Matches.Count.ToString();
-                        labelnow.Text = "1";
-                        
-                        
-                        try
-                        {
-                            if (image != null)
-                                image.Dispose();
-                            image = null;
-                            // Check if textbox has a value
 
-                            image = Image.FromFile(core.Res.BitExact.Matches[bitcurr - 1][0].ToString());
-                            // Check if image exists
-                            if (image != null)
+                            for (int i = 0; i < core.Res.BitExact.Matches[bitcurr - 1].Count; i++)
                             {
-                                PictureResult.Image = image.GetThumbnailImage(186, 148, null, new IntPtr());
-                                pathLbl.Text = core.Res.BitExact.Matches[bitcurr - 1][0].ToString();
+                                MatchesList.Items.Add(core.Res.BitExact.Matches[bitcurr - 1][i]);
                             }
+                            labelcurr.Text = core.Res.BitExact.Matches.Count.ToString();
+                            labelnow.Text = "1";
+
+
+                            try
+                            {
+                                if (image != null)
+                                    image.Dispose();
+                                image = null;
+                                // Check if textbox has a value
+
+                                image = Image.FromFile(core.Res.BitExact.Matches[bitcurr - 1][0].ToString());
+                                // Check if image exists
+                                if (image != null)
+                                {
+                                    PictureResult.Image = image.GetThumbnailImage(186, 148, null, new IntPtr());
+                                    pathLbl.Text = core.Res.BitExact.Matches[bitcurr - 1][0].ToString();
+                                }
+                            }
+                            catch
+                            {
+                                MessageBox.Show("An error occured");
+                            }
+                            PictureResult.Refresh();
+
                         }
-                        catch
-                        {
-                            MessageBox.Show("An error occured");
-                        }
-                        PictureResult.Refresh();
-                        
+                        else
+                            MessageBox.Show("there are no identical pictures");
+                        //-------------------end of load results -----------------------------//
                     }
-                    else
-                        MessageBox.Show("there are no identical pictures");
-                    //-------------------end of load results -----------------------------//
-                }
             }
         }
 
@@ -870,6 +888,8 @@ namespace PhotoSelectGui
         {
 
         }
+
+        
 
   
 

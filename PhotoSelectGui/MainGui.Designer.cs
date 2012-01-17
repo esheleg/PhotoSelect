@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPS));
             this.PathFrame = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.numPicsLbl = new System.Windows.Forms.Label();
             this.numLbl = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
@@ -108,9 +111,26 @@
             this.doneBitExactRect = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.bitExactProgressTimer = new System.Windows.Forms.Timer(this.components);
             this.process1 = new System.Diagnostics.Process();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.badContrastFr = new System.Windows.Forms.GroupBox();
+            this.badContDoneLbl = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.deleteBtn = new System.Windows.Forms.Button();
+            this.previousBtn = new System.Windows.Forms.Button();
+            this.nextBtn = new System.Windows.Forms.Button();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.shapeContainer6 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             this.PathFrame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.filesToDeleteFR.SuspendLayout();
@@ -124,6 +144,8 @@
             this.progressFr.SuspendLayout();
             this.bitExactFr.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureResult)).BeginInit();
+            this.badContrastFr.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // PathFrame
@@ -142,11 +164,50 @@
             this.PathFrame.Controls.Add(this.doneStepOneLbl);
             this.PathFrame.Controls.Add(this.shapeContainer2);
             this.PathFrame.ForeColor = System.Drawing.Color.Cornsilk;
-            this.PathFrame.Location = new System.Drawing.Point(44, 181);
+            this.PathFrame.Location = new System.Drawing.Point(226, 551);
             this.PathFrame.Name = "PathFrame";
             this.PathFrame.Size = new System.Drawing.Size(670, 386);
             this.PathFrame.TabIndex = 1;
             this.PathFrame.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.White;
+            this.label15.Font = new System.Drawing.Font("Miriam", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label15.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label15.Location = new System.Drawing.Point(154, 110);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(131, 16);
+            this.label15.TabIndex = 16;
+            this.label15.Text = "*choose to preview";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.White;
+            this.label14.Font = new System.Drawing.Font("Miriam", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(10, 104);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(138, 24);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "Photos found";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.White;
+            this.label12.Font = new System.Drawing.Font("Miriam", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(273, 38);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(143, 24);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "Selected path";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // numPicsLbl
             // 
@@ -377,7 +438,7 @@
             this.FilterPath.Controls.Add(this.doneStepTwoLbl);
             this.FilterPath.Controls.Add(this.shapeContainer3);
             this.FilterPath.ForeColor = System.Drawing.Color.Cornsilk;
-            this.FilterPath.Location = new System.Drawing.Point(382, 446);
+            this.FilterPath.Location = new System.Drawing.Point(719, 439);
             this.FilterPath.Name = "FilterPath";
             this.FilterPath.Size = new System.Drawing.Size(703, 380);
             this.FilterPath.TabIndex = 4;
@@ -399,7 +460,6 @@
             // badContrastChckBox
             // 
             this.badContrastChckBox.AutoSize = true;
-            this.badContrastChckBox.Enabled = false;
             this.badContrastChckBox.Location = new System.Drawing.Point(386, 236);
             this.badContrastChckBox.Name = "badContrastChckBox";
             this.badContrastChckBox.Size = new System.Drawing.Size(15, 14);
@@ -1102,44 +1162,272 @@
             this.process1.StartInfo.UserName = "";
             this.process1.SynchronizingObject = this;
             // 
-            // label12
+            // badContrastFr
             // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.White;
-            this.label12.Font = new System.Drawing.Font("Miriam", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(273, 38);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(143, 24);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "Selected path";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.badContrastFr.BackColor = System.Drawing.Color.SeaShell;
+            this.badContrastFr.BackgroundImage = global::PhotoSelectGui.Properties.Resources.eye_light_11;
+            this.badContrastFr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.badContrastFr.Controls.Add(this.label28);
+            this.badContrastFr.Controls.Add(this.badContDoneLbl);
+            this.badContrastFr.Controls.Add(this.label17);
+            this.badContrastFr.Controls.Add(this.label18);
+            this.badContrastFr.Controls.Add(this.label19);
+            this.badContrastFr.Controls.Add(this.label20);
+            this.badContrastFr.Controls.Add(this.label21);
+            this.badContrastFr.Controls.Add(this.label22);
+            this.badContrastFr.Controls.Add(this.label23);
+            this.badContrastFr.Controls.Add(this.label24);
+            this.badContrastFr.Controls.Add(this.label25);
+            this.badContrastFr.Controls.Add(this.label26);
+            this.badContrastFr.Controls.Add(this.label27);
+            this.badContrastFr.Controls.Add(this.deleteBtn);
+            this.badContrastFr.Controls.Add(this.previousBtn);
+            this.badContrastFr.Controls.Add(this.nextBtn);
+            this.badContrastFr.Controls.Add(this.pictureBox6);
+            this.badContrastFr.Controls.Add(this.shapeContainer6);
+            this.badContrastFr.ForeColor = System.Drawing.Color.Cornsilk;
+            this.badContrastFr.Location = new System.Drawing.Point(25, 166);
+            this.badContrastFr.Name = "badContrastFr";
+            this.badContrastFr.Size = new System.Drawing.Size(688, 395);
+            this.badContrastFr.TabIndex = 33;
+            this.badContrastFr.TabStop = false;
             // 
-            // label14
+            // badContDoneLbl
             // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.White;
-            this.label14.Font = new System.Drawing.Font("Miriam", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(10, 104);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(138, 24);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "Photos found";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.badContDoneLbl.AutoSize = true;
+            this.badContDoneLbl.BackColor = System.Drawing.SystemColors.Highlight;
+            this.badContDoneLbl.Font = new System.Drawing.Font("Miriam", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.badContDoneLbl.Location = new System.Drawing.Point(573, 343);
+            this.badContDoneLbl.Name = "badContDoneLbl";
+            this.badContDoneLbl.Size = new System.Drawing.Size(86, 37);
+            this.badContDoneLbl.TabIndex = 31;
+            this.badContDoneLbl.Text = "Next";
+            this.badContDoneLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.badContDoneLbl.Click += new System.EventHandler(this.badContDoneLbl_Click);
             // 
-            // label15
+            // label17
             // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.White;
-            this.label15.Font = new System.Drawing.Font("Miriam", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label15.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label15.Location = new System.Drawing.Point(154, 110);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(131, 16);
-            this.label15.TabIndex = 16;
-            this.label15.Text = "*choose to preview";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(614, 16);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(68, 30);
+            this.label17.TabIndex = 30;
+            this.label17.Text = "Curr";
+            // 
+            // label18
+            // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(576, 16);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(66, 30);
+            this.label18.TabIndex = 29;
+            this.label18.Text = "Of";
+            // 
+            // label19
+            // 
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(521, 16);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(63, 30);
+            this.label19.TabIndex = 28;
+            this.label19.Text = "Now";
+            // 
+            // label21
+            // 
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(123, 308);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(147, 18);
+            this.label21.TabIndex = 26;
+            this.label21.Text = "pictureName";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label22
+            // 
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(142, 361);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(128, 18);
+            this.label22.TabIndex = 26;
+            this.label22.Text = "פרטים";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label23
+            // 
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label23.ForeColor = System.Drawing.Color.White;
+            this.label23.Location = new System.Drawing.Point(142, 336);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(128, 18);
+            this.label23.TabIndex = 25;
+            this.label23.Text = "פרטים";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label24
+            // 
+            this.label24.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label24.ForeColor = System.Drawing.Color.Orange;
+            this.label24.Location = new System.Drawing.Point(6, 363);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(96, 19);
+            this.label24.TabIndex = 23;
+            this.label24.Text = "Resulusion";
+            // 
+            // label25
+            // 
+            this.label25.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.Color.Transparent;
+            this.label25.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label25.ForeColor = System.Drawing.Color.Orange;
+            this.label25.Location = new System.Drawing.Point(6, 335);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(136, 19);
+            this.label25.TabIndex = 22;
+            this.label25.Text = "Location on disk";
+            // 
+            // label26
+            // 
+            this.label26.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Transparent;
+            this.label26.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label26.ForeColor = System.Drawing.Color.Orange;
+            this.label26.Location = new System.Drawing.Point(6, 307);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(111, 19);
+            this.label26.TabIndex = 21;
+            this.label26.Text = "Picture Name";
+            // 
+            // label27
+            // 
+            this.label27.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label27.BackColor = System.Drawing.Color.Transparent;
+            this.label27.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label27.ForeColor = System.Drawing.Color.Orange;
+            this.label27.Location = new System.Drawing.Point(6, 267);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(181, 31);
+            this.label27.TabIndex = 20;
+            this.label27.Text = "Picture Properties";
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.BackColor = System.Drawing.SystemColors.Highlight;
+            this.deleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.deleteBtn.ForeColor = System.Drawing.Color.White;
+            this.deleteBtn.Location = new System.Drawing.Point(369, 264);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(131, 61);
+            this.deleteBtn.TabIndex = 19;
+            this.deleteBtn.Text = "Delete";
+            this.deleteBtn.UseVisualStyleBackColor = false;
+            // 
+            // previousBtn
+            // 
+            this.previousBtn.BackColor = System.Drawing.SystemColors.Highlight;
+            this.previousBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previousBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.previousBtn.ForeColor = System.Drawing.Color.White;
+            this.previousBtn.Location = new System.Drawing.Point(286, 263);
+            this.previousBtn.Name = "previousBtn";
+            this.previousBtn.Size = new System.Drawing.Size(80, 62);
+            this.previousBtn.TabIndex = 14;
+            this.previousBtn.Text = "Previous";
+            this.previousBtn.UseVisualStyleBackColor = false;
+            // 
+            // nextBtn
+            // 
+            this.nextBtn.BackColor = System.Drawing.SystemColors.Highlight;
+            this.nextBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.nextBtn.ForeColor = System.Drawing.Color.White;
+            this.nextBtn.Location = new System.Drawing.Point(501, 264);
+            this.nextBtn.Name = "nextBtn";
+            this.nextBtn.Size = new System.Drawing.Size(83, 60);
+            this.nextBtn.TabIndex = 13;
+            this.nextBtn.Text = "Next";
+            this.nextBtn.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox6.Location = new System.Drawing.Point(286, 67);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(298, 191);
+            this.pictureBox6.TabIndex = 11;
+            this.pictureBox6.TabStop = false;
+            // 
+            // shapeContainer6
+            // 
+            this.shapeContainer6.Location = new System.Drawing.Point(3, 16);
+            this.shapeContainer6.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer6.Name = "shapeContainer6";
+            this.shapeContainer6.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.rectangleShape2});
+            this.shapeContainer6.Size = new System.Drawing.Size(682, 376);
+            this.shapeContainer6.TabIndex = 32;
+            this.shapeContainer6.TabStop = false;
+            // 
+            // rectangleShape2
+            // 
+            this.rectangleShape2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.rectangleShape2.BackColor = System.Drawing.Color.Maroon;
+            this.rectangleShape2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.rectangleShape2.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.rectangleShape2.BorderColor = System.Drawing.SystemColors.Desktop;
+            this.rectangleShape2.CornerRadius = 8;
+            this.rectangleShape2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rectangleShape2.FillColor = System.Drawing.SystemColors.Highlight;
+            this.rectangleShape2.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
+            this.rectangleShape2.Location = new System.Drawing.Point(557, 319);
+            this.rectangleShape2.Name = "doneBitExactRect";
+            this.rectangleShape2.SelectionColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.rectangleShape2.Size = new System.Drawing.Size(119, 55);
+            // 
+            // label20
+            // 
+            this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(335, 16);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(209, 30);
+            this.label20.TabIndex = 27;
+            this.label20.Text = "Resoults: Showing";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.SystemColors.Highlight;
+            this.label28.Font = new System.Drawing.Font("Miriam", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label28.Location = new System.Drawing.Point(6, 27);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(335, 37);
+            this.label28.TabIndex = 33;
+            this.label28.Text = "Bad contrast pictures";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // MainPS
             // 
@@ -1148,14 +1436,15 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(764, 590);
+            this.Controls.Add(this.FilterPath);
             this.Controls.Add(this.PathFrame);
             this.Controls.Add(this.progressFr);
             this.Controls.Add(this.filesToDeleteFR);
             this.Controls.Add(this.bitExactFr);
-            this.Controls.Add(this.FilterPath);
             this.Controls.Add(this.stepThreeLbl);
             this.Controls.Add(this.stepTwoLbl);
             this.Controls.Add(this.stepOneLbl);
+            this.Controls.Add(this.badContrastFr);
             this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1183,6 +1472,9 @@
             this.bitExactFr.ResumeLayout(false);
             this.bitExactFr.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureResult)).EndInit();
+            this.badContrastFr.ResumeLayout(false);
+            this.badContrastFr.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1271,6 +1563,26 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.GroupBox badContrastFr;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label badContDoneLbl;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.Button previousBtn;
+        private System.Windows.Forms.Button nextBtn;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer6;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
 
 
 
