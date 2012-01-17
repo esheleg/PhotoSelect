@@ -125,22 +125,8 @@ namespace Features
         /// </summary>
         public void run()
         {
-        
-            if (_task.Features[(int)Feature.BIT_EXACT])
-            {            
-                _bitExact = new BitExact(_images);
-                _bitExactThread = new Thread(_bitExact.run);
-                _bitExactThread.Name = "bitExact";
-                _bitExactThread.Start();
-                _numRunningFeat++;
-            }
-            if (_task.Features[(int)Feature.BAD_CONTRAST])
-            {
-                _badContrast = new BadContrast(_images);
-                _badContrastThread = new Thread(_badContrast.run);
-                _badContrastThread.Start();
-                _numRunningFeat++;
-            }
+            Thread runFeatThread = new Thread(runFeatures);
+            runFeatThread.Start();
 
             //_statusUpdaterThread = new Thread(statusUpdater);
             //_statusUpdaterThread.Start();
@@ -148,6 +134,26 @@ namespace Features
         }
         #endregion (GUI --> BRAIN) Methods
 
+        private void runFeatures()
+        {
+            if (_task.Features[(int)Feature.BIT_EXACT])
+            {
+                _bitExact = new BitExact(_images);
+                _bitExactThread = new Thread(_bitExact.run);
+                _bitExactThread.Name = "bitExact";
+                _bitExactThread.Start();
+                _numRunningFeat++;
+            }
+            if (_bitExactThread != null)
+                _bitExactThread.Join();
+            if (_task.Features[(int)Feature.BAD_CONTRAST])
+            {
+                _badContrast = new BadContrast(_images);
+                _badContrastThread = new Thread(_badContrast.run);
+                _badContrastThread.Start();
+                _numRunningFeat++;
+            }
+        }
         /// <summary>
         /// will update RunStatus and on completion, will collect results
         /// </summary>
