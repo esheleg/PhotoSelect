@@ -66,6 +66,7 @@ namespace Features
         {
             get { return _matches; }
         }
+
     }
 
     // BadContrustRes added by Yossi
@@ -108,7 +109,10 @@ namespace Features
         {
             _badContrastRes = new BadContrastRes(badContrast.Matches);
         }
-
+        public BadContrastRes BadContrast
+        {
+            get { return _badContrastRes; }
+        }
     }
     #endregion ******************(GUI <--> BRAIN) Structures********************
 }

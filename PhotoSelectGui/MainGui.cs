@@ -328,6 +328,7 @@ namespace PhotoSelectGui
             else
                 //changecolor(2);
                 framesMoveHorizon(bitExactFr, filesToDeleteFR);
+            DeleteList.Items.Clear();
             for (int i = 0; i < itemsToDelete.Count; i++)
             {
                     DeleteList.Items.Add(itemsToDelete[i].ToString());
@@ -337,6 +338,11 @@ namespace PhotoSelectGui
 
         private void badContDoneLbl_Click(object sender, EventArgs e)
         {
+            DeleteList.Items.Clear();
+            for (int i = 0; i < itemsToDelete.Count; i++)
+            {
+                DeleteList.Items.Add(itemsToDelete[i].ToString());
+            }    
             framesMoveHorizon(badContrastFr, filesToDeleteFR);
         }
 
@@ -470,6 +476,42 @@ namespace PhotoSelectGui
                         }
                         else
                             MessageBox.Show("there are no identical pictures");
+                        //-------------------end of load results -----------------------------//
+                        //-------------------sending badcontrast photos to frame--------------//
+                    }
+                    if (featuresArr[(int)Feature.BAD_CONTRAST] == true)
+                    {
+                        BadConPhotos.Items.Clear();
+                        if (core.Res.BadContrast.Matches.Count != 0)
+                        {
+                            for (int i = 0; i < core.Res.BadContrast.Matches.Count; i++)
+                            {
+                                BadConPhotos.Items.Add(core.Res.BadContrast.Matches[i]);
+                            }
+                            
+                            try
+                            {
+                                if (image != null)
+                                    image.Dispose();
+                                image = null;
+                                // setting image value
+                                image = Image.FromFile(core.Res.BadContrast.Matches[0].ToString());
+                                // Check if image exists
+                                if (image != null)
+                                {
+                                    PicBadCon.Image = image.GetThumbnailImage(311, 191, null, new IntPtr());
+                                    pathbad.Text = core.Res.BadContrast.Matches[0].ToString();
+                                }
+                            }
+                            catch
+                            {
+                                MessageBox.Show("An error occured");
+                            }
+                            PictureResult.Refresh();
+                            labelfound.Text = core.Res.BadContrast.Matches.Count.ToString();
+                        }
+                        else
+                            MessageBox.Show("there are no BadContrast pictures");
                         //-------------------end of load results -----------------------------//
                     }
             }
@@ -770,6 +812,96 @@ namespace PhotoSelectGui
 
         private void textpath_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void PictureResult_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BadConPhotos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (image != null)
+                    image.Dispose();
+                image = null;
+                // Check if textbox has a value
+                if (BadConPhotos.SelectedItem.ToString() != String.Empty)
+                    image = Image.FromFile(BadConPhotos.SelectedItem.ToString());
+                // Check if image exists
+                if (image != null)
+                {
+                    //replacing image on picBox
+                    PicBadCon.Image = image.GetThumbnailImage(311, 191, null, new IntPtr());
+                    pathbad.Text = BadConPhotos.SelectedItem.ToString();
+
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error: Invaild image path or Usage error");
+            }
+            PicBadCon.Refresh();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < BadConPhotos.Items.Count; i++)
+                BadConPhotos.SetItemChecked(i, true);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            for (int i = 0; i < BadConPhotos.Items.Count; i++)
+                BadConPhotos.SetItemChecked(i, false);
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            Boolean degel;
+            degel = true;
+            //---------(new)----------------adding all items to delete into list----
+            if (BadConPhotos.Items.Count == BadConPhotos.CheckedItems.Count)
+            {
+                //MessageBox.Show("You chose all the copys of the picture to delete,\n it means you will lose that picture completely\n ");
+                const string message = "You chose to delete all photos,\n it means you will lose that picture completely. \n\nARE YOU SURE THAT YOU WANT TO DO THESE?";
+                const string caption = "Deleting options";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Warning);
+
+                // If the no button was pressed ...
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
+            for (int i = 0; i < BadConPhotos.Items.Count; i++)
+            {
+                degel = true;
+                if (BadConPhotos.GetItemChecked(i))
+                {
+                    foreach (string item in itemsToDelete)
+                    {
+
+                        if (item == BadConPhotos.Items[i].ToString())
+                            degel = false;
+
+                    }
+                    if (degel == true)
+                    {
+                        itemsToDelete.Add(BadConPhotos.Items[i].ToString());
+                    }
+                }
+            }
+            if (degel == true)
+                MessageBox.Show("The files moved to a delete list, to be deleted on next step.");
+
+            //----------------------------------------------------------------------
+
 
         }
 
