@@ -24,7 +24,7 @@ namespace Features
         # region consts      
 
         // thie image processed area will allways be <= PROC_IMAGE_AREA        
-        public static readonly int MAX_IMAGE_AREA = 320 * 240;
+        public static readonly int MAX_IMAGE_AREA = 160 * 120;
         public static readonly int MAX_GRAY_VALUE = 255;
         // the used ratio for each color channel in converting rgb to gray (R,G,B)
         public static readonly Grayscale GRAY_FILTER = new Grayscale(0.2989, 0.5870, 0.1140);

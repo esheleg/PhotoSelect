@@ -66,30 +66,31 @@ namespace Features
         //function that check matches
         public void run()
         {
+            float realRunStatus = 0;
             try
-            {
+            {                
                 setPropotion(); // set propotion to images
-                for (int i = 0; i < numImages - 2; i++)
+                for (int i = 0; i < numImages - 1; i++)
                 {
+                    int equalToImage = 0;
                     if (checkedImages[i] || (propotions[i] == Propotion.pOther)) //if we founded match then don't check the image 
-                    {
-                        runStatus = (int)Math.Round(((i + 1) / (float)numImages) * 100);
+                    {                        
                         continue;
                     }
-                    for (int j = i + 1; j <= numImages - 1; j++)
+                    for (int j = i + 1; j < numImages; j++)
                         if (propotions[i] == propotions[j] && (!checkedImages[j])) //check only images with similar propotions
-                            equalImages(i, j); //equal is true if there is a match
+                        {
+                            if(equalImagesFast(i, j)) //equal is true if there is a match                                
+                                equalToImage++;
+                        }
 
-
-
-
-                    runStatus = (int)Math.Round(((i + 1) / (float)numImages) * 100);
-
-                }
+                    realRunStatus += (float)(1 + equalToImage) / numImages;
+                    runStatus = (int)(Math.Min(Math.Round(realRunStatus*100), 99));                    
+                }                
                 runStatus = 100;
                 // set results
                 results = new BitExactRes(matches);
-            }       
+            }              
             catch (ThreadAbortException)
             { // ResetAbout() handles and the exception and letting the thread 
               // finish normally (reaching the end of the function)
@@ -154,8 +155,8 @@ namespace Features
             byte[] firstA = temp1.getImb();
             byte[] secondA = temp2.getImb();
             
-            int sum = 0; 
-            
+            int sum = 0;
+            Debug.Assert( (firstA.Length == secondA.Length) );
             for (int i = 0; i < size; i++)
                 sum += Math.Abs(firstA[i] - secondA[i]);
 
@@ -167,6 +168,45 @@ namespace Features
 
            
         }
+        public bool equalImagesFast(int first, int second)
+        {
+                        
+            ImageInfo temp1 = null, temp2 = null;            
+            int size = similarSizes(out temp1, out temp2, first, second);
+
+            int[] stripLen = new int[2];
+            stripLen[0] = 2 * (int)(((AROUND * 100) / 255) * size);
+            int numStrips = (int)Math.Ceiling((double)(size) / stripLen[0]);
+            stripLen[1] = size - stripLen[0] * (numStrips - 1);
+            
+
+            byte[] firstA = temp1.getImb();
+            byte[] secondA = temp2.getImb();
+
+            int sum = 0;
+
+            for (int k = 0; k < numStrips - 1; k++)
+            {
+                int stripEnd = (k+1)*stripLen[0];
+                for (int i = k*stripLen[0]; i < stripEnd; i++)
+                    sum += Math.Abs(firstA[i] - secondA[i]);
+                if (sum > 100 * AROUND * size)
+                    return false;
+            }
+            for (int i = (numStrips - 1) * stripLen[0]; i < size; i++)
+                sum += Math.Abs(firstA[i] - secondA[i]);
+
+
+            //if the success more then (95%) [100 - 100 * ARROUND] the images is eaqual
+            if (sum <= 100 * AROUND * size)
+            {
+                AddToResult(first, second);
+                return true;
+            }
+
+
+            return false;
+        }
 
 
         private int similarSizes(out ImageInfo first,out  ImageInfo second, int i, int j)
@@ -175,7 +215,7 @@ namespace Features
             int size2 = images[j].Height * images[j].Width;
 
 
-            if (size / size2 != 1)
+            if ( (double)size / size2 != 1.0)
             {
                 if (size2 < size)
                 {
@@ -192,8 +232,10 @@ namespace Features
             }
             else
             {
-                first = new ImageInfo(images[i], new Size(images[i].Height, images[i].Width));
-                second = new ImageInfo(images[j], new Size(images[i].Height, images[i].Width));
+                //first = new ImageInfo(images[i], new Size(images[i].Height, images[i].Width));
+                //second = new ImageInfo(images[j], new Size(images[i].Height, images[i].Width));
+                first = images[i];
+                second = images[j];
             }
             return size;
         }
