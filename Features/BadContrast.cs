@@ -34,21 +34,27 @@ namespace Features
             num_images = images.Length;
         }
 
+        
+
         public void run()
         {
+         
             for (int i = 0; i < num_images; i++)
             {
                 Histogram hist = images[i].getHist();
-                double mean = hist.Mean;
-                double median = hist.Median;
-                double sd = hist.StdDev;
-                if (isBadContrast(mean, median, sd))
+                //double mean = hist.Mean;
+                //double median = hist.Median;
+                //double sd = hist.StdDev;
+                //long size = hist.TotalCount;
+                if (isBadContrast(hist))
                     matches.Add(images[i].getPath());
+
 
                 runStatus = (int)Math.Round(((i + 1) / (float)num_images) * 100);
             }
             runStatus = 100;
             results = new BadContrastRes(matches);
+            
         }
 
         public BadContrastRes Results
@@ -56,13 +62,62 @@ namespace Features
             get { return results; }
         }
 
-        private bool isBadContrast(double mean, double median, double sd)
+        private bool isBadContrast(Histogram hist)
         {
-            if(sd<=15)
+ 
+            int x;
+            int max = getMaxValue(hist);
+
+
+            if (max < 20)
+                x = pixelRange(hist, 0, 20);
+            else if (max > 235)
+                x = pixelRange(hist, 235, 255);
+            else
+                x = pixelRange(hist, max - 20, max + 20);
+
+            double parcent = (double)x / (double)hist.TotalCount * 100;
+            if (parcent > 70)
                 return true;
-            if ((mean > BRIGHT && median > BRIGHT) || (mean < DARK && median < DARK))
+            
+
+            double bright = (double)pixelRange(hist, 235, 255) / (double)hist.TotalCount * 100;
+           
+            
+            if (max < 50 && parcent + bright > 45 )
                 return true;
+            
+
+            double dark = (double)pixelRange(hist, 0, 35) / (double)hist.TotalCount * 100;
+
+            if (max > 200 && dark + parcent > 45)
+                return true;
+            
             return false;
+
+        }
+
+
+        private int getMaxValue(Histogram hist)
+        {
+            int max = -1;
+            int index = 0;
+            for (int i = 0; i < 255; i++)
+                if (hist.Values[i] > max)
+                {
+                    max = hist.Values[i];
+                    index = i;
+                }
+            return index;
+        }
+
+
+        private int pixelRange(Histogram hist,int start, int end)
+        {
+            int sum = 0;
+            for (int i = start; i < end; i++)
+                sum += hist.Values[i];
+            return sum;
         }
     }
 }
